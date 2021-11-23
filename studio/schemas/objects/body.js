@@ -51,7 +51,7 @@ export default {
                 validation: Rule => Rule.uri({scheme: ['tel', 'mailto', 'http', 'https']})
               },
               {
-                title: 'Åpne i ny fane',
+                title: 'Open in new tab',
                 name: 'blank',
                 type: 'boolean'
               }

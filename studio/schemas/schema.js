@@ -18,6 +18,8 @@ import contact from './objects/contact'
 import newsletter from './objects/newsletter'
 import seo from './objects/seo'
 
+import { translateFields } from './fieldTranslation'
+
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   // We name our schema
@@ -27,11 +29,11 @@ export default createSchema({
   types: schemaTypes.concat([
     // The following are document types which will appear
     // in the studio.
+    // Any base object you've defined,
+    // or document type that should not have
+    // field-level validations
     general,
-    product,
     article,
-    about,
-    faq,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     body,
@@ -40,5 +42,20 @@ export default createSchema({
     contact,
     newsletter,
     seo
-  ]),
+  ])
+  // Include documents with field translation support.
+  // This changes their structure, transforming
+  // simple fields like 'string' into 'object'
+  // with multiple string properties, one per
+  // language.
+  //
+  // Any document definition that does
+  // not set localize: true on root level, or
+  // set localize: true on any field level will
+  // not be changed.
+  .concat(translateFields([
+    product,
+    about,
+    faq
+  ]))
 })

@@ -1,7 +1,10 @@
+import { i18n } from '../documentTranslation'
+
 export default {
   name: 'article',
   type: 'document',
   title: 'Article',
+  i18n, // Enables document level translations
   fields: [
     {
       name: 'title',
@@ -14,9 +17,20 @@ export default {
       type: 'datetime',
     },
     {
+      name: 'mainImage',
+      title: 'Main image',
+      type: 'figure'
+    },
+    {
       name: 'lead',
       type: 'text',
       title: 'Lead'
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'title',
+      media: 'mainImage.image'
+    }
+  }
 }

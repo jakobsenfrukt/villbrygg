@@ -2,6 +2,7 @@ export default {
   name: 'faq',
   type: 'document',
   title: 'FAQ',
+  localize: true,
   __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'], 
   fields: [
     {

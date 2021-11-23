@@ -1,6 +1,19 @@
 import S from '@sanity/desk-tool/structure-builder'
 
+// react icons
 import { MdSettings, MdLiquor, MdQuestionAnswer, MdInfo, MdLocationPin, MdArticle } from 'react-icons/md'
+
+
+// document localization needs
+import * as I18nS from 'sanity-plugin-intl-input/lib/structure';
+import { i18n } from './schemas/documentTranslation'
+
+export const getDefaultDocumentNode = (props) => {
+  if (props.schemaType === 'article') {
+    return S.document().views(I18nS.getDocumentNodeViewsForSchemaType(props.schemaType));
+  }
+  return S.document();
+};
 
 const hiddenDocTypes = listItem =>
   !['general', 'product', 'article', 'about', 'faq'].includes(listItem.getId())
@@ -25,15 +38,25 @@ export default () =>
         .schemaType('product')
         .child(S.documentTypeList('product').title('Products')),
       S.listItem()
-        .title('Locations')
+        .title('Locations (WIP!)')
         .icon(MdLocationPin)
         .schemaType('product')
-        .child(S.documentTypeList('product').title('Products')),
+        .child(S.documentTypeList('product').title('WORK IN PROGRESS')),
       S.listItem()
         .title('Articles')
         .icon(MdArticle)
         .schemaType('article')
-        .child(S.documentTypeList('article').title('Articles')),
+        .child(
+          S.documentTypeList('article')
+          .title('Articles')
+          // Use a GROQ filter to get documents.
+          .filter('_type == "article" && (!defined(_lang) || _lang == $baseLang)')
+          .params({ baseLang: i18n.base })
+          .canHandleIntent((_name, params, _context) => {
+            // Assume we can handle all intents (actions) regarding article documents
+            return params.type === 'article'
+          })
+        ),
       S.listItem()
         .title('About')
         .icon(MdInfo)

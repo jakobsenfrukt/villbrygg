@@ -11,10 +11,12 @@
 </template>
 
 <script>
+import Logo from '@/components/Logo'
 import ToggleTheme from '@/components/ToggleTheme'
 
 export default {
   components: {
+    Logo,
     ToggleTheme
   },
   data() {

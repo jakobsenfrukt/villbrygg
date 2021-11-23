@@ -29,6 +29,27 @@ module.exports = {
         overlayDrafts: !isProd,
         watchMode: !isProd
       }
+    },
+    {
+      use: "gridsome-plugin-i18n",
+      options: {
+        locales: [ // locales list
+          'nb-no',
+          'en-gb'
+        ],
+        pathAliases: { // path segment alias for each locales
+          'nb-no': 'no',
+          'en-gb': 'en'
+        },
+        fallbackLocale: 'nb-no', // fallback language
+        defaultLocale: 'nb-no', // default language
+        enablePathRewrite: true, // rewrite path with locale prefix, default: true
+        rewriteDefaultLanguage: true, // rewrite default locale, default: true
+        /*messages: {
+          'nb-no': require('./src/locales/nb-no.json'), // Messages files
+          'en-gb': require('./src/locales/en-gb.json'),
+        }*/
+      }
     }
   ]
 }
