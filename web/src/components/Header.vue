@@ -1,10 +1,11 @@
 <template>
   <header class="site-header">
-    <g-link class="logo" to="/"><Logo /></g-link>
+    <g-link class="logo" :to="$tp('/')"><Logo /></g-link>
     <nav class="nav nav-main">
-      <g-link class="nav__link" to="/">Home</g-link>
-      <g-link class="nav__link" to="/products/">Products</g-link>
-      <g-link class="nav__link" to="/about/">About</g-link>
+      <g-link class="nav__link" :to="$tp('/')">Home</g-link>
+      <g-link class="nav__link" :to="$tp('/products/')">Products</g-link>
+      <g-link class="nav__link" :to="$tp('/about/')">About</g-link>
+      <LocaleSwitcher />
       <!--<ToggleTheme />-->
     </nav>
   </header>
@@ -12,11 +13,13 @@
 
 <script>
 import Logo from '@/components/Logo'
-import ToggleTheme from '@/components/ToggleTheme'
+import LocaleSwitcher from '@/components/tools/LocaleSwitcher'
+import ToggleTheme from '@/components/tools/ToggleTheme'
 
 export default {
   components: {
     Logo,
+    LocaleSwitcher,
     ToggleTheme
   },
   data() {

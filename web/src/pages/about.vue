@@ -2,8 +2,7 @@
   <Layout>
     <div class="about">
       <header class="about-header">
-        <h1 class="about-title">{{ $page.about.title }}</h1>
-        <div class="about-lead">{{ $page.about.lead }}</div>
+        <h1 class="about-title">{{ $page.about.title[$context.locale] }}</h1>
       </header>
     </div>
   </Layout>
@@ -12,8 +11,14 @@
 <page-query>
 query {
   about: sanityAbout (id: "about") {
-    title
-    lead
+    title {
+      no
+      en
+    }
+    lead {
+      no
+      en
+    }
   }
 }
 </page-query>

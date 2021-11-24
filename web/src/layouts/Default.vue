@@ -4,7 +4,7 @@
 
     Current locale: {{ $context.locale }}<br />
     Current locale: {{ $i18n.locale }}<br />
-    {{ $t('my-message') }}
+    {{ $t('messages.welcome') }}
 
     <transition name="fade" appear>
       <main class="site-main">

@@ -9,12 +9,10 @@
       />
     </div>
     <div class="product-text">
-      <div v-if="product.categories.length" class="label label-magazine" :class="`label-${product.categories[0].title.toLowerCase()}`">{{ product.categories[0].title }}</div>
-      <div v-else class="label label-magazine label-recommended">Recommended reading</div>
       <h3 class="product-title">{{ product.title }}</h3>
       <div class="product-lead" v-if="product._rawLead"><block-content :blocks="product._rawLead" /></div>
     </div>
-    <g-link class="product-link" :to="`/read/${product.slug.current}`">Link</g-link>
+    <g-link class="product-link" :to="$tp(`/products/${product.slug.current}`)">Link</g-link>
   </article>
 </template>
 
@@ -22,7 +20,7 @@
 {
   metadata {
     sanityOptions {
-      productId
+      projectId
       dataset
     }
   }

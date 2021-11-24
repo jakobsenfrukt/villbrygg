@@ -10,7 +10,7 @@
 
 <static-query>
 query {
-  products: allSanityProduct(sortBy: "publishedAt") {
+  products: allSanityProduct(sortBy: "title") {
     edges {
       node {
         id
@@ -18,14 +18,19 @@ query {
         slug {
           current
         }
-        lead
+        lead {
+          no
+          en
+        }
         mainImage {
           asset {
             _id
             url
           }
-          caption
-          alt
+          alt {
+            no
+            en
+          }
           hotspot {
             x
             y
@@ -46,11 +51,11 @@ query {
 </static-query>
 
 <script>
-import productItem from '@/components/read/productItem'
+import ProductItem from '@/components/products/ProductItem'
 
 export default {
   components: {
-    productItem
+    ProductItem
   },
   props: {
     limit: {
