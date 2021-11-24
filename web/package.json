@@ -13,10 +13,10 @@
     "gridsome": "^0.7.23",
     "gridsome-plugin-i18n": "^1.6.0",
     "gridsome-source-sanity": "^1.0.5",
-    "sanity-blocks-vue-component": "^0.1.0"
+    "sanity-blocks-vue-component": "^0.1.0",
+    "sass": "^1.43.4"
   },
   "devDependencies": {
-    "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2"
   }
 }

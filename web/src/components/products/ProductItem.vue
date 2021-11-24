@@ -4,7 +4,7 @@
       <g-image
         v-if="product.mainImage"
         class="product-image"
-        :src="$urlForImage(product.mainImage, $static.metadata.sanityOptions).height(500).width(800).auto('format').url()"
+        :src="$urlForImage(product.mainImage, $static.metadata.sanityOptions).height(600).width(400).auto('format').url()"
         :alt="product.mainImage.alt"
       />
     </div>
