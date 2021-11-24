@@ -13,8 +13,13 @@
 
       <div class="product-content">
         <block-content
-          :blocks="$page.product._rawBody"
-          v-if="$page.product._rawBody"
+          :blocks="$page.product.body._rawNo"
+          v-if="$page.product.body._rawNo && $context.locale == 'no'"
+          class="block-content"
+        />
+        <block-content
+          :blocks="$page.product.body._rawEn"
+          v-else-if="$page.product.body._rawEn && $context.locale == 'en'"
           class="block-content"
         />
       </div>
@@ -36,7 +41,10 @@ query product ($id: ID!) {
       no
       en
     }
-    _rawBody
+    body {
+      _rawNo
+      _rawEn
+    }
     mainImage {
       asset {
         _id

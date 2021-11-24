@@ -2,10 +2,6 @@
   <div class="layout">
     <Header />
 
-    Current locale: {{ $context.locale }}<br />
-    Current locale: {{ $i18n.locale }}<br />
-    {{ $t('messages.welcome') }}
-
     <transition name="fade" appear>
       <main class="site-main">
         <slot/>

@@ -1,21 +1,21 @@
 :root {
-	--font-sans: 'futura', sans-serif;
-  --font-serif: 'sabon', serif;
+  --font-sans: "futura", sans-serif;
+  --font-serif: "sabon", serif;
 
-	// color palette
-	--color-black: #000;
-	--color-white: #fff;
-	--color-green: green;
+  // color palette
+  --color-black: #000;
+  --color-white: #fff;
+  --color-green: green;
 
-	--radius: 6px;
+  --radius: 6px;
 }
 
 // light default theme
 body {
- 	--color-background: var(--color-white);
- 	--color-text: var(--color-black);
- 	--color-link: var(--color-green);
-	--color-hover: var(--color-green);
+  --color-background: var(--color-white);
+  --color-text: var(--color-black);
+  --color-link: var(--color-green);
+  --color-hover: var(--color-green);
 }
 
 /*
