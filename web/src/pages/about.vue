@@ -3,6 +3,7 @@
     <div class="about">
       <header class="about-header">
         <h1 class="about-title">{{ $page.about.title[$context.locale] }}</h1>
+        <div class="about-lead">{{ $page.about.lead[$context.locale] }}</div>
       </header>
     </div>
   </Layout>

@@ -1,18 +1,18 @@
 <template>
-  <section class="product-grid">
-    <ProductItem
-      v-for="product in $static.products.edges.slice(0, limit)"
-      :key="product.id"
-      :product="product.node"
+  <section class="article-grid">
+    <ArticleItem
+      v-for="article in getLocaleArticles().slice(0, limit)"
+      :key="article.id"
+      :article="article.node"
     />
   </section>
 </template>
 
 <static-query>
 query {
-  products: allSanityProduct(
-    filter: {slug: {current: {ne: null}}},
-    sortBy: "title", order: DESC
+  articles: allSanityArticle(
+    filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}},
+    sortBy: "publishedAt", order: DESC
   ) {
     edges {
       node {
@@ -21,19 +21,14 @@ query {
         slug {
           current
         }
-        lead {
-          no
-          en
-        }
+        locale
+        lead
         mainImage {
           asset {
             _id
             url
           }
-          alt {
-            no
-            en
-          }
+          alt
           hotspot {
             x
             y
@@ -54,23 +49,30 @@ query {
 </static-query>
 
 <script>
-import ProductItem from '@/components/products/ProductItem'
+import ArticleItem from '@/components/articles/ArticleItem'
 
 export default {
   components: {
-    ProductItem
+    ArticleItem
   },
   props: {
     limit: {
       type: Number,
-      default: 12
+      default: 6
+    }
+  },
+  methods: {
+    getLocaleArticles() {
+      return this.$static.articles.edges.filter(article => {
+        return article.node.locale === this.$context.locale
+      })
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.product-grid {
+.article-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 4rem;

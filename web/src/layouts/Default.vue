@@ -38,7 +38,8 @@ export default {
 }
 
 .site-main {
-  margin: 0;
+  width: 100%;
+  padding: var(--site-padding);
 }
 
 .fade-enter-active {
