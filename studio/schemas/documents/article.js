@@ -1,15 +1,24 @@
-import { i18n } from '../documentTranslation'
-
 export default {
   name: 'article',
   type: 'document',
   title: 'Article',
-  i18n, // Enables document level translations
   fields: [
     {
       name: 'title',
       type: 'string',
       title: 'Title'
+    },
+    {
+      title: 'Language',
+      name: 'locale',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Norwegian', value: 'no'},
+          {title: 'English', value: 'en'}
+        ], // <-- predefined values
+        layout: 'radio' // <-- defaults to 'dropdown'
+      }
     },
     {
       name: 'publishedAt',
@@ -30,7 +39,7 @@ export default {
   preview: {
     select: {
       title: 'title',
-      media: 'mainImage.image'
+      media: 'mainImage'
     }
   }
 }

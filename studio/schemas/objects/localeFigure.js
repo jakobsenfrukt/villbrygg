@@ -1,5 +1,5 @@
 export default {
-  name: 'figure',
+  name: 'localeFigure',
   type: 'image',
   title: 'Image',
   options: {
@@ -8,7 +8,7 @@ export default {
   fields: [
     {
       name: 'alt',
-      type: 'string',
+      type: 'localeString',
       title: 'Alternative text',
       description: 'Important for SEO and accessiblity. Briefly describe what is shown in the image as if to a blind person.',
       options: {

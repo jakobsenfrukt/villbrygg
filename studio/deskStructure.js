@@ -1,19 +1,6 @@
 import S from '@sanity/desk-tool/structure-builder'
 
-// react icons
-import { MdSettings, MdLiquor, MdQuestionAnswer, MdInfo, MdLocationPin, MdArticle } from 'react-icons/md'
-
-
-// document localization needs
-import * as I18nS from 'sanity-plugin-intl-input/lib/structure';
-import { i18n } from './schemas/documentTranslation'
-
-export const getDefaultDocumentNode = (props) => {
-  if (props.schemaType === 'article') {
-    return S.document().views(I18nS.getDocumentNodeViewsForSchemaType(props.schemaType));
-  }
-  return S.document();
-};
+import { MdSettings, MdLiquor, MdQuestionAnswer, MdInfo, MdLocationPin, MdArticle, MdOutlineArticle } from 'react-icons/md'
 
 const hiddenDocTypes = listItem =>
   !['general', 'product', 'article', 'about', 'faq'].includes(listItem.getId())
@@ -45,18 +32,37 @@ export default () =>
       S.listItem()
         .title('Articles')
         .icon(MdArticle)
-        .schemaType('article')
         .child(
-          S.documentTypeList('article')
-          .title('Articles')
-          // Use a GROQ filter to get documents.
-          .filter('_type == "article" && (!defined(_lang) || _lang == $baseLang)')
-          .params({ baseLang: i18n.base })
-          .canHandleIntent((_name, params, _context) => {
-            // Assume we can handle all intents (actions) regarding article documents
-            return params.type === 'article'
-          })
+          S.list()
+            .id('articles')
+            .title('Articles')
+            .items(
+              [
+                S.listItem()
+                .title('Norwegian')
+                .schemaType('article')
+                .icon(MdArticle)
+                .child(
+                  S.documentList()
+                    .id('noArticles')
+                    .title('Norwegian articles')
+                    .filter('_type == "article" && (!defined(locale) || locale == "no")')
+                ),
+                S.listItem()
+                .title('English')
+                .schemaType('article')
+                .icon(MdOutlineArticle)
+                .child(
+                  S.documentList()
+                    .id('enArticles')
+                    .title('English articles')
+                    .filter('_type == "article" && (!defined(locale) || locale == "en")')
+                )
+              ]
+            )
         ),
+        //.schemaType('article')
+        //.child(S.documentTypeList('article').title('Articles')),
       S.listItem()
         .title('About')
         .icon(MdInfo)

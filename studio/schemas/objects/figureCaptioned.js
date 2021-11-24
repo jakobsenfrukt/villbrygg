@@ -1,11 +1,19 @@
 export default {
-  name: 'figure',
+  name: 'figureCaptioned',
   type: 'image',
-  title: 'Image',
+  title: 'Image with caption',
   options: {
     hotspot: true
   },
   fields: [
+    {
+      name: 'caption',
+      type: 'string',
+      title: 'Caption',
+      options: {
+        isHighlighted: true
+      }
+    },
     {
       name: 'alt',
       type: 'string',
@@ -19,7 +27,7 @@ export default {
   preview: {
     select: {
       imageUrl: 'asset.url',
-      title: 'alt'
+      title: 'caption'
     }
   }
 }

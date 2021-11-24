@@ -21,7 +21,7 @@ export default {
     {
       name: 'address',
       title: 'Address',
-      type: 'simpleText'
+      type: 'simpleBody'
     }
   ]
 }

@@ -1,41 +1,36 @@
-import { baseLanguage } from '../languages'
-
 export default {
   name: 'product',
   title: 'Product',
   type: 'document',
-  localize: true,
   fields: [
     {
       name: 'title',
       title: 'Title',
       type: 'string',
-      localize: false,
     },
     {
       name: 'slug',
       title: 'Slug',
       type: 'slug',
-      localize: false,
       options: {
-        source: `title.${baseLanguage.name}`,
+        source: 'title',
         maxLength: 96,
       },
     },
     {
       name: 'mainImage',
       title: 'Main image',
-      type: 'figure'
+      type: 'localeFigure'
     },
     {
       name: 'lead',
-      type: 'text',
+      type: 'localeText',
       title: 'Lead'
     },
     {
       name: 'body',
       title: 'Body',
-      type: 'body',
+      type: 'localeBody',
     },
   ],
 

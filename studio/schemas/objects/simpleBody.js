@@ -1,7 +1,7 @@
 export default {
-  name: 'simpleText',
+  name: 'simpleBody',
   type: 'array',
-  title: 'Lead',
+  title: 'Body',
   of: [
     {
       type: 'block',
