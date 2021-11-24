@@ -20,17 +20,17 @@ export default {
     {
       name: 'mainImage',
       title: 'Main image',
-      type: 'figure'
+      type: 'localeFigure'
     },
     {
       name: 'lead',
-      type: 'text',
+      type: 'localeText',
       title: 'Lead'
     },
     {
       name: 'body',
       title: 'Body',
-      type: 'body',
+      type: 'localeBody',
     },
   ],
 

@@ -1,13 +1,3 @@
-/**
- * This is the schema definition for the rich text fields used for
- * for this blog studio. When you import it in schemas.js it can be
- * reused in other parts of the studio with:
- *  {
- *    name: 'someName',
- *    title: 'Some title',
- *    type: 'body'
- *  }
- */
 export default {
   title: 'Body',
   name: 'body',
@@ -51,7 +41,7 @@ export default {
                 validation: Rule => Rule.uri({scheme: ['tel', 'mailto', 'http', 'https']})
               },
               {
-                title: 'Åpne i ny fane',
+                title: 'Open in new tab',
                 name: 'blank',
                 type: 'boolean'
               }

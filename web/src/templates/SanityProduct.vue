@@ -5,16 +5,21 @@
         <h1 class="product-title">{{ $page.product.title }}</h1>
         <img
           v-if="$page.product.mainImage"
-          :alt="$page.product.mainImage.alt"
+          :alt="$page.product.mainImage.alt[$context.locale]"
           :src="$urlForImage($page.product.mainImage, $page.metadata.sanityOptions).width(600).auto('format').url()"
         />
-        <p class="lead product-lead">{{ $page.product.lead }}</p>
+        <p class="lead product-lead">{{ $page.product.lead[$context.locale] }}</p>
       </header>
 
       <div class="product-content">
         <block-content
-          :blocks="$page.product._rawBody"
-          v-if="$page.product._rawBody"
+          :blocks="$page.product.body._rawNo"
+          v-if="$page.product.body._rawNo && $context.locale == 'no'"
+          class="block-content"
+        />
+        <block-content
+          :blocks="$page.product.body._rawEn"
+          v-else-if="$page.product.body._rawEn && $context.locale == 'en'"
           class="block-content"
         />
       </div>
@@ -32,15 +37,23 @@ query product ($id: ID!) {
   }
   product: sanityProduct (id: $id) {
     title
-    lead
-    _rawBody
+    lead {
+      no
+      en
+    }
+    body {
+      _rawNo
+      _rawEn
+    }
     mainImage {
       asset {
         _id
         url
       }
-      caption
-      alt
+      alt {
+        no
+        en
+      }
       hotspot {
         x
         y

@@ -1,0 +1,11 @@
+{
+  "menu": {
+    "home": "Home",
+    "products": "Products",
+    "shops": "Shops",
+    "about": "About"
+  },
+  "messages": {
+    "welcome": "HI there"
+  }
+}

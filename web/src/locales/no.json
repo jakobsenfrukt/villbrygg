@@ -1,0 +1,11 @@
+{
+  "menu": {
+    "home": "Hjem",
+    "products": "Produkter",
+    "shops": "Butikker",
+    "about": "Om oss"
+  },
+  "messages": {
+    "welcome": "jadda"
+  }
+}

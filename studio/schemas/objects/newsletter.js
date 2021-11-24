@@ -5,27 +5,27 @@ export default {
   fields: [
     {
       name: 'heading',
-      type: 'string',
+      type: 'localeString',
       title: 'Heading'
     },
     {
       name: 'text',
-      type: 'text',
+      type: 'localeText',
       title: 'Text'
     },
     {
       name: 'placeholder',
-      type: 'string',
+      type: 'localeString',
       title: 'Placeholder'
     },
     {
       name: 'button',
-      type: 'string',
+      type: 'localeString',
       title: 'Button'
     },
     {
       name: 'disclaimer',
-      type: 'simpleText',
+      type: 'localeText',
       title: 'Disclaimer'
     }
   ]

@@ -1,20 +1,26 @@
 <template>
   <header class="site-header">
-    <g-link class="logo" to="/"><Logo /></g-link>
+    <g-link class="logo" :to="$tp('/')"><Logo /></g-link>
     <nav class="nav nav-main">
-      <g-link class="nav__link" to="/">Home</g-link>
-      <g-link class="nav__link" to="/products/">Products</g-link>
-      <g-link class="nav__link" to="/about/">About</g-link>
+      {{ $t('messages.welcome') }}
+      <g-link class="nav__link" :to="$tp('/')">{{ $t('menu.home') }}</g-link>
+      <g-link class="nav__link" :to="$tp('/products/')">{{ $t('menu.products') }}</g-link>
+      <g-link class="nav__link" :to="$tp('/about/')">{{ $t('menu.about') }}</g-link>
+      <LocaleSwitcher />
       <!--<ToggleTheme />-->
     </nav>
   </header>
 </template>
 
 <script>
-import ToggleTheme from '@/components/ToggleTheme'
+import Logo from '@/components/Logo'
+import LocaleSwitcher from '@/components/tools/LocaleSwitcher'
+import ToggleTheme from '@/components/tools/ToggleTheme'
 
 export default {
   components: {
+    Logo,
+    LocaleSwitcher,
     ToggleTheme
   },
   data() {

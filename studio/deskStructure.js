@@ -1,6 +1,6 @@
 import S from '@sanity/desk-tool/structure-builder'
 
-import { MdSettings, MdLiquor, MdQuestionAnswer, MdInfo, MdLocationPin, MdArticle } from 'react-icons/md'
+import { MdSettings, MdLiquor, MdQuestionAnswer, MdInfo, MdLocationPin, MdArticle, MdOutlineArticle } from 'react-icons/md'
 
 const hiddenDocTypes = listItem =>
   !['general', 'product', 'article', 'about', 'faq'].includes(listItem.getId())
@@ -25,15 +25,44 @@ export default () =>
         .schemaType('product')
         .child(S.documentTypeList('product').title('Products')),
       S.listItem()
-        .title('Locations')
+        .title('Locations (WIP!)')
         .icon(MdLocationPin)
         .schemaType('product')
-        .child(S.documentTypeList('product').title('Products')),
+        .child(S.documentTypeList('product').title('WORK IN PROGRESS')),
       S.listItem()
         .title('Articles')
         .icon(MdArticle)
-        .schemaType('article')
-        .child(S.documentTypeList('article').title('Articles')),
+        .child(
+          S.list()
+            .id('articles')
+            .title('Articles')
+            .items(
+              [
+                S.listItem()
+                .title('Norwegian')
+                .schemaType('article')
+                .icon(MdArticle)
+                .child(
+                  S.documentList()
+                    .id('noArticles')
+                    .title('Norwegian articles')
+                    .filter('_type == "article" && (!defined(locale) || locale == "no")')
+                ),
+                S.listItem()
+                .title('English')
+                .schemaType('article')
+                .icon(MdOutlineArticle)
+                .child(
+                  S.documentList()
+                    .id('enArticles')
+                    .title('English articles')
+                    .filter('_type == "article" && (!defined(locale) || locale == "en")')
+                )
+              ]
+            )
+        ),
+        //.schemaType('article')
+        //.child(S.documentTypeList('article').title('Articles')),
       S.listItem()
         .title('About')
         .icon(MdInfo)

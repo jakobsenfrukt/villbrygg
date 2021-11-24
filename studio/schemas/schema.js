@@ -11,12 +11,22 @@ import article from './documents/article'
 import about from './documents/about'
 import faq from './documents/faq'
 
+// object schemas
 import body from './objects/body'
 import figure from './objects/figure'
-import simpleText from './objects/simpleText'
+import figureCaptioned from './objects/figureCaptioned'
+import simpleBody from './objects/simpleBody'
 import contact from './objects/contact'
 import newsletter from './objects/newsletter'
 import seo from './objects/seo'
+
+// localized objects
+import localeString from './objects/localeString'
+import localeText from './objects/localeText'
+import localeSimpleBody from './objects/localeSimpleBody'
+import localeBody from './objects/localeBody'
+import localeFigure from './objects/localeFigure'
+import localeFigureCaptioned from './objects/localeFigureCaptioned'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -25,8 +35,6 @@ export default createSchema({
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
-    // The following are document types which will appear
-    // in the studio.
     general,
     product,
     article,
@@ -36,9 +44,16 @@ export default createSchema({
     // { type: 'typename' } in other document schemas
     body,
     figure,
-    simpleText,
+    figureCaptioned,
+    simpleBody,
     contact,
     newsletter,
-    seo
-  ]),
+    seo,
+    localeString,
+    localeText,
+    localeSimpleBody,
+    localeBody,
+    localeFigure,
+    localeFigureCaptioned
+  ])
 })
