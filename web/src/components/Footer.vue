@@ -1,11 +1,16 @@
 <template>
   <footer class="site-footer">
     <ul class="contact">
-      <li><strong>Contact</strong></li>
-      <li><a :href="`mailto:${$static.general.contact.email}`" target="_blank">E-mail</a></li>
       <li><a :href="`https://instagram.com/${$static.general.contact.instagram}`" target="_blank">Instagram</a></li>
       <li><a :href="`https://facebook.com/${$static.general.contact.facebook}`" target="_blank">Facebook</a></li>
     </ul>
+    <div>
+      <a :href="`mailto:${$static.general.contact.email}`" target="_blank">{{ $static.general.contact.email }}</a>
+      <block-content
+        :blocks="$static.general.contact._rawAddress"
+        v-if="$static.general.contact._rawAddress"
+      />
+    </div>
   </footer>
 </template>
 
@@ -16,19 +21,32 @@ query {
       email
       instagram
       facebook
+      _rawAddress
     }
   }
 }
 </static-query>
 
+<script>
+import BlockContent from '~/components/tools/BlockContent'
+
+export default {
+  components: {
+    BlockContent
+  },
+}
+</script>
+
 <style lang="scss" scoped>
 .site-footer {
   width: 100%;
-  background: var(--color-sun);
-  color: var(--color-tubu);
+  background: var(--color-paleyellow);
   padding: 4rem 2rem;
   position: relative;
   overflow: hidden;
+  a {
+    color: inherit;
+  }
   
   &-content {
     display: grid;

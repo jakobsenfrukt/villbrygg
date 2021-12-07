@@ -1,13 +1,19 @@
 :root {
-  --font-sans: "futura", sans-serif;
+  --font-sans: "ABC Monument Grotesk", sans-serif;
   --font-serif: "sabon", serif;
 
   // color palette
-  --color-black: #000;
+  --color-black: #1c1c1c;
   --color-white: #fff;
-  --color-green: green;
+  --color-green: #42c057;
+  --color-yellow: #fff97b;
+  --color-pink: #fc9d9d;
+  --color-palegreen: #f3f6e6;
+  --color-paleyellow: #fefcd7;
+  --color-paleblue: #dffbff;
+  --color-gray: #a5a5a5;
 
-  --border-radius: 6px;
+  --border-radius: 10px;
   --site-padding: 2rem;
 }
 

@@ -1,10 +1,24 @@
 <template>
   <section class="article-grid">
+    <h2 class="article-grid__title">Learn more <strong>about our latest news and reviews</strong></h2>
     <ArticleItem
       v-for="article in getLocaleArticles().slice(0, limit)"
       :key="article.id"
       :article="article.node"
     />
+
+    <ArticleItem
+      v-for="article in getLocaleArticles().slice(0, limit)"
+      :key="article.id"
+      :article="article.node"
+    />
+    <ArticleItem
+      v-for="article in getLocaleArticles().slice(0, limit)"
+      :key="article.id"
+      :article="article.node"
+    />
+
+
   </section>
 </template>
 
@@ -21,6 +35,7 @@ query {
         slug {
           current
         }
+        publishedAt(format: "MMMM YYYY")
         locale
         lead
         mainImage {
@@ -75,8 +90,21 @@ export default {
 .article-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 4rem;
-  padding: 4rem;
+  grid-gap: var(--site-padding);
+  padding: var(--site-padding);
+  margin-bottom: 10rem;
+  &__title {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    font-size: 2.4rem;
+    line-height: 1.2;
+    font-weight: 400;
+    color: var(--color-gray);
+    strong {
+      font-weight: 400;
+      color: var(--color-black);
+    }
+  }
 }
 /*@media (min-width: 1800px) {
   .product-grid {

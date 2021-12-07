@@ -16,7 +16,8 @@ module.exports = {
   siteName: 'Villbrygg',
 
   templates: {
-    SanityProduct: '/products/:slug__current'
+    SanityProduct: '/products/:slug__current',
+    SanityArticle: '/articles/:slug__current'
   },
 
   plugins: [

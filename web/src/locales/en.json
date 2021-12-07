@@ -5,6 +5,9 @@
     "shops": "Shops",
     "about": "About"
   },
+  "link": {
+    "readmoreabout": "Read more about"
+  },
   "messages": {
     "welcome": "HI there"
   }

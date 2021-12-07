@@ -1,1 +1,55 @@
-@import url("https://use.typekit.net/xky6ilz.css");
+/* Regular */
+@font-face {
+  font-family: "ABC Monument Grotesk";
+  //src:	url('../fonts/ABC-Monument-Grotesk/ABCMonumentGrotesk-Regular-Trial.eot'); /* IE9 Compat Modes */
+  src:	//url('../fonts/ABC-Monument-Grotesk/ABCMonumentGrotesk-Regular-Trial.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url("../fonts/ABC-Monument-Grotesk/ABCMonumentGrotesk-Regular-Trial.woff2")
+      format("woff2"),
+    /* Super Modern Browsers */
+      url("../fonts/ABC-Monument-Grotesk/ABCMonumentGrotesk-Regular-Trial.woff")
+      format("woff"); /* Pretty Modern Browsers */
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Regular Italic */
+@font-face {
+  font-family: "ABC Monument Grotesk";
+  //src:	url('../fonts/ABC-Monument-Grotesk/ABCMonumentGrotesk-RegularItalic-Trial.eot'); /* IE9 Compat Modes */
+  src:	//url('../fonts/ABC-Monument-Grotesk/ABCMonumentGrotesk-RegularItalic-Trial.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url("../fonts/ABC-Monument-Grotesk/ABCMonumentGrotesk-RegularItalic-Trial.woff2")
+      format("woff2"),
+    /* Super Modern Browsers */
+      url("../fonts/ABC-Monument-Grotesk/ABCMonumentGrotesk-RegularItalic-Trial.woff")
+      format("woff"); /* Pretty Modern Browsers */
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Light */
+@font-face {
+  font-family: "ABC Monument Grotesk";
+  //src:	url('../fonts/ABC-Monument-Grotesk/ABCMonumentGrotesk-Light-Trial.eot'); /* IE9 Compat Modes */
+  src:	//url('../fonts/ABC-Monument-Grotesk/ABCMonumentGrotesk-Light-Trial.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url("../fonts/ABC-Monument-Grotesk/ABCMonumentGrotesk-Light-Trial.woff2")
+      format("woff2"),
+    /* Super Modern Browsers */
+      url("../fonts/ABC-Monument-Grotesk/ABCMonumentGrotesk-Light-Trial.woff")
+      format("woff"); /* Pretty Modern Browsers */
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Light Italic */
+@font-face {
+  font-family: "ABC Monument Grotesk";
+  //src:	url('../fonts/ABC-Monument-Grotesk/ABCMonumentGrotesk-LightItalic-Trial.eot'); /* IE9 Compat Modes */
+  src:	//url('../fonts/ABC-Monument-Grotesk/ABCMonumentGrotesk-LightItalic-Trial.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url("../fonts/ABC-Monument-Grotesk/ABCMonumentGrotesk-LightItalic-Trial.woff2")
+      format("woff2"),
+    /* Super Modern Browsers */
+      url("../fonts/ABC-Monument-Grotesk/ABCMonumentGrotesk-LightItalic-Trial.woff")
+      format("woff"); /* Pretty Modern Browsers */
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}

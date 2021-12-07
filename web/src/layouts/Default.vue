@@ -39,7 +39,6 @@ export default {
 
 .site-main {
   width: 100%;
-  padding: var(--site-padding);
 }
 
 .fade-enter-active {

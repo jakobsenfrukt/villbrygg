@@ -9,10 +9,13 @@
       />
     </div>
     <div class="product-text">
+      <ul class="categories">
+        <li class="category">Category</li>
+      </ul>
       <h3 class="product-title">{{ product.title }}</h3>
       <div class="product-lead" v-if="product._rawLead"><block-content :blocks="product._rawLead" /></div>
     </div>
-    <g-link class="product-link" :to="$tp(`/products/${product.slug.current}`)">Link</g-link>
+    <g-link class="product-link" :to="$tp(`/products/${product.slug.current}`)">{{ $t('link.readmoreabout') }} {{ product.title }}</g-link>
   </article>
 </template>
 
@@ -44,6 +47,25 @@ export default {
 .product {
   display: block;
   position: relative;
+  &-image {
+    border-radius: var(--border-radius);
+  }
+  &-text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding: var(--site-padding);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &-title {
+    margin: 0;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
   &-link {
     position: absolute;
     top: 0;
@@ -55,5 +77,16 @@ export default {
     text-indent: -9999px;
     z-index: 0;
   }
+}
+.categories {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.category {
+  display: inline-block;
+  background: var(--color-paleyellow);
+  padding: .2rem .5rem;
+  border-radius: 5rem;
 }
 </style>

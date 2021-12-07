@@ -1,5 +1,6 @@
 <template>
   <Layout>
+    <PageHeader />
     <div class="about">
       <header class="about-header">
         <h1 class="about-title">{{ $page.about.title[$context.locale] }}</h1>
@@ -25,10 +26,12 @@ query {
 </page-query>
 
 <script>
+import PageHeader from '~/components/PageHeader'
 import BlockContent from '~/components/tools/BlockContent'
 
 export default {
   components: {
+    PageHeader,
     BlockContent
   },
   metaInfo: {

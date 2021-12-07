@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="locale-switcher">
     <select v-model="currentLocale" @change="localeChanged">
       <option v-for="locale in availableLocales" :key="locale" :value="locale">{{ locale }}</option>
     </select>
@@ -24,3 +24,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.locale-switcher {
+  position: absolute;
+  left: 0;
+  top: 18rem;
+  transform: rotate(-90deg);
+  transform-origin: 100% 0;
+}
+</style>

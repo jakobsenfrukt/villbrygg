@@ -1,10 +1,30 @@
 <template>
   <section class="product-grid">
+    <h2 class="product-grid__title">Experience <strong>amazing flavours with a good conscience</strong></h2>
     <ProductItem
       v-for="product in $static.products.edges.slice(0, limit)"
       :key="product.id"
       :product="product.node"
     />
+
+
+    <ProductItem
+      v-for="product in $static.products.edges.slice(0, limit)"
+      :key="product.id"
+      :product="product.node"
+    />
+    <ProductItem
+      v-for="product in $static.products.edges.slice(0, limit)"
+      :key="product.id"
+      :product="product.node"
+    />
+    <ProductItem
+      v-for="product in $static.products.edges.slice(0, limit)"
+      :key="product.id"
+      :product="product.node"
+    />
+
+    
   </section>
 </template>
 
@@ -72,9 +92,22 @@ export default {
 <style lang="scss" scoped>
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 4rem;
-  padding: 4rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: var(--site-padding);
+  padding: var(--site-padding);
+  background: var(--color-palegreen);
+  &__title {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    font-size: 2.4rem;
+    line-height: 1.2;
+    font-weight: 400;
+    color: var(--color-gray);
+    strong {
+      font-weight: 400;
+      color: var(--color-black);
+    }
+  }
 }
 /*@media (min-width: 1800px) {
   .product-grid {

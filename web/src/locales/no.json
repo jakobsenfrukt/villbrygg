@@ -5,6 +5,9 @@
     "shops": "Butikker",
     "about": "Om oss"
   },
+  "link": {
+    "readmoreabout": "Les mer om"
+  },
   "messages": {
     "welcome": "jadda"
   }
