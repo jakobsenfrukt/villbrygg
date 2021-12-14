@@ -1,6 +1,6 @@
 <template>
   <header class="site-header">
-    <g-link class="logo" :to="$tp('/')"><Logo /></g-link>
+    <g-link class="logo" :to="$tp('/')"><Logo icon /></g-link>
     <nav class="nav nav-main">
       <ul>
         <li><g-link class="nav__link" :to="$tp('/')">{{ $t('menu.home') }}</g-link></li>

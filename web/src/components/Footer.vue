@@ -1,5 +1,6 @@
 <template>
   <footer class="site-footer">
+    <g-link class="logo" :to="$tp('/')"><Logo /></g-link>
     <ul class="contact">
       <li><a :href="`https://instagram.com/${$static.general.contact.instagram}`" target="_blank">Instagram</a></li>
       <li><a :href="`https://facebook.com/${$static.general.contact.facebook}`" target="_blank">Facebook</a></li>
@@ -28,10 +29,12 @@ query {
 </static-query>
 
 <script>
+import Logo from '~/components/Logo'
 import BlockContent from '~/components/tools/BlockContent'
 
 export default {
   components: {
+    Logo,
     BlockContent
   },
 }
