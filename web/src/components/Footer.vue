@@ -1,16 +1,53 @@
 <template>
   <footer class="site-footer">
-    <g-link class="logo" :to="$tp('/')"><Logo /></g-link>
-    <ul class="contact">
-      <li><a :href="`https://instagram.com/${$static.general.contact.instagram}`" target="_blank">Instagram</a></li>
-      <li><a :href="`https://facebook.com/${$static.general.contact.facebook}`" target="_blank">Facebook</a></li>
-    </ul>
+    <div class="logo-wrapper">
+      <g-link :to="$tp('/')" class="logo"><Logo /></g-link>
+    </div>
+    <!--<ul class="contact">
+      <li>
+        <a
+          :href="`https://instagram.com/${$static.general.contact.instagram}`"
+          target="_blank"
+          >Instagram</a
+        >
+      </li>
+      <li>
+        <a
+          :href="`https://facebook.com/${$static.general.contact.facebook}`"
+          target="_blank"
+          >Facebook</a
+        >
+      </li>
+    </ul>-->
     <div>
-      <a :href="`mailto:${$static.general.contact.email}`" target="_blank">{{ $static.general.contact.email }}</a>
+      <a :href="`mailto:${$static.general.contact.email}`" target="_blank">{{
+        $static.general.contact.email
+      }}</a>
       <block-content
         :blocks="$static.general.contact._rawAddress"
         v-if="$static.general.contact._rawAddress"
       />
+    </div>
+    <div>
+      <nav class="footer-nav">
+        <ul>
+          <li>
+            <g-link class="nav__link" :to="$tp('/faq/')">{{
+              $t("menu.faq")
+            }}</g-link>
+          </li>
+          <li>
+            <g-link class="nav__link" :to="$tp('/')">{{
+              $t("menu.newsletter")
+            }}</g-link>
+          </li>
+          <li>
+            <g-link class="nav__link" :to="$tp('/')">{{
+              $t("menu.reseller")
+            }}</g-link>
+          </li>
+        </ul>
+      </nav>
     </div>
   </footer>
 </template>
@@ -29,57 +66,56 @@ query {
 </static-query>
 
 <script>
-import Logo from '~/components/Logo'
-import BlockContent from '~/components/tools/BlockContent'
+import Logo from "~/components/Logo";
+import BlockContent from "~/components/tools/BlockContent";
 
 export default {
   components: {
     Logo,
-    BlockContent
+    BlockContent,
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .site-footer {
   width: 100%;
-  background: var(--color-paleyellow);
-  padding: 4rem 2rem;
+  background: var(--color-darkgreen);
+  color: var(--color-white);
+  padding: calc(var(--spacing-sitepadding) * 2) var(--spacing-sitepadding)
+    var(--spacing-sitepadding);
   position: relative;
   overflow: hidden;
+  border-radius: var(--border-radius-l);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(var(--spacing-sitepadding) * 2);
+
+  .logo-wrapper {
+    grid-column: 1 / -1;
+  }
+  .logo {
+    display: inline-block;
+  }
   a {
     color: inherit;
   }
-  
-  &-content {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 3rem;
-    width: 100%;
-    max-width: 64rem;
-    margin: 0 auto;
-  }
-
-  .intro {
-    grid-column: span 2;
-  }
-
-  .link-list {
+}
+.footer-nav {
+  font-size: var(--font-size-m);
+  text-align: right;
+  ul {
     list-style: none;
-
-    strong {
-      font-family: var(--font-tightblack);
-      font-size: 1.2rem;
-    }
-
-    li {
-      display: block;
-      color: inherit;
-      text-decoration: none;
-      margin-right: 1.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-family: var(--font-sans);
+    margin: 0;
+    padding: 0;
+  }
+  a {
+    text-decoration: none;
+    &:after {
+      content: " →";
     }
   }
 }

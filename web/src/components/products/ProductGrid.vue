@@ -1,13 +1,14 @@
 <template>
   <section class="product-grid">
-    <h2 class="product-grid__title">Experience <strong>amazing flavours with a good conscience</strong></h2>
+    <h2 class="product-grid__title">
+      Experience <strong>amazing flavours with a good conscience</strong>
+    </h2>
     <ProductItem
       v-for="product in $static.products.edges.slice(0, limit)"
       :key="product.id"
       :product="product.node"
     />
 
-
     <ProductItem
       v-for="product in $static.products.edges.slice(0, limit)"
       :key="product.id"
@@ -23,8 +24,6 @@
       :key="product.id"
       :product="product.node"
     />
-
-    
   </section>
 </template>
 
@@ -74,27 +73,27 @@ query {
 </static-query>
 
 <script>
-import ProductItem from '@/components/products/ProductItem'
+import ProductItem from "@/components/products/ProductItem";
 
 export default {
   components: {
-    ProductItem
+    ProductItem,
   },
   props: {
     limit: {
       type: Number,
-      default: 12
-    }
-  }
-}
+      default: 12,
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 .product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: var(--site-padding);
-  padding: var(--site-padding);
+  grid-gap: var(--spacing-sitepadding);
+  padding: var(--spacing-sitepadding);
   background: var(--color-palegreen);
   &__title {
     grid-column: 1 / -1;

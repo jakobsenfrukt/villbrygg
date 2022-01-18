@@ -1,12 +1,24 @@
 <template>
   <header class="site-header">
-    <g-link class="logo" :to="$tp('/')"><Logo icon /></g-link>
+    <g-link class="logo" :to="$tp('/')"><Logo icon/></g-link>
     <nav class="nav nav-main">
       <ul>
-        <li><g-link class="nav__link" :to="$tp('/')">{{ $t('menu.home') }}</g-link></li>
-        <li><g-link class="nav__link" :to="$tp('/products/')">{{ $t('menu.products') }}</g-link></li>
-        <li><g-link class="nav__link" :to="$tp('/shops/')">{{ $t('menu.shops') }}</g-link></li>
-        <li><g-link class="nav__link" :to="$tp('/about/')">{{ $t('menu.about') }}</g-link></li>
+        <li>
+          <g-link class="nav__link" :to="$tp('/products/')">{{
+            $t("menu.products")
+          }}</g-link>
+        </li>
+        <li>
+          <g-link class="nav__link" :to="$tp('/shops/')">{{
+            $t("menu.shops")
+          }}</g-link>
+        </li>
+        <li>
+          <g-link class="nav__link" :to="$tp('/about/')">{{
+            $t("menu.about")
+          }}</g-link>
+        </li>
+        <li>&nbsp;</li>
         <LocaleSwitcher />
         <!--<ToggleTheme />-->
       </ul>
@@ -15,28 +27,28 @@
 </template>
 
 <script>
-import Logo from '@/components/Logo'
-import LocaleSwitcher from '@/components/tools/LocaleSwitcher'
-import ToggleTheme from '@/components/tools/ToggleTheme'
+import Logo from "@/components/Logo";
+import LocaleSwitcher from "@/components/tools/LocaleSwitcher";
+import ToggleTheme from "@/components/tools/ToggleTheme";
 
 export default {
   components: {
     Logo,
     LocaleSwitcher,
-    ToggleTheme
+    ToggleTheme,
   },
   data() {
     return {
-      showMenu: false
-    }
-  }
-}
+      showMenu: false,
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 .site-header {
   width: 100%;
-  padding: var(--site-padding);
+  padding: var(--spacing-sitepadding);
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   align-items: center;
@@ -73,11 +85,11 @@ export default {
     &:before {
       content: " ";
       position: absolute;
-      top: -.15rem;
+      top: -0.15rem;
       left: -1rem;
       width: calc(100% + 2rem);
-      height: calc(100% + .3rem);
-      background: var(--color-green);
+      height: calc(100% + 0.3rem);
+      background: var(--color-lime);
       border-radius: 5rem;
       z-index: -1;
     }

@@ -1,6 +1,8 @@
 <template>
   <section class="article-grid">
-    <h2 class="article-grid__title">Learn more <strong>about our latest news and reviews</strong></h2>
+    <h2 class="article-grid__title">
+      Learn more <strong>about our latest news and reviews</strong>
+    </h2>
     <ArticleItem
       v-for="article in getLocaleArticles().slice(0, limit)"
       :key="article.id"
@@ -17,8 +19,6 @@
       :key="article.id"
       :article="article.node"
     />
-
-
   </section>
 </template>
 
@@ -64,34 +64,34 @@ query {
 </static-query>
 
 <script>
-import ArticleItem from '@/components/articles/ArticleItem'
+import ArticleItem from "@/components/articles/ArticleItem";
 
 export default {
   components: {
-    ArticleItem
+    ArticleItem,
   },
   props: {
     limit: {
       type: Number,
-      default: 6
-    }
+      default: 6,
+    },
   },
   methods: {
     getLocaleArticles() {
-      return this.$static.articles.edges.filter(article => {
-        return article.node.locale === this.$context.locale
-      })
-    }
-  }
-}
+      return this.$static.articles.edges.filter((article) => {
+        return article.node.locale === this.$context.locale;
+      });
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 .article-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: var(--site-padding);
-  padding: var(--site-padding);
+  grid-gap: var(--spacing-sitepadding);
+  padding: var(--spacing-sitepadding);
   margin-bottom: 10rem;
   &__title {
     grid-column: 1 / -1;

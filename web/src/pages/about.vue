@@ -1,12 +1,9 @@
 <template>
   <Layout>
-    <PageHeader />
-    <div class="about">
-      <header class="about-header">
-        <h1 class="about-title">{{ $page.about.title[$context.locale] }}</h1>
-        <div class="about-lead">{{ $page.about.lead[$context.locale] }}</div>
-      </header>
-    </div>
+    <PageHeader :text="$page.about.lead[$context.locale]" />
+    <main class="page-content">
+      Content goes here
+    </main>
   </Layout>
 </template>
 
@@ -26,18 +23,18 @@ query {
 </page-query>
 
 <script>
-import PageHeader from '~/components/PageHeader'
-import BlockContent from '~/components/tools/BlockContent'
+import PageHeader from "~/components/PageHeader";
+import BlockContent from "~/components/tools/BlockContent";
 
 export default {
   components: {
     PageHeader,
-    BlockContent
+    BlockContent,
   },
   metaInfo: {
-    title: 'About'
-  }
-}
+    title: "About",
+  },
+};
 </script>
 
 <style lang="scss" scoped>

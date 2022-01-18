@@ -3,7 +3,10 @@
     "home": "Home",
     "products": "Products",
     "shops": "Shops",
-    "about": "About"
+    "about": "About",
+    "faq": "FAQ",
+    "newsletter": "Newsletter",
+    "reseller": "Become a reseller"
   },
   "link": {
     "readmoreabout": "Read more about"

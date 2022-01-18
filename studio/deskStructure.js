@@ -1,9 +1,9 @@
 import S from '@sanity/desk-tool/structure-builder'
 
-import { MdSettings, MdLiquor, MdQuestionAnswer, MdInfo, MdLocationPin, MdArticle, MdOutlineArticle } from 'react-icons/md'
+import { MdSettings, MdLiquor, MdQuestionAnswer, MdInfo, MdLocationPin, MdArticle, MdOutlineArticle, MdStore, MdLocationCity, MdPublic } from 'react-icons/md'
 
 const hiddenDocTypes = listItem =>
-  !['general', 'product', 'article', 'about', 'faq'].includes(listItem.getId())
+  !['general', 'product', 'article', 'about', 'faq', 'faqQuestion', 'faqCategory', 'shops', 'shopsCountry', 'shopsCity'].includes(listItem.getId())
 
 export default () =>
   S.list()
@@ -25,10 +25,57 @@ export default () =>
         .schemaType('product')
         .child(S.documentTypeList('product').title('Products')),
       S.listItem()
-        .title('Locations (WIP!)')
-        .icon(MdLocationPin)
-        .schemaType('product')
-        .child(S.documentTypeList('product').title('WORK IN PROGRESS')),
+        .title('Shops')
+        .icon(MdStore)
+        .child(
+          S.list()
+            .id('shops')
+            .title('Shops')
+            .items(
+              [
+                S.listItem()
+                .title('Main page')
+                .icon(MdArticle)
+                .child(
+                  S.editor()
+                    .title('Shops')
+                    .id('shopsPage')
+                    .schemaType('shops')
+                    .documentId('shops')
+                ),
+                S.listItem()
+                .title('Cities')
+                .schemaType('shopsCity')
+                .icon(MdLocationCity)
+                .child(
+                  S.documentList()
+                    .id('shopsCities')
+                    .title('Cities')
+                    .filter('_type == "shopsCity"')
+                ),
+                S.listItem()
+                .title('Countries')
+                .schemaType('shopsCountry')
+                .icon(MdPublic)
+                .child(
+                  S.documentList()
+                    .id('shopsCountries')
+                    .title('Countries')
+                    .filter('_type == "shopsCountry"')
+                ),
+                S.listItem()
+                .title('Categories')
+                .schemaType('shopsCategory')
+                .icon(MdOutlineArticle)
+                .child(
+                  S.documentList()
+                    .id('shopsCategories')
+                    .title('Categories')
+                    .filter('_type == "shopsCategory"')
+                )
+              ]
+            )
+        ),
       S.listItem()
         .title('Articles')
         .icon(MdArticle)
@@ -61,8 +108,6 @@ export default () =>
               ]
             )
         ),
-        //.schemaType('article')
-        //.child(S.documentTypeList('article').title('Articles')),
       S.listItem()
         .title('About')
         .icon(MdInfo)
@@ -77,11 +122,43 @@ export default () =>
         .title('FAQ')
         .icon(MdQuestionAnswer)
         .child(
-          S.editor()
-            .title('FAQ')
+          S.list()
             .id('faq')
-            .schemaType('faq')
-            .documentId('faq')
+            .title('FAQ')
+            .items(
+              [
+                S.listItem()
+                .title('Main page')
+                .icon(MdArticle)
+                .child(
+                  S.editor()
+                    .title('FAQ')
+                    .id('faqPage')
+                    .schemaType('faq')
+                    .documentId('faq')
+                ),
+                S.listItem()
+                .title('Questions')
+                .schemaType('faqQuestion')
+                .icon(MdQuestionAnswer)
+                .child(
+                  S.documentList()
+                    .id('faqQuestions')
+                    .title('Questions')
+                    .filter('_type == "faqQuestion"')
+                ),
+                S.listItem()
+                .title('Categories')
+                .schemaType('faqCategory')
+                .icon(MdOutlineArticle)
+                .child(
+                  S.documentList()
+                    .id('faqCategories')
+                    .title('Categories')
+                    .filter('_type == "faqCategory"')
+                )
+              ]
+            )
         ),
       // This returns an array of all the document types
       // defined in schema.js. We filter out those that we have

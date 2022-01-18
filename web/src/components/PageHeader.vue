@@ -8,20 +8,20 @@
 export default {
   props: {
     title: {
-      type: String
+      type: String,
     },
     text: {
-      type: String
-    }
-  }
-}
+      type: String,
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 .page-header {
   width: 100%;
   min-height: 20rem;
-  padding: var(--site-padding);
+  padding: var(--spacing-sitepadding);
   padding-bottom: 4rem;
   display: grid;
   grid-template-columns: repeat(10, 1fr);

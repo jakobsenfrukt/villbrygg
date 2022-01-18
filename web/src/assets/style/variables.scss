@@ -2,11 +2,16 @@
   --font-sans: "Monument Grotesk", sans-serif;
   --font-serif: "sabon", serif;
 
+  --font-size-m: 1.5rem;
+  --font-size-l: 2rem;
+
   // color palette
   --color-black: #1c1c1c;
   --color-white: #fff;
   --color-green: #42c057;
+  --color-darkgreen: #00542e;
   --color-yellow: #fff97b;
+  --color-lime: #e1ff00;
   --color-pink: #fc9d9d;
   --color-palegreen: #f3f6e6;
   --color-paleyellow: #fefcd7;
@@ -14,7 +19,8 @@
   --color-gray: #a5a5a5;
 
   --border-radius: 10px;
-  --site-padding: 2rem;
+  --border-radius-l: 60px;
+  --spacing-sitepadding: 2rem;
 }
 
 // light default theme
@@ -22,7 +28,8 @@ body {
   --color-background: var(--color-white);
   --color-text: var(--color-black);
   --color-link: var(--color-green);
-  --color-hover: var(--color-green);
+  --color-hover: var(--color-lime);
+  --color-highlight: var(--color-lime);
 }
 
 /*

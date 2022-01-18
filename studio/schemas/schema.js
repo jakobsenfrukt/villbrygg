@@ -10,6 +10,12 @@ import product from './documents/product'
 import article from './documents/article'
 import about from './documents/about'
 import faq from './documents/faq'
+import faqQuestion from './documents/faqQuestion'
+import faqCategory from './documents/faqCategory'
+import shops from './documents/shops'
+import shopsCity from './documents/shopsCity'
+import shopsCountry from './documents/shopsCountry'
+import shopsCategory from './documents/shopsCategory'
 
 // object schemas
 import body from './objects/body'
@@ -19,6 +25,7 @@ import simpleBody from './objects/simpleBody'
 import contact from './objects/contact'
 import newsletter from './objects/newsletter'
 import seo from './objects/seo'
+import shop from './objects/shop'
 
 // localized objects
 import localeString from './objects/localeString'
@@ -40,6 +47,12 @@ export default createSchema({
     article,
     about,
     faq,
+    faqQuestion,
+    faqCategory,
+    shops,
+    shopsCity,
+    shopsCountry,
+    shopsCategory,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     body,
@@ -49,6 +62,7 @@ export default createSchema({
     contact,
     newsletter,
     seo,
+    shop,
     localeString,
     localeText,
     localeSimpleBody,
