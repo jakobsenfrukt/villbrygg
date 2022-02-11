@@ -35,9 +35,13 @@ export default {
       type: 'datetime',
     },
     {
-      name: 'mainImage',
-      title: 'Main image',
-      type: 'figure'
+      name: 'mainImages',
+      title: 'Main images',
+      type: 'array',
+      of: [{
+        type: 'figure'
+      }],
+      validation: Rule => Rule.max(2)
     },
     {
       name: 'lead',

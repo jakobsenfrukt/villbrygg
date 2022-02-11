@@ -38,7 +38,7 @@ query {
         publishedAt
         locale
         lead
-        mainImage {
+        mainImages {
           asset {
             _id
             url

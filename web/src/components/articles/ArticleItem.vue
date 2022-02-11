@@ -2,16 +2,16 @@
   <article class="article">
     <div class="article-image">
       <g-image
-        v-if="article.mainImage"
+        v-if="article.mainImages"
         class="article-image"
         :src="
-          $urlForImage(article.mainImage, $static.metadata.sanityOptions)
+          $urlForImage(article.mainImages[0], $static.metadata.sanityOptions)
             .height(600)
             .width(400)
             .auto('format')
             .url()
         "
-        :alt="article.mainImage.alt"
+        :alt="article.mainImages[0].alt"
       />
     </div>
     <div class="article-text">
