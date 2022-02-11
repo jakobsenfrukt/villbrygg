@@ -4,19 +4,19 @@
     <nav class="nav nav-main">
       <ul>
         <li>
-          <g-link class="nav__link" :to="$tp('/products/')">{{
-            $t("menu.products")
-          }}</g-link>
+          <g-link class="nav__link" :to="$tp('/products/')"
+            ><span>{{ $t("menu.products") }}</span></g-link
+          >
         </li>
         <li>
-          <g-link class="nav__link" :to="$tp('/shops/')">{{
-            $t("menu.shops")
-          }}</g-link>
+          <g-link class="nav__link" :to="$tp('/shops/')"
+            ><span>{{ $t("menu.shops") }}</span></g-link
+          >
         </li>
         <li>
-          <g-link class="nav__link" :to="$tp('/about/')">{{
-            $t("menu.about")
-          }}</g-link>
+          <g-link class="nav__link" :to="$tp('/about/')"
+            ><span>{{ $t("menu.about") }}</span></g-link
+          >
         </li>
         <li>&nbsp;</li>
         <LocaleSwitcher />
@@ -85,7 +85,12 @@ export default {
   text-transform: uppercase;
   position: relative;
 
-  &.active--exact {
+  span {
+    position: relative;
+    z-index: 10;
+  }
+
+  &.active {
     &:before {
       content: " ";
       position: absolute;
@@ -93,9 +98,8 @@ export default {
       left: -1rem;
       width: calc(100% + 2rem);
       height: calc(100% + 0.3rem);
-      background: var(--color-lime);
+      background: var(--color-highlight);
       border-radius: 5rem;
-      z-index: -1;
     }
   }
 }
