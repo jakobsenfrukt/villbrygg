@@ -1,9 +1,9 @@
 import S from '@sanity/desk-tool/structure-builder'
 
-import { MdSettings, MdLiquor, MdQuestionAnswer, MdInfo, MdLocationPin, MdArticle, MdOutlineArticle, MdStore, MdLocationCity, MdPublic } from 'react-icons/md'
+import { MdSettings, MdLiquor, MdQuestionAnswer, MdInfo, MdLocationPin, MdArticle, MdOutlineArticle, MdStore, MdLocationCity, MdPublic, MdHome } from 'react-icons/md'
 
 const hiddenDocTypes = listItem =>
-  !['general', 'product', 'article', 'about', 'faq', 'faqQuestion', 'faqCategory', 'shops', 'shopsCountry', 'shopsCity', 'shopsCategory'].includes(listItem.getId())
+  !['general', 'product', 'article', 'about', 'faq', 'faqQuestion', 'faqCategory', 'shops', 'shopsCountry', 'shopsCity', 'shopsCategory', 'frontpage'].includes(listItem.getId())
 
 export default () =>
   S.list()
@@ -18,6 +18,16 @@ export default () =>
             .id('general')
             .schemaType('general')
             .documentId('general')
+        ),
+      S.listItem()
+        .title('Front page')
+        .icon(MdHome)
+        .child(
+          S.editor()
+            .title('Front page')
+            .id('frontpage')
+            .schemaType('frontpage')
+            .documentId('frontpage')
         ),
       S.listItem()
         .title('Products')

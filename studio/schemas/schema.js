@@ -5,6 +5,8 @@ import createSchema from 'part:@sanity/base/schema-creator'
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // We import object and document schemas
+
+// documents
 import general from './documents/general'
 import product from './documents/product'
 import article from './documents/article'
@@ -16,8 +18,9 @@ import shops from './documents/shops'
 import shopsCity from './documents/shopsCity'
 import shopsCountry from './documents/shopsCountry'
 import shopsCategory from './documents/shopsCategory'
+import frontpage from './documents/frontpage'
 
-// object schemas
+// objects
 import body from './objects/body'
 import figure from './objects/figure'
 import figureCaptioned from './objects/figureCaptioned'
@@ -26,6 +29,7 @@ import contact from './objects/contact'
 import newsletter from './objects/newsletter'
 import seo from './objects/seo'
 import shop from './objects/shop'
+import pageHeader from './objects/pageHeader'
 
 // localized objects
 import localeString from './objects/localeString'
@@ -42,6 +46,7 @@ export default createSchema({
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
+    // documents
     general,
     product,
     article,
@@ -53,6 +58,8 @@ export default createSchema({
     shopsCity,
     shopsCountry,
     shopsCategory,
+    frontpage,
+    // objects
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     body,
@@ -63,6 +70,8 @@ export default createSchema({
     newsletter,
     seo,
     shop,
+    pageHeader,
+    // localized objects
     localeString,
     localeText,
     localeSimpleBody,

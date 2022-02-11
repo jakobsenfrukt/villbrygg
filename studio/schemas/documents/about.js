@@ -10,9 +10,8 @@ export default {
       title: 'Title'
     },
     {
-      name: 'lead',
-      type: 'localeText',
-      title: 'Lead'
-    }
+      name: 'pageHeader',
+      type: 'pageHeader'
+    },
   ]
 }
