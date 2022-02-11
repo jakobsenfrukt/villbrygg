@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <PageHeader :text="$page.faq.intro[$context.locale]" />
+    <PageHeader :content="$page.faq.pageHeader" />
     <main class="page-content">
       <ul class="category-list">
         <li
@@ -34,13 +34,41 @@
 <page-query>
 query {
   faq: sanityFaq (id: "faq") {
-    title {
-      no
-      en
-    }
-    intro {
-      no
-      en
+    pageHeader {
+      heading {
+        no
+        en
+      }
+      subheading {
+        no
+        en
+      }
+      text {
+        no
+        en
+      }
+      images {
+        asset {
+          _id
+          url
+        }
+        alt {
+          no
+          en
+        }
+        hotspot {
+          x
+          y
+          height
+          width
+        }
+        crop {
+          top
+          bottom
+          left
+          right
+        }
+      }
     }
   }
   questions: allSanityFaqQuestion(sortBy: "category", order: ASC) {

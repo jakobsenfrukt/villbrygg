@@ -35,7 +35,7 @@ query {
         slug {
           current
         }
-        publishedAt(format: "MMMM YYYY")
+        publishedAt
         locale
         lead
         mainImage {
@@ -97,11 +97,11 @@ export default {
   border-radius: var(--border-radius-l);
   &__title {
     grid-column: 1 / -1;
-    max-width: 50%;
+    max-width: 14em;
     font-size: 2.4rem;
     line-height: 1.2;
     font-weight: 400;
-    color: var(--color-gray);
+    color: var(--color-lightgray);
     strong {
       font-weight: 400;
       color: var(--color-black);

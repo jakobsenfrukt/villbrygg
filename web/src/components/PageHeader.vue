@@ -61,18 +61,28 @@ export default {
   padding-bottom: 4rem;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
+  gap: calc(var(--spacing-sitepadding) / 2);
 
   .text {
-    min-height: 20rem;
+    min-height: 16rem;
     grid-column: 5 / span 6;
     display: flex;
     align-items: flex-end;
     padding-bottom: 2rem;
   }
+  .heading {
+    font-weight: inherit;
+    font-size: 2.8rem;
+    line-height: 1.2;
+    max-width: 14em;
+  }
+  .subheading {
+    display: block;
+    color: var(--color-lightgray);
+  }
   .lead {
     font-size: 2rem;
     line-height: 1.2;
-    padding-right: 2rem;
     max-width: 20em;
   }
   img {
