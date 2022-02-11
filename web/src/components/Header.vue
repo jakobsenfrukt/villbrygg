@@ -90,7 +90,8 @@ export default {
     z-index: 10;
   }
 
-  &.active--exact {
+  &.active--exact,
+  &:hover {
     &:before {
       content: " ";
       position: absolute;
