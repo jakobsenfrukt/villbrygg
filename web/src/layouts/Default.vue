@@ -4,7 +4,7 @@
 
     <transition name="fade" appear>
       <main class="site-main">
-        <slot/>
+        <slot />
       </main>
     </transition>
 
@@ -21,15 +21,15 @@ query {
 </static-query>
 
 <script>
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default {
   components: {
     Header,
-    Footer
-  }
-}
+    Footer,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -40,12 +40,12 @@ export default {
 .site-main {
   width: 100%;
 }
-
+/*
 .fade-enter-active {
   transition: opacity .6s;
 }
 
 .fade-enter {
   opacity: 0;
-}
+}*/
 </style>

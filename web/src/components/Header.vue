@@ -1,6 +1,6 @@
 <template>
   <header class="site-header">
-    <g-link class="logo" :to="$tp('/')"><Logo icon/></g-link>
+    <g-link class="logo" :to="$tp('/')"><Logo /></g-link>
     <nav class="nav nav-main">
       <ul>
         <li>
@@ -49,6 +49,7 @@ export default {
 .site-header {
   width: 100%;
   padding: var(--spacing-sitepadding);
+  background: var(--color-background);
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   align-items: center;
@@ -58,6 +59,9 @@ export default {
     text-decoration: none;
     text-transform: uppercase;
   }
+}
+.logo {
+  grid-column: 1 / span 4;
 }
 .nav-main {
   grid-column: 5 / span 6;

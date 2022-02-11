@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <PageHeader :text="$page.about.lead[$context.locale]" />
+    <PageHeader :content="$page.about.pageHeader" />
     <main class="page-content">
       Content goes here
     </main>
@@ -14,9 +14,41 @@ query {
       no
       en
     }
-    lead {
-      no
-      en
+    pageHeader {
+      heading {
+        no
+        en
+      }
+      subheading {
+        no
+        en
+      }
+      text {
+        no
+        en
+      }
+      images {
+        asset {
+          _id
+          url
+        }
+        alt {
+          no
+          en
+        }
+        hotspot {
+          x
+          y
+          height
+          width
+        }
+        crop {
+          top
+          bottom
+          left
+          right
+        }
+      }
     }
   }
 }

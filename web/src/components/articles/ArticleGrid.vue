@@ -91,8 +91,10 @@ export default {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: var(--spacing-sitepadding);
-  padding: var(--spacing-sitepadding);
-  margin-bottom: 10rem;
+  padding: var(--spacing-sitepadding) var(--spacing-sitepadding)
+    calc(var(--spacing-sitepadding) * 2);
+  background: var(--color-background);
+  border-radius: var(--border-radius-l);
   &__title {
     grid-column: 1 / -1;
     max-width: 50%;

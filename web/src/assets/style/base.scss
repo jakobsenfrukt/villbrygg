@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  background-color: var(--color-background);
+  background-color: var(--color-text);
   color: var(--color-text);
   height: 100%;
   margin: 0;
@@ -26,4 +26,9 @@ img {
 
 p {
   margin: 0 0 1.4rem;
+}
+
+section {
+  background: var(--color-background);
+  border-radius: var(--border-radius-l);
 }
