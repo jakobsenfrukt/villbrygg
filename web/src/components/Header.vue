@@ -90,7 +90,7 @@ export default {
     z-index: 10;
   }
 
-  &.active {
+  &.active--exact {
     &:before {
       content: " ";
       position: absolute;
