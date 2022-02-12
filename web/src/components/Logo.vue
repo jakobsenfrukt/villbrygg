@@ -93,4 +93,9 @@ export default {
     transform: rotate(360deg);
   }
 }
+@media (max-width: 800px) {
+  .logo {
+    height: 2rem;
+  }
+}
 </style>

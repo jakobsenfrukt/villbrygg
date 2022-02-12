@@ -2,8 +2,11 @@
   --font-sans: "Monument Grotesk", sans-serif;
   --font-serif: "sabon", serif;
 
-  --font-size-m: 1.5rem;
-  --font-size-l: 2rem;
+  --font-size-xs: 0.8rem;
+  --font-size-s: 1rem;
+  --font-size-m: 1.9rem;
+  --font-size-l: 2.4rem;
+  --font-size-xl: 2.8rem;
 
   // color palette
   --color-black: #1c1c1c;
@@ -42,3 +45,17 @@ body[data-theme="dark"] {
  	--color-link: var(--color-green);
 	--color-hover: var(--color-green);
 }*/
+
+@media (max-width: 800px) {
+  :root {
+    --font-size-xs: 0.8rem;
+    --font-size-s: 1rem;
+    --font-size-m: 1.4rem;
+    --font-size-l: 1.6rem;
+    --font-size-xl: 2rem;
+
+    --border-radius: 10px;
+    --border-radius-l: 30px;
+    --spacing-sitepadding: 1rem;
+  }
+}

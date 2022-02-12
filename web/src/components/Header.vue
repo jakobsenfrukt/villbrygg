@@ -23,6 +23,33 @@
         <!--<ToggleTheme />-->
       </ul>
     </nav>
+    <div class="nav-mobile-wrapper" :class="{ open: showMenu }">
+      <div role="button" @click="toggleMenu" class="menu-toggle">
+        <MenuIcon class="menu-toggle-icon" :open="showMenu" />
+      </div>
+      <nav class="nav-mobile">
+        <ul>
+          <li>
+            <g-link class="nav__link" :to="$tp('/products/')"
+              ><span>{{ $t("menu.products") }}</span></g-link
+            >
+          </li>
+          <li>
+            <g-link class="nav__link" :to="$tp('/shops/')"
+              ><span>{{ $t("menu.shops") }}</span></g-link
+            >
+          </li>
+          <li>
+            <g-link class="nav__link" :to="$tp('/about/')"
+              ><span>{{ $t("menu.about") }}</span></g-link
+            >
+          </li>
+          <li>&nbsp;</li>
+          <LocaleSwitcher />
+          <!--<ToggleTheme />-->
+        </ul>
+      </nav>
+    </div>
   </header>
 </template>
 
@@ -30,17 +57,24 @@
 import Logo from "@/components/Logo";
 import LocaleSwitcher from "@/components/tools/LocaleSwitcher";
 import ToggleTheme from "@/components/tools/ToggleTheme";
+import MenuIcon from "@/components/icons/MenuIcon.vue";
 
 export default {
   components: {
     Logo,
     LocaleSwitcher,
     ToggleTheme,
+    MenuIcon,
   },
   data() {
     return {
       showMenu: false,
     };
+  },
+  methods: {
+    toggleMenu() {
+      this.showMenu = !this.showMenu;
+    },
   },
 };
 </script>
@@ -53,6 +87,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   align-items: center;
+  margin-bottom: -1px;
 
   a {
     color: inherit;
@@ -102,6 +137,134 @@ export default {
       background: var(--color-highlight);
       border-radius: 5rem;
     }
+  }
+}
+
+@media (max-width: 1000px) {
+  .nav-main {
+    display: none;
+  }
+}
+
+.nav-mobile {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  background: var(--color-darkgreen);
+  color: var(--color-background);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  display: none;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: var(--spacing-sitepadding);
+  }
+
+  .nav__link {
+    position: relative;
+    display: block;
+    margin-bottom: calc(var(--spacing-sitepadding) * 2);
+    font-size: var(--font-size-l);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing);
+    cursor: pointer;
+
+    &.active--exact,
+    &:hover {
+      &:before {
+        display: none;
+      }
+    }
+  }
+
+  &-wrapper {
+    &.open {
+      height: 100vh;
+    }
+  }
+}
+.menu-toggle {
+  position: absolute;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  top: 0.25rem;
+  right: 0.25rem;
+  padding: var(--spacing-sitepadding);
+  z-index: 101;
+  cursor: pointer;
+  display: none;
+
+  &-icon {
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .nav {
+    &-main {
+      .nav-link {
+        display: none;
+      }
+    }
+    &-mobile {
+      display: flex;
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+  }
+  .open {
+    color: var(--color-background);
+    .nav-mobile {
+      opacity: 1;
+      transform: translateY(0);
+      animation: menuEnter 0.3s linear forwards;
+
+      &-link {
+        animation: menuItemEnter 0.3s linear forwards;
+      }
+    }
+  }
+  .menu-toggle {
+    display: block;
+  }
+}
+
+@keyframes menuEnter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes menuItemEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>

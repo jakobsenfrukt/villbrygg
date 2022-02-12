@@ -86,4 +86,11 @@ export default {
     }
   }
 }
+
+@media (max-width: 1000px) {
+  .locale-switcher {
+    transform: none;
+    position: static;
+  }
+}
 </style>

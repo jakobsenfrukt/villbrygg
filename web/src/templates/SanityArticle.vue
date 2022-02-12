@@ -134,7 +134,7 @@ export default {
   }
   .heading {
     font-weight: inherit;
-    font-size: 2.8rem;
+    font-size: var(--font-size-xl);
     line-height: 1.2;
     max-width: 14em;
   }
@@ -158,12 +158,33 @@ export default {
 
   .lead {
     grid-column: 1 / span 4;
-    font-size: 1.8rem;
+    font-size: var(--font-size-m);
     padding-right: calc(var(--spacing-sitepadding) * 2);
   }
   .body {
     grid-column: 5 / span 6;
     padding: 0 var(--spacing-sitepadding) var(--spacing-sitepadding) 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .article-header {
+    .text {
+      grid-column: 1 / -1;
+    }
+    /*img {
+      grid-column: span 9;
+      max-height: 40vh;
+    }
+    img:nth-of-type(even) {
+      grid-column: 4 / span 7;
+    }*/
+  }
+  .article-content {
+    .lead,
+    .body {
+      grid-column: 1 / -1;
+    }
   }
 }
 </style>

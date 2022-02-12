@@ -79,7 +79,7 @@ export default {
   &-date {
     color: var(--color-gray);
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: var(--font-size-xs);
     margin-bottom: 1rem;
   }
   &-title {

@@ -100,7 +100,7 @@ export default {
   &__title {
     grid-column: 1 / -1;
     max-width: 14em;
-    font-size: 2.4rem;
+    font-size: var(--font-size-l);
     line-height: 1.2;
     font-weight: 400;
     color: var(--color-lightgray);
@@ -123,7 +123,6 @@ export default {
 @media (max-width: 640px) {
   .product-grid {
     grid-template-columns: repeat(1, 1fr);
-    padding: 2rem;
   }
 }
 </style>

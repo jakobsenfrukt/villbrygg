@@ -72,7 +72,7 @@ export default {
   }
   .heading {
     font-weight: inherit;
-    font-size: 2.8rem;
+    font-size: var(--font-size-xl);
     line-height: 1.2;
     max-width: 14em;
   }
@@ -81,7 +81,7 @@ export default {
     color: var(--color-lightgray);
   }
   .lead {
-    font-size: 2rem;
+    font-size: var(--font-size-m);
     line-height: 1.2;
     max-width: 20em;
   }
@@ -102,5 +102,13 @@ export default {
 .index .page-header {
   border-bottom-left-radius: var(--border-radius-l);
   border-bottom-right-radius: var(--border-radius-l);
+}
+
+@media (max-width: 800px) {
+  .page-header {
+    .text {
+      grid-column: 1 / -1;
+    }
+  }
 }
 </style>

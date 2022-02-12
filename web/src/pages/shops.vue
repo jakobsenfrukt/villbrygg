@@ -3,19 +3,26 @@
     <PageHeader :text="$page.shops.title[$context.locale]" />
     <main class="page-content">
       <ul class="category-list">
-        <li><button class="active">Show all</button></li>
+        <li>
+          <button
+            :class="currentCategory === 'all' ? 'active' : ''"
+            @click="changeFilter('all')"
+          >
+            Show all
+          </button>
+        </li>
         <li
           v-for="(category, index) in $page.categories.edges"
           :key="`category-${index}`"
         >
-          <button>
+          <button @click="changeFilter(category.node.title.en)">
             {{ category.node.title[$context.locale] }}
           </button>
         </li>
       </ul>
       <div class="search">
         <label>Søk etter din by</label>
-        <input type="text" />
+        <input type="text" placeholder="Søk på by, navn, etc" />
       </div>
       <ul class="countries">
         <li
@@ -134,6 +141,11 @@ import PageHeader from "~/components/PageHeader";
 export default {
   components: {
     PageHeader,
+  },
+  data() {
+    return {
+      currentCategory: "all",
+    };
   },
   metaInfo: {
     title: "Shops",
