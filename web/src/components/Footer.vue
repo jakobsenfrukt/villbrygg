@@ -105,7 +105,7 @@ export default {
   }
 }
 .footer-nav {
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-l);
   text-align: right;
   ul {
     list-style: none;

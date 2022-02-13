@@ -96,7 +96,7 @@ export default {
     left: auto;
     top: auto;
     padding: var(--spacing-sitepadding);
-    font-size: var(--font-size-m);
+    font-size: var(--font-size-l);
   }
   .localebutton {
     color: var(--color-background);

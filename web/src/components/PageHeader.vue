@@ -72,7 +72,7 @@ export default {
   }
   .heading {
     font-weight: inherit;
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-xxl);
     line-height: 1.2;
     max-width: 14em;
   }
@@ -81,7 +81,7 @@ export default {
     color: var(--color-lightgray);
   }
   .lead {
-    font-size: var(--font-size-m);
+    font-size: var(--font-size-l);
     line-height: 1.2;
     max-width: 20em;
   }

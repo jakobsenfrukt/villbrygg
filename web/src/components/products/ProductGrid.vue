@@ -109,7 +109,7 @@ export default {
   &__title {
     grid-column: 1 / -1;
     max-width: 14em;
-    font-size: var(--font-size-l);
+    font-size: var(--font-size-xl);
     line-height: 1.2;
     font-weight: 400;
     color: var(--color-lightgray);

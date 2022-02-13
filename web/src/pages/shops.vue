@@ -300,7 +300,7 @@ h3 {
 .country {
   margin: 3rem 0 6rem;
   &-heading {
-    font-size: var(--font-size-m);
+    font-size: var(--font-size-l);
     text-transform: uppercase;
   }
 }
@@ -310,7 +310,7 @@ h3 {
     border-bottom: 1px solid var(--color-lightgray);
   }
   &-heading {
-    font-size: var(--font-size-m);
+    font-size: var(--font-size-l);
     margin: 1.5rem 0;
     position: relative;
     &:after {
@@ -318,7 +318,7 @@ h3 {
       position: absolute;
       top: 0;
       right: 0;
-      font-size: var(--font-size-m);
+      font-size: var(--font-size-l);
       font-weight: 400;
       transform: rotate(0deg);
       transition: transform 0.3s ease;
@@ -334,7 +334,7 @@ h3 {
 .shop {
   grid-column: span 2;
   &-name {
-    font-size: var(--font-size-s);
+    font-size: var(--font-size-m);
     margin-bottom: 0.5rem;
   }
 }

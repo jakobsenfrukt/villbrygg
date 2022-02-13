@@ -147,7 +147,7 @@ export default {
   padding: 0;
 
   h2 {
-    font-size: var(--font-size-l);
+    font-size: var(--font-size-xl);
     font-weight: 400;
     margin: 0.5rem 0 2rem;
   }

@@ -118,7 +118,7 @@ export default {
   }
   .heading {
     font-weight: inherit;
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-xxl);
     line-height: 1.2;
     max-width: 14em;
   }

@@ -152,7 +152,7 @@ export default {
   }
   .heading {
     font-weight: inherit;
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-xxl);
     line-height: 1.2;
     max-width: 14em;
   }
@@ -178,7 +178,7 @@ export default {
 
   .lead {
     grid-column: 1 / span 4;
-    font-size: var(--font-size-m);
+    font-size: var(--font-size-l);
     padding-right: calc(var(--spacing-sitepadding) * 2);
   }
   .body {

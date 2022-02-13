@@ -29,7 +29,7 @@ export default {
 <style lang="scss" scoped>
 .question {
   position: relative;
-  font-size: var(--font-size-l);
+  font-size: var(--font-size-xl);
   font-weight: 400;
   margin: 1.5rem 0;
   cursor: pointer;
@@ -38,7 +38,7 @@ export default {
     position: absolute;
     top: 0;
     right: 0;
-    font-size: var(--font-size-l);
+    font-size: var(--font-size-xl);
     font-weight: 400;
     transform: rotate(0deg);
     transition: transform 0.3s ease;

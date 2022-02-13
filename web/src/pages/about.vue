@@ -106,7 +106,7 @@ export default {
 
   .lead {
     grid-column: 1 / span 4;
-    font-size: var(--font-size-m);
+    font-size: var(--font-size-l);
     padding-right: calc(var(--spacing-sitepadding) * 2);
   }
   .body {
