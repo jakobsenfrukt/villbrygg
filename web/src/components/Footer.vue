@@ -119,28 +119,9 @@ export default {
     }
   }
 }
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .site-footer {
-    &-content {
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-    }
-    .intro {
-      grid-column: span 4;
-      padding-right: 50%;
-    }
-  }
-}
-@media (max-width: 540px) {
-  .site-footer {
-    &-content {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-    }
-    .intro {
-      grid-column: span 2;
-      padding-right: 50%;
-    }
+    grid-template-columns: 1fr;
   }
 }
 </style>

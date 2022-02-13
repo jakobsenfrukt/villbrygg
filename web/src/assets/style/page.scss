@@ -5,6 +5,19 @@
   border-bottom-right-radius: var(--border-radius-l);
 }
 
+.categories {
+  list-style: none;
+  margin: 1rem 0 3rem;
+  padding: 0;
+}
+.category {
+  display: inline-block;
+  background: var(--color-background);
+  padding: 0.2rem 0.5rem;
+  border-radius: 5rem;
+  font-size: var(--font-size-xs);
+}
+
 .category-list {
   list-style: none;
   margin: 0 0 var(--spacing-sitepadding);
@@ -18,7 +31,7 @@
     background: var(--color-offwhite);
     color: var(--color-text);
     border-radius: var(--border-radius-l);
-    font-size: var(--font-size-m);
+    font-size: var(--font-size-s);
     padding: 0.5rem 1rem;
     margin: 0 0.8rem 0.8rem 0;
     cursor: pointer;
@@ -35,9 +48,9 @@
 }
 
 input[type="text"] {
-  border: 1px solid var(--color-gray);
+  border: 1px solid var(--color-lightgray);
   border-radius: var(--border-radius-l);
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-s);
   padding: 0.5rem 1rem;
   margin: 1rem 1rem 1rem 0;
   cursor: pointer;

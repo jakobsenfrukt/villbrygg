@@ -19,6 +19,14 @@
             :alt="image.alt[$context.locale]"
           />
         </template>
+        <ul class="categories">
+          <li
+            class="category"
+            :style="`background: ${$page.article.category.color.hex}`"
+          >
+            {{ $page.article.category.title[$context.locale] }}
+          </li>
+        </ul>
       </header>
 
       <main class="page-content article-content">
@@ -69,6 +77,15 @@ query article ($id: ID!) {
   article: sanityArticle (id: $id) {
     title
     lead
+    category {
+      title {
+        no
+        en
+      }
+      color {
+        hex
+      }
+    }
     mainImages {
       asset {
         _id
@@ -123,6 +140,7 @@ export default {
   padding-bottom: 2rem;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(3, auto);
   gap: calc(var(--spacing-sitepadding) / 2);
 
   .text {
@@ -142,6 +160,7 @@ export default {
     grid-column: span 6;
     border-radius: var(--border-radius);
     width: 100%;
+    height: 100%;
     max-height: 86vh;
     object-fit: cover;
     &.single {
@@ -150,6 +169,7 @@ export default {
   }
   img:nth-of-type(even) {
     grid-column: span 4;
+    grid-row: span 2;
   }
 }
 .article-content {
@@ -165,6 +185,11 @@ export default {
     grid-column: 5 / span 6;
     padding: 0 var(--spacing-sitepadding) var(--spacing-sitepadding) 0;
   }
+}
+
+.categories {
+  grid-column: span 6;
+  margin-top: 0;
 }
 
 @media (max-width: 800px) {
@@ -184,6 +209,7 @@ export default {
     .lead,
     .body {
       grid-column: 1 / -1;
+      padding-right: 0;
     }
   }
 }

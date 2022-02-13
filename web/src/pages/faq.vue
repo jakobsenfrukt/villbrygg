@@ -153,9 +153,9 @@ export default {
   }
 }
 .question {
-  border-top: 1px solid var(--color-black);
+  border-top: 1px solid var(--color-lightgray);
   &:last-of-type {
-    border-bottom: 1px solid var(--color-black);
+    border-bottom: 1px solid var(--color-lightgray);
   }
 }
 </style>

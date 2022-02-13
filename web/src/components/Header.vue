@@ -170,7 +170,7 @@ export default {
   .nav__link {
     position: relative;
     display: block;
-    margin-bottom: calc(var(--spacing-sitepadding) * 2);
+    margin-bottom: calc(var(--spacing-sitepadding) * 1.2);
     font-size: var(--font-size-l);
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing);

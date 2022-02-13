@@ -48,7 +48,7 @@ export default {
   transform: rotate(-90deg);
   transform-origin: 100% 0;
   display: flex;
-  gap: 2rem;
+  gap: 2em;
 }
 .localebutton {
   outline: none;
@@ -77,11 +77,11 @@ export default {
       content: "";
       display: block;
       position: absolute;
-      left: -1rem;
-      top: 0.4rem;
+      left: -1em;
+      top: 0.4em;
       background: var(--color-text);
-      width: 0.5rem;
-      height: 0.5rem;
+      width: 0.5em;
+      height: 0.5em;
       border-radius: var(--border-radius-l);
     }
   }
@@ -90,7 +90,22 @@ export default {
 @media (max-width: 1000px) {
   .locale-switcher {
     transform: none;
-    position: static;
+    position: absolute;
+    bottom: 0.25rem;
+    right: 0.25rem;
+    left: auto;
+    top: auto;
+    padding: var(--spacing-sitepadding);
+    font-size: var(--font-size-m);
+  }
+  .localebutton {
+    color: var(--color-background);
+    &.active {
+      color: var(--color-background);
+      &:before {
+        background: var(--color-background);
+      }
+    }
   }
 }
 </style>

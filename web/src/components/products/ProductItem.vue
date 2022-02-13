@@ -16,7 +16,19 @@
     </div>
     <div class="product-text">
       <ul class="categories">
-        <li class="category">Category</li>
+        <li
+          class="category"
+          :style="`background: ${product.category.color.hex}`"
+        >
+          {{ product.category.title[$context.locale] }}
+        </li>
+        <!--<li
+          class="category"
+          v-for="(category, index) in product.category"
+          :key="`category-${index}`"
+        >
+          {{ category.title[$context.locale] }}
+        </li>-->
       </ul>
       <h3 class="product-title">{{ product.title }}</h3>
     </div>

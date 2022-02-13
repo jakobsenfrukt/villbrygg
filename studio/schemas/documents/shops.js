@@ -4,9 +4,8 @@ export default {
   title: 'Shops',
   fields: [
     {
-      name: 'title',
-      type: 'localeString',
-      title: 'Title'
+      name: 'pageHeader',
+      type: 'pageHeader'
     }
   ]
 }

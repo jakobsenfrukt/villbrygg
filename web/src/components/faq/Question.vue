@@ -31,6 +31,7 @@ export default {
   position: relative;
   font-size: var(--font-size-l);
   font-weight: 400;
+  margin: 1.5rem 0;
   cursor: pointer;
   &:after {
     content: "→";

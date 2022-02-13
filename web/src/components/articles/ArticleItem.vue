@@ -109,16 +109,4 @@ export default {
     z-index: 0;
   }
 }
-.categories {
-  list-style: none;
-  margin: 1rem 0 3rem;
-  padding: 0;
-}
-.category {
-  display: inline-block;
-  background: var(--color-background);
-  padding: 0.2rem 0.5rem;
-  border-radius: 5rem;
-  font-size: var(--font-size-xs);
-}
 </style>
