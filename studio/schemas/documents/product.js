@@ -18,6 +18,13 @@ export default {
       },
     },
     {
+      name: 'category',
+      type: 'reference',
+      to: [
+        {type: 'productCategory'}
+      ]
+    },
+    {
       name: 'mainImage',
       title: 'Main image',
       type: 'localeFigure'

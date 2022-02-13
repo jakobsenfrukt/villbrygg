@@ -11,7 +11,7 @@
             .auto('format')
             .url()
         "
-        :alt="product.mainImage.alt"
+        :alt="product.mainImage.alt[$context.locale]"
       />
     </div>
     <div class="product-text">
@@ -19,9 +19,6 @@
         <li class="category">Category</li>
       </ul>
       <h3 class="product-title">{{ product.title }}</h3>
-      <div class="product-lead" v-if="product._rawLead">
-        <block-content :blocks="product._rawLead" />
-      </div>
     </div>
     <g-link class="product-link" :to="$tp(`/products/${product.slug.current}`)"
       >{{ $t("link.readmoreabout") }} {{ product.title }}</g-link
@@ -66,7 +63,7 @@ export default {
     height: 100%;
     top: 0;
     left: 0;
-    padding: var(--spacing-sitepadding);
+    padding: calc(var(--spacing-sitepadding) / 1.5);
     display: flex;
     flex-direction: column;
     justify-content: space-between;

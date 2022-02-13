@@ -18,6 +18,8 @@ import shops from './documents/shops'
 import shopsCity from './documents/shopsCity'
 import shopsCountry from './documents/shopsCountry'
 import shopsCategory from './documents/shopsCategory'
+import articlesCategory from './documents/articlesCategory'
+import productCategory from './documents/productCategory'
 import frontpage from './documents/frontpage'
 
 // objects
@@ -58,6 +60,8 @@ export default createSchema({
     shopsCity,
     shopsCountry,
     shopsCategory,
+    articlesCategory,
+    productCategory,
     frontpage,
     // objects
     // When added to this list, object types can be used as

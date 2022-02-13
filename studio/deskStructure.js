@@ -1,9 +1,9 @@
 import S from '@sanity/desk-tool/structure-builder'
 
-import { MdSettings, MdLiquor, MdQuestionAnswer, MdInfo, MdLocationPin, MdArticle, MdOutlineArticle, MdStore, MdLocationCity, MdPublic, MdHome } from 'react-icons/md'
+import { MdSettings, MdLiquor, MdQuestionAnswer, MdInfo, MdLocationPin, MdArticle, MdOutlineArticle, MdStore, MdLocationCity, MdPublic, MdHome, MdCategory } from 'react-icons/md'
 
 const hiddenDocTypes = listItem =>
-  !['general', 'product', 'article', 'about', 'faq', 'faqQuestion', 'faqCategory', 'shops', 'shopsCountry', 'shopsCity', 'shopsCategory', 'frontpage'].includes(listItem.getId())
+  !['general', 'product', 'article', 'about', 'faq', 'faqQuestion', 'faqCategory', 'shops', 'shopsCountry', 'shopsCity', 'shopsCategory', 'articlesCategory', 'productCategory', 'frontpage'].includes(listItem.getId())
 
 export default () =>
   S.list()
@@ -33,7 +33,36 @@ export default () =>
         .title('Products')
         .icon(MdLiquor)
         .schemaType('product')
-        .child(S.documentTypeList('product').title('Products')),
+        .child(
+          //S.documentTypeList('product').title('Products'),
+          S.list()
+            .id('products')
+            .title('Products')
+            .items(
+              [
+                S.listItem()
+                .title('All products')
+                .schemaType('product')
+                .icon(MdLiquor)
+                .child(
+                  S.documentList()
+                    .id('allProducts')
+                    .title('Product list')
+                    .filter('_type == "product"')
+                ),
+                S.listItem()
+                .title('Categories')
+                .schemaType('productCategory')
+                .icon(MdCategory)
+                .child(
+                  S.documentList()
+                    .id('productCategories')
+                    .title('Categories')
+                    .filter('_type == "productCategory"')
+                )
+              ]
+            )
+        ),
       S.listItem()
         .title('Shops')
         .icon(MdStore)
@@ -76,7 +105,7 @@ export default () =>
                 S.listItem()
                 .title('Categories')
                 .schemaType('shopsCategory')
-                .icon(MdOutlineArticle)
+                .icon(MdCategory)
                 .child(
                   S.documentList()
                     .id('shopsCategories')
@@ -114,6 +143,16 @@ export default () =>
                     .id('enArticles')
                     .title('English articles')
                     .filter('_type == "article" && (!defined(locale) || locale == "en")')
+                ),
+                S.listItem()
+                .title('Categories')
+                .schemaType('articlesCategory')
+                .icon(MdCategory)
+                .child(
+                  S.documentList()
+                    .id('articlesCategories')
+                    .title('Categories')
+                    .filter('_type == "articlesCategory"')
                 )
               ]
             )

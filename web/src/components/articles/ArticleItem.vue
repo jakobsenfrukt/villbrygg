@@ -6,7 +6,6 @@
         class="article-image"
         :src="
           $urlForImage(article.mainImages[0], $static.metadata.sanityOptions)
-            .height(600)
             .width(400)
             .auto('format')
             .url()
@@ -16,7 +15,19 @@
     </div>
     <div class="article-text">
       <ul class="categories">
-        <li class="category">Category</li>
+        <li
+          class="category"
+          :style="`background: ${article.category.color.hex}`"
+        >
+          {{ article.category.title[$context.locale] }}
+        </li>
+        <!--<li
+          class="category"
+          v-for="(category, index) in article.category"
+          :key="`category-${index}`"
+        >
+          {{ category.title[$context.locale] }}
+        </li>-->
       </ul>
       <div class="article-date">{{ getDate(article.publishedAt) }}</div>
       <h3 class="article-title">{{ article.title }}</h3>
@@ -105,8 +116,9 @@ export default {
 }
 .category {
   display: inline-block;
-  background: var(--color-paleyellow);
+  background: var(--color-background);
   padding: 0.2rem 0.5rem;
   border-radius: 5rem;
+  font-size: var(--font-size-xs);
 }
 </style>

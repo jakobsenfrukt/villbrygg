@@ -35,6 +35,13 @@ export default {
       type: 'datetime',
     },
     {
+      name: 'category',
+      type: 'reference',
+      to: [
+        {type: 'articlesCategory'}
+      ]
+    },
+    {
       name: 'mainImages',
       title: 'Main images',
       type: 'array',

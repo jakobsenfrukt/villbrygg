@@ -44,6 +44,15 @@ query {
           no
           en
         }
+        category {
+          title {
+            no
+            en
+          }
+          color {
+            hex
+          }
+        }
         mainImage {
           asset {
             _id

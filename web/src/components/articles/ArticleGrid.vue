@@ -8,17 +8,6 @@
       :key="article.id"
       :article="article.node"
     />
-
-    <ArticleItem
-      v-for="article in getLocaleArticles().slice(0, limit)"
-      :key="article.id"
-      :article="article.node"
-    />
-    <ArticleItem
-      v-for="article in getLocaleArticles().slice(0, limit)"
-      :key="article.id"
-      :article="article.node"
-    />
   </section>
 </template>
 
@@ -37,6 +26,15 @@ query {
         }
         publishedAt
         locale
+        category {
+          title {
+            no
+            en
+          }
+          color {
+            hex
+          }
+        }
         lead
         mainImages {
           asset {
@@ -89,6 +87,7 @@ export default {
 <style lang="scss" scoped>
 .article-grid {
   display: grid;
+  align-items: flex-start;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: var(--spacing-sitepadding);
   padding: var(--spacing-sitepadding) var(--spacing-sitepadding)

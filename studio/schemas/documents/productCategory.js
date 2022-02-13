@@ -1,7 +1,7 @@
 export default {
-  name: 'shopsCategory',
+  name: 'productCategory',
   type: 'document',
-  title: 'Location type',
+  title: 'Product category',
   fields: [
     {
       name: 'title',
