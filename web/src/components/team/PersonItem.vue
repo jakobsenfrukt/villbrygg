@@ -6,7 +6,8 @@
         class="article-image"
         :src="
           $urlForImage(person.image, $static.metadata.sanityOptions)
-            .width(400)
+            .width(420)
+            .height(600)
             .auto('format')
             .url()
         "
@@ -41,7 +42,6 @@ export default {
 
 <style lang="scss" scoped>
 .person {
-  grid-column: span 2;
   &-image {
     img {
       border-radius: var(--border-radius);
@@ -49,6 +49,7 @@ export default {
   }
   &-name,
   &-title {
+    display: block;
     font-size: var(--font-size-m);
   }
   &-title {
