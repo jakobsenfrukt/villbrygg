@@ -79,6 +79,7 @@ export default {
   background: var(--color-palegreen);
   padding: 1.5rem;
   border-radius: var(--border-radius);
+  transition: background 0.2s ease;
   &-image {
     border-radius: var(--border-radius);
   }
@@ -102,6 +103,9 @@ export default {
     overflow: hidden;
     text-indent: -9999px;
     z-index: 0;
+  }
+  &:hover {
+    background: var(--color-paleyellow);
   }
 }
 </style>
