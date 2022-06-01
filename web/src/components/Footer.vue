@@ -19,7 +19,7 @@
         >
       </li>
     </ul>-->
-    <div>
+    <div class="footer-contact">
       <a :href="`mailto:${$static.general.contact.email}`" target="_blank">{{
         $static.general.contact.email
       }}</a>
@@ -103,6 +103,9 @@ export default {
   a {
     color: inherit;
   }
+}
+.footer-contact {
+  font-size: var(--font-size-m);
 }
 .footer-nav {
   font-size: var(--font-size-l);

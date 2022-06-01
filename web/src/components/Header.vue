@@ -182,7 +182,7 @@ export default {
     position: relative;
     display: block;
     margin-bottom: calc(var(--spacing-sitepadding) * 1.2);
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-l);
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing);
     cursor: pointer;
