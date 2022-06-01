@@ -118,6 +118,7 @@ export default {
     list-style: none;
     margin: 0;
     padding: 0;
+    margin-left: calc(var(--spacing-sitepadding) / 4);
     li {
       display: inline-block;
     }
@@ -140,10 +141,10 @@ export default {
     &:before {
       content: " ";
       position: absolute;
-      top: -0.15rem;
+      top: -0.25rem;
       left: -1rem;
       width: calc(100% + 2rem);
-      height: calc(100% + 0.3rem);
+      height: calc(100% + 0.5rem);
       background: var(--color-highlight);
       border-radius: 5rem;
     }
