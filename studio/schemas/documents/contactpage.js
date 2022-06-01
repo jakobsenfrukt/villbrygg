@@ -5,6 +5,10 @@ export default {
   //__experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'], 
   fields: [
     {
+      name: 'pageHeader',
+      type: 'pageHeader'
+    },
+    {
       name: 'team',
       type: 'array',
       of: [{

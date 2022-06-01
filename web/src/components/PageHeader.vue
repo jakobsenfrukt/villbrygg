@@ -67,10 +67,12 @@ export default {
     min-height: 16rem;
     grid-column: 5 / span 6;
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-end;
     padding-bottom: 2rem;
   }
   .heading {
+    width: 100%;
     font-weight: inherit;
     font-size: var(--font-size-xxl);
     line-height: 1.2;
