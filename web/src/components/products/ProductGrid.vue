@@ -8,22 +8,6 @@
       :key="product.id"
       :product="product.node"
     />
-
-    <ProductItem
-      v-for="product in $static.products.edges.slice(0, limit)"
-      :key="product.id"
-      :product="product.node"
-    />
-    <ProductItem
-      v-for="product in $static.products.edges.slice(0, limit)"
-      :key="product.id"
-      :product="product.node"
-    />
-    <ProductItem
-      v-for="product in $static.products.edges.slice(0, limit)"
-      :key="product.id"
-      :product="product.node"
-    />
   </section>
 </template>
 
