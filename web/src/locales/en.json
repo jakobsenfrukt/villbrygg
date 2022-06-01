@@ -10,7 +10,8 @@
     "reseller": "Become a reseller"
   },
   "link": {
-    "readmoreabout": "Read more about"
+    "readmoreabout": "Read more about",
+    "readmore": "Read more"
   },
   "messages": {
     "welcome": "HI there"

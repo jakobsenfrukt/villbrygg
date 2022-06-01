@@ -1,5 +1,14 @@
 <template>
-  <article class="product">
+  <article
+    class="product"
+    :style="`--product-category-color: ${product.category.color.hex}`"
+  >
+    <div class="product-text">
+      <h3 class="product-title">{{ product.title }}</h3>
+      <span class="product-category">
+        {{ product.category.title[$context.locale] }}
+      </span>
+    </div>
     <div class="product-image">
       <g-image
         v-if="product.mainImage"
@@ -7,34 +16,24 @@
         :src="
           $urlForImage(product.mainImage, $static.metadata.sanityOptions)
             .height(600)
-            .width(400)
+            .width(420)
             .auto('format')
             .url()
         "
         :alt="product.mainImage.alt[$context.locale]"
       />
+      <g-link
+        class="product-link"
+        :to="$tp(`/products/${product.slug.current}`)"
+      >
+        <div class="product-overlay">
+          <span class="product-link__title">{{ product.title }}</span>
+          <span class="product-link__readmore"
+            >{{ $t("link.readmore") }} &rarr;</span
+          >
+        </div>
+      </g-link>
     </div>
-    <div class="product-text">
-      <ul class="categories">
-        <li
-          class="category"
-          :style="`background: ${product.category.color.hex}`"
-        >
-          {{ product.category.title[$context.locale] }}
-        </li>
-        <!--<li
-          class="category"
-          v-for="(category, index) in product.category"
-          :key="`category-${index}`"
-        >
-          {{ category.title[$context.locale] }}
-        </li>-->
-      </ul>
-      <h3 class="product-title">{{ product.title }}</h3>
-    </div>
-    <g-link class="product-link" :to="$tp(`/products/${product.slug.current}`)"
-      >{{ $t("link.readmoreabout") }} {{ product.title }}</g-link
-    >
   </article>
 </template>
 
@@ -64,26 +63,57 @@ export default {
 
 <style lang="scss" scoped>
 .product {
-  display: block;
+  display: flex;
+  flex-direction: column;
   position: relative;
+  &-text {
+    padding: 1rem;
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    order: 2;
+    font-size: var(--font-size-m);
+    position: relative;
+
+    &:before {
+      content: " ";
+      display: block;
+      background: var(--product-category-color);
+      width: 1.2rem;
+      height: 1.2rem;
+      border-radius: 1.2rem;
+      position: absolute;
+      left: 0.25rem;
+      top: 1.25rem;
+    }
+  }
+  &-title {
+    margin: 0;
+    font-weight: 400;
+  }
+  &-category {
+    color: var(--color-lightgray);
+  }
   &-image {
     border-radius: var(--border-radius);
+    position: relative;
+    order: 1;
+
+    img {
+      display: block;
+    }
   }
-  &-text {
+  &-overlay {
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    padding: calc(var(--spacing-sitepadding) / 1.5);
+    padding: 1.25rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  }
-  &-title {
-    margin: 0;
-    font-weight: 400;
-    text-transform: uppercase;
   }
   &-link {
     position: absolute;
@@ -91,21 +121,21 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
+    background: var(--product-category-color);
+    border-radius: var(--border-radius);
+    color: inherit;
+    transition: opacity 0.2s ease;
     opacity: 0;
-    overflow: hidden;
-    text-indent: -9999px;
-    z-index: 0;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &__title {
+      font-size: var(--font-size-l);
+      text-transform: uppercase;
+      line-height: 1;
+    }
   }
-}
-.categories {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.category {
-  display: inline-block;
-  background: var(--color-paleyellow);
-  padding: 0.2rem 0.5rem;
-  border-radius: 5rem;
 }
 </style>

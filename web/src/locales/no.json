@@ -10,7 +10,8 @@
     "reseller": "Bli en forhandler"
   },
   "link": {
-    "readmoreabout": "Les mer om"
+    "readmoreabout": "Les mer om",
+    "readmore": "Les mer"
   },
   "messages": {
     "welcome": "jadda"

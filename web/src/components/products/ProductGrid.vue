@@ -101,7 +101,7 @@ export default {
 .product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: var(--spacing-sitepadding);
+  grid-gap: 0.75rem;
   padding: var(--spacing-sitepadding) var(--spacing-sitepadding)
     calc(var(--spacing-sitepadding) * 2);
   background: var(--color-palegreen);
