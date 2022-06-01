@@ -114,6 +114,7 @@ export default {
   }
   a {
     text-decoration: none;
+    line-height: 1.5;
     &:after {
       content: " →";
     }
