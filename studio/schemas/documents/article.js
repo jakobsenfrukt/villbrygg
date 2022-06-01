@@ -35,11 +35,12 @@ export default {
       type: 'datetime',
     },
     {
-      name: 'category',
-      type: 'reference',
-      to: [
-        {type: 'articlesCategory'}
-      ]
+      name: 'categories',
+      type: 'array',
+      of: [{
+        type: 'reference',
+        to: [{ type: 'articlesCategory' }]
+      }]
     },
     {
       name: 'mainImages',
@@ -59,7 +60,7 @@ export default {
   preview: {
     select: {
       title: 'title',
-      media: 'mainImage'
+      media: 'mainImages[0]'
     }
   }
 }

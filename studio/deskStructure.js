@@ -1,9 +1,9 @@
 import S from '@sanity/desk-tool/structure-builder'
 
-import { MdSettings, MdLiquor, MdQuestionAnswer, MdInfo, MdLocationPin, MdArticle, MdOutlineArticle, MdStore, MdLocationCity, MdPublic, MdHome, MdCategory } from 'react-icons/md'
+import { MdSettings, MdLiquor, MdQuestionAnswer, MdInfo, MdLocationPin, MdArticle, MdOutlineArticle, MdStore, MdLocationCity, MdPublic, MdHome, MdCategory, MdEmail, MdPeople } from 'react-icons/md'
 
 const hiddenDocTypes = listItem =>
-  !['general', 'product', 'article', 'about', 'faq', 'faqQuestion', 'faqCategory', 'shops', 'shopsCountry', 'shopsCity', 'shopsCategory', 'articlesCategory', 'productCategory', 'frontpage'].includes(listItem.getId())
+  !['general', 'product', 'article', 'about', 'faq', 'faqQuestion', 'faqCategory', 'shops', 'shopsCountry', 'shopsCity', 'shopsCategory', 'articlesCategory', 'productCategory', 'frontpage', 'contactpage', 'person'].includes(listItem.getId())
 
 export default () =>
   S.list()
@@ -205,6 +205,38 @@ export default () =>
                     .id('faqCategories')
                     .title('Categories')
                     .filter('_type == "faqCategory"')
+                )
+              ]
+            )
+        ),
+      S.listItem()
+        .title('Contact')
+        .icon(MdEmail)
+        .child(
+          S.list()
+            .id('contact')
+            .title('Contact')
+            .items(
+              [
+                S.listItem()
+                .title('Main page')
+                .icon(MdArticle)
+                .child(
+                  S.editor()
+                    .title('Contact page')
+                    .id('contactpage')
+                    .schemaType('contactpage')
+                    .documentId('contactpage')
+                ),
+                S.listItem()
+                .title('People')
+                .schemaType('person')
+                .icon(MdPeople)
+                .child(
+                  S.documentList()
+                    .id('people')
+                    .title('People')
+                    .filter('_type == "person"')
                 )
               ]
             )

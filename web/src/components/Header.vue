@@ -18,6 +18,11 @@
             ><span>{{ $t("menu.about") }}</span></g-link
           >
         </li>
+        <li>
+          <g-link class="nav__link" :to="$tp('/contact/')"
+            ><span>{{ $t("menu.contact") }}</span></g-link
+          >
+        </li>
         <li>&nbsp;</li>
         <LocaleSwitcher />
         <!--<ToggleTheme />-->
@@ -42,6 +47,11 @@
           <li>
             <g-link class="nav__link" :to="$tp('/about/')"
               ><span>{{ $t("menu.about") }}</span></g-link
+            >
+          </li>
+          <li>
+            <g-link class="nav__link" :to="$tp('/contact/')"
+              ><span>{{ $t("menu.contact") }}</span></g-link
             >
           </li>
           <li>&nbsp;</li>

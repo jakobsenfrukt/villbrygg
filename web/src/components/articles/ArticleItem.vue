@@ -17,17 +17,12 @@
       <ul class="categories">
         <li
           class="category"
-          :style="`background: ${article.category.color.hex}`"
-        >
-          {{ article.category.title[$context.locale] }}
-        </li>
-        <!--<li
-          class="category"
-          v-for="(category, index) in article.category"
+          v-for="(category, index) in article.categories"
           :key="`category-${index}`"
+          :style="`background: ${category.color.hex}`"
         >
           {{ category.title[$context.locale] }}
-        </li>-->
+        </li>
       </ul>
       <div class="article-date">{{ getDate(article.publishedAt) }}</div>
       <h3 class="article-title">{{ article.title }}</h3>

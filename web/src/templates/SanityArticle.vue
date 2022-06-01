@@ -22,9 +22,11 @@
         <ul class="categories">
           <li
             class="category"
-            :style="`background: ${$page.article.category.color.hex}`"
+            v-for="(category, index) in $page.article.categories"
+            :key="`category-${index}`"
+            :style="`background: ${category.color.hex}`"
           >
-            {{ $page.article.category.title[$context.locale] }}
+            {{ category.title[$context.locale] }}
           </li>
         </ul>
       </header>
@@ -77,7 +79,7 @@ query article ($id: ID!) {
   article: sanityArticle (id: $id) {
     title
     lead
-    category {
+    categories {
       title {
         no
         en

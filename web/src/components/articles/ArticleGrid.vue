@@ -26,7 +26,7 @@ query {
         }
         publishedAt
         locale
-        category {
+        categories {
           title {
             no
             en

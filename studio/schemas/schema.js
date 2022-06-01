@@ -21,6 +21,8 @@ import shopsCategory from './documents/shopsCategory'
 import articlesCategory from './documents/articlesCategory'
 import productCategory from './documents/productCategory'
 import frontpage from './documents/frontpage'
+import contactpage from './documents/contactpage'
+import person from './documents/person'
 
 // objects
 import body from './objects/body'
@@ -63,6 +65,8 @@ export default createSchema({
     articlesCategory,
     productCategory,
     frontpage,
+    contactpage,
+    person,
     // objects
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
