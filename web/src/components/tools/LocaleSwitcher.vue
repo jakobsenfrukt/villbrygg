@@ -44,7 +44,7 @@ export default {
 .locale-switcher {
   position: absolute;
   left: -3.2rem;
-  top: 16rem;
+  top: 12rem;
   transform: rotate(-90deg);
   transform-origin: 100% 0;
   display: flex;

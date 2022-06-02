@@ -6,7 +6,12 @@ export default {
     {
       name: 'title',
       type: 'localeString',
-      title: 'Category title'
+      title: 'Title'
+    },
+    {
+      name: 'description',
+      type: 'localeText',
+      title: 'Description'
     },
     {
       name: 'color',

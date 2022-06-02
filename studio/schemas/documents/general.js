@@ -10,9 +10,10 @@ export default {
       title: 'Contact'
     },
     {
-      name: 'newsletter',
-      type: 'newsletter',
-      title: 'Newsletter'
+      name: 'newsletterUrl',
+      type: 'string',
+      title: 'Newsletter URL',
+      description: 'The URL to signing up for the newsletter. Remember to add the entire URL, including https:// etc.'
     },
     {
       name: 'seo',

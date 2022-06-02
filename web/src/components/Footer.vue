@@ -20,13 +20,37 @@
       </li>
     </ul>-->
     <div class="footer-contact">
-      <a :href="`mailto:${$static.general.contact.email}`" target="_blank">{{
-        $static.general.contact.email
-      }}</a>
-      <block-content
-        :blocks="$static.general.contact._rawAddress"
-        v-if="$static.general.contact._rawAddress"
-      />
+      <ul>
+        <li>
+          <a
+            :href="`mailto:${$static.general.contact.email}`"
+            target="_blank"
+            >{{ $static.general.contact.email }}</a
+          >
+        </li>
+        <li>
+          <a
+            v-if="$static.general.contact.instagram"
+            :href="`https://instagram.com/${$static.general.contact.instagram}`"
+            target="_blank"
+            >Instagram</a
+          >
+        </li>
+        <li>
+          <a
+            v-if="$static.general.contact.facebook"
+            :href="`https://facebook.com/${$static.general.contact.facebook}`"
+            target="_blank"
+            >Facebook</a
+          >
+        </li>
+        <li class="address">
+          <block-content
+            :blocks="$static.general.contact._rawAddress"
+            v-if="$static.general.contact._rawAddress"
+          />
+        </li>
+      </ul>
     </div>
     <div>
       <nav class="footer-nav">
@@ -37,9 +61,13 @@
             }}</g-link>
           </li>
           <li>
-            <g-link class="nav__link" :to="$tp('/')">{{
-              $t("menu.newsletter")
-            }}</g-link>
+            <a
+              v-if="$static.general.newsletterUrl"
+              class="nav__link"
+              :href="$static.general.newsletterUrl"
+              target="_blank"
+              >{{ $t("menu.newsletter") }}</a
+            >
           </li>
           <li>
             <g-link class="nav__link" :to="$tp('/')">{{
@@ -61,6 +89,7 @@ query {
       facebook
       _rawAddress
     }
+    newsletterUrl
   }
 }
 </static-query>
@@ -92,6 +121,7 @@ export default {
 
   display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: flex-end;
   gap: calc(var(--spacing-sitepadding) * 2);
 
   .logo-wrapper {
@@ -103,10 +133,22 @@ export default {
   }
   a {
     color: inherit;
+    &:hover {
+      color: var(--color-active);
+    }
   }
 }
 .footer-contact {
   font-size: var(--font-size-m);
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .address {
+    margin-top: 1.5rem;
+  }
 }
 .footer-nav {
   font-size: var(--font-size-l);

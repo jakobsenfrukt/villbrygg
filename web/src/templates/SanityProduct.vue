@@ -23,12 +23,12 @@
       <block-content
         :blocks="$page.product.body._rawNo"
         v-if="$page.product.body._rawNo && $context.locale == 'no'"
-        class="block-content"
+        class="block-content body"
       />
       <block-content
         :blocks="$page.product.body._rawEn"
         v-else-if="$page.product.body._rawEn && $context.locale == 'en'"
-        class="block-content"
+        class="block-content body"
       />
     </main>
   </Layout>
@@ -141,6 +141,31 @@ export default {
   }
   img:nth-of-type(even) {
     grid-column: span 4;
+  }
+}
+
+.product-content {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+
+  .lead {
+    grid-column: 1 / span 4;
+    font-size: var(--font-size-l);
+    padding-right: calc(var(--spacing-sitepadding) * 2);
+  }
+  .body {
+    grid-column: 5 / span 6;
+    padding: 0 var(--spacing-sitepadding) var(--spacing-sitepadding) 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .product-content {
+    .lead,
+    .body {
+      grid-column: 1 / -1;
+      padding-right: 0;
+    }
   }
 }
 </style>

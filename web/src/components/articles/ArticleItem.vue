@@ -74,10 +74,14 @@ export default {
 
 <style lang="scss" scoped>
 .article {
-  display: block;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 var(--spacing-sitepadding) var(--spacing-sitepadding) 0;
+  width: 26vw;
+  min-width: 16rem;
   position: relative;
   background: var(--color-palegreen);
-  padding: 1.5rem;
+  padding: calc(var(--spacing-sitepadding) * 0.7);
   border-radius: var(--border-radius);
   transition: background 0.2s ease;
   &-image {

@@ -3,11 +3,19 @@
     <h2 class="article-grid__title">
       Learn more <strong>about our latest news and reviews</strong>
     </h2>
-    <ArticleItem
-      v-for="article in getLocaleArticles().slice(0, limit)"
-      :key="article.id"
-      :article="article.node"
-    />
+    <div class="article-grid__scroll">
+      <ArticleItem
+        v-for="article in getLocaleArticles().slice(0, limit)"
+        :key="article.id"
+        :article="article.node"
+      />
+
+      <ArticleItem
+        v-for="article in getLocaleArticles().slice(0, limit)"
+        :key="article.id"
+        :article="article.node"
+      />
+    </div>
   </section>
 </template>
 
@@ -86,14 +94,11 @@ export default {
 
 <style lang="scss" scoped>
 .article-grid {
-  display: grid;
-  align-items: flex-start;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: var(--spacing-sitepadding);
   padding: var(--spacing-sitepadding) var(--spacing-sitepadding)
     calc(var(--spacing-sitepadding) * 2);
   background: var(--color-background);
   border-radius: var(--border-radius-l);
+  overflow: hidden;
   &__title {
     grid-column: 1 / -1;
     max-width: 14em;
@@ -106,21 +111,9 @@ export default {
       color: var(--color-black);
     }
   }
-}
-/*@media (min-width: 1800px) {
-  .product-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}*/
-@media (max-width: 1200px) {
-  .product-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 640px) {
-  .product-grid {
-    grid-template-columns: repeat(1, 1fr);
-    padding: 2rem;
+  &__scroll {
+    width: 200vw;
+    overflow-y: scroll;
   }
 }
 </style>

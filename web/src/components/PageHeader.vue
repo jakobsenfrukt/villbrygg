@@ -64,7 +64,7 @@ export default {
   gap: calc(var(--spacing-sitepadding) / 2);
 
   .text {
-    min-height: 16rem;
+    min-height: 13rem;
     grid-column: 5 / span 6;
     display: flex;
     flex-wrap: wrap;

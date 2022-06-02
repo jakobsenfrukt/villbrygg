@@ -17,6 +17,11 @@ export default {
       name: 'title',
       type: 'localeString',
       title: 'Title'
+    },
+    {
+      name: 'email',
+      type: 'string',
+      title: 'E-mail'
     }
   ],
   preview: {

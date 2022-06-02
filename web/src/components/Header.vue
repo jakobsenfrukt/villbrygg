@@ -145,7 +145,7 @@ export default {
       left: -1rem;
       width: calc(100% + 2rem);
       height: calc(100% + 0.5rem);
-      background: var(--color-highlight);
+      background: var(--color-active);
       border-radius: 5rem;
     }
   }

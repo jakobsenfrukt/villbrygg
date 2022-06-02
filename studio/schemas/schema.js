@@ -22,6 +22,7 @@ import articlesCategory from './documents/articlesCategory'
 import productCategory from './documents/productCategory'
 import frontpage from './documents/frontpage'
 import contactpage from './documents/contactpage'
+import productpage from './documents/productpage'
 import person from './documents/person'
 
 // objects
@@ -66,6 +67,7 @@ export default createSchema({
     productCategory,
     frontpage,
     contactpage,
+    productpage,
     person,
     // objects
     // When added to this list, object types can be used as

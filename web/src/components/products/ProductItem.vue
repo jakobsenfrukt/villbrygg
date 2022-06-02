@@ -3,7 +3,7 @@
     class="product"
     :style="`--product-category-color: ${product.category.color.hex}`"
   >
-    <div class="product-text">
+    <div class="product-text" :class="{ hideCategory: hideCategory }">
       <h3 class="product-title">{{ product.title }}</h3>
       <span class="product-category">
         {{ product.category.title[$context.locale] }}
@@ -57,6 +57,10 @@ export default {
   },
   props: {
     product: Object,
+    hideCategory: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>
@@ -86,6 +90,16 @@ export default {
       position: absolute;
       left: 0.25rem;
       top: 1.25rem;
+    }
+
+    &.hideCategory {
+      padding-left: 0;
+      &:before {
+        display: none;
+      }
+      .product-category {
+        display: none;
+      }
     }
   }
   &-title {
