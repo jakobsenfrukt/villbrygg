@@ -1,7 +1,9 @@
 <template>
   <Layout>
     <header class="product-header">
-      <h1 class="product-title">{{ $page.product.title }}</h1>
+      <div class="text">
+        <h1 class="heading">{{ $page.product.title }}</h1>
+      </div>
       <img
         v-if="$page.product.mainImage"
         :alt="$page.product.mainImage.alt[$context.locale]"
@@ -12,12 +14,12 @@
             .url()
         "
       />
-      <p class="lead product-lead">
-        {{ $page.product.lead[$context.locale] }}
-      </p>
     </header>
 
     <main class="page-content product-content">
+      <p class="lead">
+        {{ $page.product.lead[$context.locale] }}
+      </p>
       <block-content
         :blocks="$page.product.body._rawNo"
         v-if="$page.product.body._rawNo && $context.locale == 'no'"
@@ -110,27 +112,32 @@ export default {
   gap: calc(var(--spacing-sitepadding) / 2);
 
   .text {
+    order: 2;
     min-height: 16rem;
     grid-column: 5 / span 6;
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-end;
     padding-bottom: 2rem;
   }
   .heading {
+    width: 100%;
     font-weight: inherit;
     font-size: var(--font-size-xl);
     line-height: 1.2;
-    max-width: 14em;
+  }
+  .lead {
+    font-size: var(--font-size-m);
+    line-height: 1.2;
+    max-width: 20em;
   }
   img {
-    grid-column: span 6;
+    order: 1;
+    grid-column: 1 / span 4;
     border-radius: var(--border-radius);
     width: 100%;
     max-height: 86vh;
     object-fit: cover;
-    &.single {
-      grid-column: span 10;
-    }
   }
   img:nth-of-type(even) {
     grid-column: span 4;

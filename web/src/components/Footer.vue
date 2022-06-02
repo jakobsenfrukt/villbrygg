@@ -99,6 +99,7 @@ export default {
   }
   .logo {
     display: inline-block;
+    margin-bottom: 2rem;
   }
   a {
     color: inherit;

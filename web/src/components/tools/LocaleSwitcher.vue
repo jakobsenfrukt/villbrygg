@@ -43,7 +43,7 @@ export default {
 <style lang="scss" scoped>
 .locale-switcher {
   position: absolute;
-  left: -2.6rem;
+  left: -3.2rem;
   top: 16rem;
   transform: rotate(-90deg);
   transform-origin: 100% 0;

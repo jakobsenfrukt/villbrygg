@@ -58,7 +58,7 @@ export default {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   padding: var(--spacing-sitepadding);
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   gap: calc(var(--spacing-sitepadding) / 2);

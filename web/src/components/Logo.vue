@@ -68,7 +68,7 @@ export default {
 
 <style lang="scss" scoped>
 .logo {
-  height: 3rem;
+  height: 2.4rem;
 
   svg {
     height: 100%;
