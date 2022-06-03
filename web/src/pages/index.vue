@@ -1,8 +1,8 @@
 <template>
   <Layout class="index">
     <PageHeader :content="$page.frontpage.pageHeader" />
-    <ProductGrid />
-    <ArticleGrid />
+    <ProductGrid :heading="$page.frontpage.productText" />
+    <ArticleGrid :heading="$page.frontpage.articleText" />
   </Layout>
 </template>
 
@@ -44,6 +44,14 @@ query {
           right
         }
       }
+    }
+    productText {
+      _rawNo
+      _rawEn
+    }
+    articleText {
+      _rawNo
+      _rawEn
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <header class="page-header">
+  <header class="page-header" :class="content.images.length ? '' : 'noimage'">
     <div class="text">
       <h1 class="heading" v-if="content.heading">
         {{ content.heading[$context.locale] }}
@@ -99,6 +99,12 @@ export default {
   }
   img:nth-of-type(even) {
     grid-column: span 4;
+  }
+  &.noimage {
+    //padding-bottom: 0;
+    .lead {
+      margin-bottom: 0;
+    }
   }
 }
 .index .page-header {

@@ -21,8 +21,11 @@
         </li>
       </ul>
       <div class="search">
-        <label>Søk etter din by</label>
-        <input type="text" placeholder="Søk på by, navn, etc" />
+        <label>{{ $t("navigation.shopSearchLabel") }}</label>
+        <input
+          type="text"
+          :placeholder="$t('navigation.shopSearchPlaceholder')"
+        />
       </div>
       <ul class="countries">
         <li
@@ -35,11 +38,16 @@
           </h2>
 
           <ul class="country-list">
-            <li class="online accordion" v-if="$page.onlineShops.edges.length">
+            <li
+              class="online accordion"
+              v-if="getOnlineShopsByCountry(country).length"
+            >
               <h3 class="list-heading online">Online</h3>
               <ul class="location-list">
                 <li
-                  v-for="(onlineShop, index) in $page.onlineShops.edges"
+                  v-for="(onlineShop, index) in getOnlineShopsByCountry(
+                    country
+                  )"
                   :key="`onlineShop-${index}`"
                   class="location"
                 >
@@ -267,7 +275,11 @@ export default {
   },
   methods: {
     getOnlineShopsByCountry(country) {
-      return this.$page.onlineShops.edges;
+      return this.$page.onlineShops.edges.filter((item) =>
+        item.node.countries.some(
+          (itemCountry) => itemCountry.name.en === country.node.name.en
+        )
+      );
     },
     getLocationsByCity(city) {
       return this.$page.locations.edges.filter(
@@ -336,7 +348,7 @@ h3 {
   }
 }
 .location-list {
-  margin: 2rem 0;
+  margin: 0 0 2rem;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 2rem;
@@ -345,10 +357,21 @@ h3 {
   grid-column: span 1;
   &-name {
     font-size: var(--font-size-m);
-    margin-bottom: 0.5rem;
+    margin: 0 0 0.5rem;
   }
   p {
     font-size: var(--font-size-xs);
+  }
+}
+.search {
+  label {
+    margin-right: 0.5rem;
+    &:after {
+      content: ":";
+    }
+  }
+  input {
+    width: 20rem;
   }
 }
 </style>

@@ -29,7 +29,7 @@
         <div class="product-overlay">
           <span class="product-link__title">{{ product.title }}</span>
           <span class="product-link__readmore"
-            >{{ $t("link.readmore") }} &rarr;</span
+            >{{ $t("navigation.readmore") }} &rarr;</span
           >
         </div>
       </g-link>

@@ -1,7 +1,16 @@
 <template>
   <section class="article-grid">
-    <h2 class="article-grid__title">
-      Learn more <strong>about our latest news and reviews</strong>
+    <h2 v-if="heading" class="article-grid__title">
+      <block-content
+        :blocks="heading._rawNo"
+        v-if="heading._rawNo && $context.locale == 'no'"
+        class="block-content body"
+      />
+      <block-content
+        :blocks="heading._rawEn"
+        v-else-if="heading._rawEn && $context.locale == 'en'"
+        class="block-content body"
+      />
     </h2>
     <div class="article-grid__scroll">
       <ArticleItem
@@ -71,16 +80,19 @@ query {
 
 <script>
 import ArticleItem from "@/components/articles/ArticleItem";
+import BlockContent from "@/components/tools/BlockContent";
 
 export default {
   components: {
     ArticleItem,
+    BlockContent,
   },
   props: {
     limit: {
       type: Number,
       default: 6,
     },
+    heading: Object,
   },
   methods: {
     getLocaleArticles() {
@@ -92,7 +104,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .article-grid {
   padding: var(--spacing-sitepadding) var(--spacing-sitepadding)
     calc(var(--spacing-sitepadding) * 2);
@@ -106,9 +118,13 @@ export default {
     line-height: 1.2;
     font-weight: 400;
     color: var(--color-lightgray);
+    padding-bottom: 0.75rem;
     strong {
       font-weight: 400;
       color: var(--color-black);
+    }
+    p {
+      margin-bottom: 0;
     }
   }
   &__scroll {

@@ -9,11 +9,10 @@
     "newsletter": "Nyhetsbrev",
     "reseller": "Bli en forhandler"
   },
-  "link": {
-    "readmoreabout": "Les mer om",
-    "readmore": "Les mer"
-  },
-  "messages": {
-    "welcome": "jadda"
+  "navigation": {
+    "readmore": "Les mer",
+    "showall": "Vis alle",
+    "shopSearchLabel": "Søk",
+    "shopSearchPlaceholder": "Søk på by, navn, etc."
   }
 }

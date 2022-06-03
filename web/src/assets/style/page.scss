@@ -52,7 +52,7 @@ input[type="text"] {
   border-radius: var(--border-radius-l);
   font-size: var(--font-size-s);
   padding: 0.5rem 1rem;
-  margin: 1rem 1rem 1rem 0;
+  margin: 0;
   cursor: pointer;
   &:focus {
     border: 1px solid var(--color-active);

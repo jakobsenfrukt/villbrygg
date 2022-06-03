@@ -9,6 +9,11 @@ export default {
       type: 'pageHeader'
     },
     {
+      title: 'Products heading',
+      name: 'productText',
+      type: 'localeSimpleBody'
+    },
+    {
       title: 'Featured products',
       name: 'featuredProducts',
       type: 'array',
@@ -23,6 +28,11 @@ export default {
           ]
         }
       ]
+    },
+    {
+      title: 'Articles heading',
+      name: 'articleText',
+      type: 'localeSimpleBody'
     },
     {
       title: 'Featured articles (English)',

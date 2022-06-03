@@ -9,11 +9,10 @@
     "newsletter": "Newsletter",
     "reseller": "Become a reseller"
   },
-  "link": {
-    "readmoreabout": "Read more about",
-    "readmore": "Read more"
-  },
-  "messages": {
-    "welcome": "HI there"
+  "navigation": {
+    "readmore": "Read more",
+    "showall": "Show all",
+    "shopSearchLabel": "Search",
+    "shopSearchPlaceholder": "Search by city, name, etc."
   }
 }

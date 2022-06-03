@@ -1,7 +1,16 @@
 <template>
   <section class="product-grid">
-    <h2 class="product-grid__title">
-      Experience <strong>amazing flavours with a good conscience</strong>
+    <h2 v-if="heading" class="product-grid__title">
+      <block-content
+        :blocks="heading._rawNo"
+        v-if="heading._rawNo && $context.locale == 'no'"
+        class="block-content body"
+      />
+      <block-content
+        :blocks="heading._rawEn"
+        v-else-if="heading._rawEn && $context.locale == 'en'"
+        class="block-content body"
+      />
     </h2>
     <ProductItem
       v-for="product in $static.products.edges.slice(0, limit)"
@@ -67,21 +76,24 @@ query {
 
 <script>
 import ProductItem from "@/components/products/ProductItem";
+import BlockContent from "@/components/tools/BlockContent";
 
 export default {
   components: {
     ProductItem,
+    BlockContent,
   },
   props: {
     limit: {
       type: Number,
       default: 12,
     },
+    heading: Object,
   },
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -100,6 +112,9 @@ export default {
     strong {
       font-weight: 400;
       color: var(--color-black);
+    }
+    p {
+      margin-bottom: 0;
     }
   }
 }

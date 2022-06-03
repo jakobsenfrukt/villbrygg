@@ -3,10 +3,10 @@
     <section
       v-for="(category, index) in $static.productCategories.edges"
       :key="index"
-      class="product-grid"
+      class="product-grid-sorted"
     >
       <div
-        class="product-grid__text"
+        class="product-grid-sorted__text"
         :style="`--category-color: ${category.node.color.hex}`"
       >
         <h2 class="category-title">
@@ -118,7 +118,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.product-grid {
+.product-grid-sorted {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 0.75rem;
@@ -147,12 +147,12 @@ export default {
   }
 }
 /*@media (min-width: 1800px) {
-  .product-grid {
+  .product-grid-sorted {
     grid-template-columns: repeat(4, 1fr);
   }
 }*/
 @media (max-width: 1000px) {
-  .product-grid {
+  .product-grid-sorted {
     grid-template-columns: repeat(2, 1fr);
   }
 }
