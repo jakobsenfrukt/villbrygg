@@ -30,136 +30,98 @@
           :key="`country-${index}`"
           class="country"
         >
-          <h2 class="country-heading">
+          <h2 class="list-heading country-name">
             {{ country.node.name[$context.locale] }}
           </h2>
 
-          <ul class="location-list">
-            <li class="location online" v-if="country.node.online.length">
-              <h3 class="location-heading">Online</h3>
-              <ul class="shops">
+          <ul class="country-list">
+            <li class="online accordion" v-if="$page.onlineShops.edges.length">
+              <h3 class="list-heading online">Online</h3>
+              <ul class="location-list">
                 <li
-                  v-for="(online, index) in country.node.online"
-                  :key="`online-${index}`"
-                  class="shop"
+                  v-for="(onlineShop, index) in $page.onlineShops.edges"
+                  :key="`onlineShop-${index}`"
+                  class="location"
                 >
-                  {{ online.name[$context.locale] }}
+                  <h5 class="location-name">
+                    {{ onlineShop.node.name }}
+                  </h5>
+                  <p>
+                    The standard chunk of Lorem Ipsum used since the 1500s is
+                    reproduced below for those interested.
+                  </p>
+                  <a
+                    v-if="onlineShop.node.website"
+                    :href="onlineShop.node.website"
+                    >{{ onlineShop.node.website }}</a
+                  >
                 </li>
               </ul>
             </li>
             <li
               v-for="(city, index) in $page.cities.edges"
               :key="`city-${index}`"
-              class="location city"
+              class="city accordion"
             >
-              <h3 class="location-heading">
-                {{ city.node.name[$context.locale] }}
-              </h3>
-              <ul class="shop-list" v-if="city.node.shops.length">
-                <li
-                  v-for="(shop, index) in city.node.shops"
-                  :key="`shop-${index}`"
-                  class="shop"
+              <div class="city-wrapper" v-if="getLocationsByCity(city).length">
+                <h3 class="list-heading city-name">
+                  {{ city.node.name[$context.locale] }}
+                </h3>
+                <ul
+                  class="category-list"
+                  v-if="getLocationsByCity(city).length"
                 >
-                  <h4 class="shop-name">{{ shop.name[$context.locale] }}</h4>
-                  <block-content
-                    :blocks="shop.text._rawNo"
-                    v-if="shop.text._rawNo && $context.locale == 'no'"
-                    class="block-content"
-                  />
-                  <block-content
-                    :blocks="shop.text._rawEn"
-                    v-else-if="shop.text._rawEn && $context.locale == 'en'"
-                    class="block-content"
-                  />
-                </li>
-
-                <li
-                  v-for="(shop, index) in city.node.shops"
-                  :key="`shop-${index}`"
-                  class="shop"
-                >
-                  <h4 class="shop-name">{{ shop.name[$context.locale] }}</h4>
-                  <block-content
-                    :blocks="shop.text._rawNo"
-                    v-if="shop.text._rawNo && $context.locale == 'no'"
-                    class="block-content"
-                  />
-                  <block-content
-                    :blocks="shop.text._rawEn"
-                    v-else-if="shop.text._rawEn && $context.locale == 'en'"
-                    class="block-content"
-                  />
-                </li>
-                <li
-                  v-for="(shop, index) in city.node.shops"
-                  :key="`shop-${index}`"
-                  class="shop"
-                >
-                  <h4 class="shop-name">{{ shop.name[$context.locale] }}</h4>
-                  <block-content
-                    :blocks="shop.text._rawNo"
-                    v-if="shop.text._rawNo && $context.locale == 'no'"
-                    class="block-content"
-                  />
-                  <block-content
-                    :blocks="shop.text._rawEn"
-                    v-else-if="shop.text._rawEn && $context.locale == 'en'"
-                    class="block-content"
-                  />
-                </li>
-                <li
-                  v-for="(shop, index) in city.node.shops"
-                  :key="`shop-${index}`"
-                  class="shop"
-                >
-                  <h4 class="shop-name">{{ shop.name[$context.locale] }}</h4>
-                  <block-content
-                    :blocks="shop.text._rawNo"
-                    v-if="shop.text._rawNo && $context.locale == 'no'"
-                    class="block-content"
-                  />
-                  <block-content
-                    :blocks="shop.text._rawEn"
-                    v-else-if="shop.text._rawEn && $context.locale == 'en'"
-                    class="block-content"
-                  />
-                </li>
-                <li
-                  v-for="(shop, index) in city.node.shops"
-                  :key="`shop-${index}`"
-                  class="shop"
-                >
-                  <h4 class="shop-name">{{ shop.name[$context.locale] }}</h4>
-                  <block-content
-                    :blocks="shop.text._rawNo"
-                    v-if="shop.text._rawNo && $context.locale == 'no'"
-                    class="block-content"
-                  />
-                  <block-content
-                    :blocks="shop.text._rawEn"
-                    v-else-if="shop.text._rawEn && $context.locale == 'en'"
-                    class="block-content"
-                  />
-                </li>
-                <li
-                  v-for="(shop, index) in city.node.shops"
-                  :key="`shop-${index}`"
-                  class="shop"
-                >
-                  <h4 class="shop-name">{{ shop.name[$context.locale] }}</h4>
-                  <block-content
-                    :blocks="shop.text._rawNo"
-                    v-if="shop.text._rawNo && $context.locale == 'no'"
-                    class="block-content"
-                  />
-                  <block-content
-                    :blocks="shop.text._rawEn"
-                    v-else-if="shop.text._rawEn && $context.locale == 'en'"
-                    class="block-content"
-                  />
-                </li>
-              </ul>
+                  <li
+                    v-for="(category, index) in $page.categories.edges"
+                    :key="`category-${index}`"
+                    class="locations-category"
+                  >
+                    <div
+                      class="category-wrapper"
+                      v-if="getLocationsByCategory(city, category).length"
+                    >
+                      <h4 class="list-heading category-name">
+                        {{ category.node.title[$context.locale] }}
+                      </h4>
+                      <ul class="location-list">
+                        <li
+                          v-for="(location, index) in getLocationsByCategory(
+                            city,
+                            category
+                          )"
+                          :key="`location-${index}`"
+                          class="location"
+                        >
+                          <h5 class="location-name">
+                            {{ location.node.name }}
+                          </h5>
+                          <p>
+                            The standard chunk of Lorem Ipsum used since the
+                            1500s is reproduced below for those interested.
+                          </p>
+                          <a
+                            v-if="location.node.website"
+                            :href="location.node.website"
+                            >{{ location.node.website }}</a
+                          >
+                          <!--<block-content
+                        :blocks="location.node.text._rawNo"
+                        v-if="location.node.text._rawNo && $context.locale == 'no'"
+                        class="block-content"
+                      />
+                      <block-content
+                        :blocks="location.node.text._rawEn"
+                        v-else-if="
+                          location.node.text._rawEn && $context.locale == 'en'
+                        "
+                        class="block-content"
+                      />-->
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </li>
           </ul>
         </li>
@@ -208,18 +170,60 @@ query {
       }
     }
   }
+  locations: allSanityLocation(sortBy: "name", order: ASC) {
+    edges {
+      node {
+        category {
+          title {
+            no
+            en
+          }
+        }
+        city {
+          name {
+            no
+            en
+          }
+        }
+        name
+        website
+        text {
+          _rawNo
+          _rawEn
+        }
+      }
+    }
+  }
+  onlineShops: allSanityOnlineShop(sortBy: "name", order: ASC) {
+    edges {
+      node {
+        category {
+          title {
+            no
+            en
+          }
+        }
+        countries {
+          name {
+            no
+            en
+          }
+        }
+        name
+        website
+        text {
+          _rawNo
+          _rawEn
+        }
+      }
+    }
+  }
   countries: allSanityShopsCountry(sortBy: "name", order: ASC) {
     edges {
       node {
         name {
           no
           en
-        }
-        online {
-          name {
-            no
-            en
-          }
         }
       }
     }
@@ -230,22 +234,6 @@ query {
         name {
           no
           en
-        }
-        shops {
-          category {
-            title {
-              no
-              en
-            }
-          }
-          name {
-            no
-            en
-          }
-          text {
-            _rawNo
-            _rawEn
-          }
         }
       }
     }
@@ -277,6 +265,23 @@ export default {
       currentCategory: "all",
     };
   },
+  methods: {
+    getOnlineShopsByCountry(country) {
+      return this.$page.onlineShops.edges;
+    },
+    getLocationsByCity(city) {
+      return this.$page.locations.edges.filter(
+        (item) => item.node.city.name.en === city.node.name.en
+      );
+    },
+    getLocationsByCategory(city, category) {
+      return this.$page.locations.edges.filter(
+        (item) =>
+          item.node.city.name.en === city.node.name.en &&
+          item.node.category.title.en === category.node.title.en
+      );
+    },
+  },
   metaInfo: {
     title: "Shops",
   },
@@ -304,38 +309,46 @@ h3 {
     text-transform: uppercase;
   }
 }
-.location {
+.accordion {
   border-top: 1px solid var(--color-lightgray);
+  position: relative;
+  &:after {
+    content: "+";
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: var(--font-size-l);
+    font-weight: 400;
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+  }
   &:last-of-type {
     border-bottom: 1px solid var(--color-lightgray);
   }
-  &-heading {
+  .list-heading {
     font-size: var(--font-size-l);
     margin: 1.5rem 0;
-    position: relative;
-    &:after {
-      content: "+";
-      position: absolute;
-      top: 0;
-      right: 0;
-      font-size: var(--font-size-l);
-      font-weight: 400;
-      transform: rotate(0deg);
-      transition: transform 0.3s ease;
+    &.online,
+    &.category-name {
+      font-size: var(--font-size-s);
+      color: var(--color-green);
     }
   }
 }
-.shop-list {
-  margin: 2rem 10%;
+.location-list {
+  margin: 2rem 0;
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 2rem;
 }
-.shop {
-  grid-column: span 2;
+.location {
+  grid-column: span 1;
   &-name {
     font-size: var(--font-size-m);
     margin-bottom: 0.5rem;
+  }
+  p {
+    font-size: var(--font-size-xs);
   }
 }
 </style>
