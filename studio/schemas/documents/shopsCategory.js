@@ -9,6 +9,15 @@ export default {
       title: 'Category title'
     }
   ],
+  orderings: [
+    {
+      title: 'Title A-Z',
+      name: 'titleAsc',
+      by: [
+        {field: 'title.en', direction: 'asc'}
+      ]
+    }
+  ],
   preview: {
     select: {
       title: 'title.en'

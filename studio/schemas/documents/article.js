@@ -57,6 +57,15 @@ export default {
       title: 'Lead'
     }
   ],
+  orderings: [
+    {
+      title: 'Title A-Z',
+      name: 'titleAsc',
+      by: [
+        {field: 'title', direction: 'asc'}
+      ]
+    }
+  ],
   preview: {
     select: {
       title: 'title',

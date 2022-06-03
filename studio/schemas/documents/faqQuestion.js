@@ -21,6 +21,15 @@ export default {
       title: 'Answer'
     }
   ],
+  orderings: [
+    {
+      title: 'Question A-Z',
+      name: 'questionAsc',
+      by: [
+        {field: 'question.en', direction: 'asc'}
+      ]
+    }
+  ],
   preview: {
     select: {
       title: 'question.en'

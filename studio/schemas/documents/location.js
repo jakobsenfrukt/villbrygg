@@ -39,9 +39,9 @@ export default {
   orderings: [
     {
       title: 'Name A-Z',
-      name: 'nameDesc',
+      name: 'nameAsc',
       by: [
-        {field: 'name', direction: 'desc'}
+        {field: 'name', direction: 'asc'}
       ]
     }
   ],

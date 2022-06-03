@@ -3,7 +3,7 @@ import S from '@sanity/desk-tool/structure-builder'
 import { MdSettings, MdLiquor, MdQuestionAnswer, MdInfo, MdLocationPin, MdArticle, MdOutlineArticle, MdStore, MdLocationCity, MdPublic, MdHome, MdCategory, MdEmail, MdPeople, MdLaptopMac, MdAddBusiness } from 'react-icons/md'
 
 const hiddenDocTypes = listItem =>
-  !['general', 'article', 'about', 'faq', 'faqQuestion', 'faqCategory', 'shops', 'onlineShop', 'location', 'shopsCountry', 'shopsCity', 'shopsCategory', 'articlesCategory', 'productCategory', 'frontpage', 'contactpage', 'productpage', 'person', 'reseller'].includes(listItem.getId())
+  !['general', 'product', 'article', 'about', 'faq', 'faqQuestion', 'faqCategory', 'shops', 'onlineShop', 'location', 'shopsCountry', 'shopsCity', 'shopsCategory', 'articlesCategory', 'productCategory', 'frontpage', 'contactpage', 'productpage', 'person', 'reseller'].includes(listItem.getId())
 
 export default () =>
   S.list()
@@ -96,11 +96,12 @@ export default () =>
                     .title('Online shops by country')
                     .id('shopsCountries')
                     .filter('_type == "shopsCountry"')
+                    .defaultOrdering([{field: 'name.en', direction: 'asc'}])
+                    .menuItems(S.documentTypeList('shopsCountry').getMenuItems())
                     .child(id =>
-                    S.documentList('onlineShop')
+                    S.documentList()
                       .id('onlineShop')
                       .title('Online Shops')
-                      .schemaType('onlineShop')
                       .filter('_type == "onlineShop" && $id in countries[]._ref')
                       .params({id})
                       .defaultOrdering([{field: 'name', direction: 'asc'}])
@@ -115,12 +116,16 @@ export default () =>
                     .title('Locations by city')
                     .id('shopsCities')
                     .filter('_type == "shopsCity"')
+                    .defaultOrdering([{field: 'name.en', direction: 'asc'}])
+                    .menuItems(S.documentTypeList('shopsCity').getMenuItems())
                     .child(id =>
                     S.documentList()
                       .id('locations')
                       .title('Locations')
                       .filter('_type == "location" && city._ref == $id')
                       .params({id})
+                      .defaultOrdering([{field: 'name', direction: 'asc'}])
+                      .menuItems(S.documentTypeList('location').getMenuItems())
                     ) 
                 ),
                 S.listItem()
@@ -131,12 +136,16 @@ export default () =>
                     .title('Cities by country')
                     .id('shopsCountries')
                     .filter('_type == "shopsCountry"')
+                    .defaultOrdering([{field: 'name.en', direction: 'asc'}])
+                    .menuItems(S.documentTypeList('shopsCountry').getMenuItems())
                     .child(id =>
                     S.documentList()
                       .id('cities')
                       .title('Cities')
                       .filter('_type == "shopsCity" && country._ref == $id')
                       .params({id})
+                      .defaultOrdering([{field: 'name.en', direction: 'asc'}])
+                      .menuItems(S.documentTypeList('shopsCity').getMenuItems())
                     ) 
                 ),
                 S.listItem()
@@ -148,6 +157,8 @@ export default () =>
                     .id('shopsCountries')
                     .title('Countries')
                     .filter('_type == "shopsCountry"')
+                    .defaultOrdering([{field: 'name.en', direction: 'asc'}])
+                    .menuItems(S.documentTypeList('shopsCountry').getMenuItems())
                 ),
                 S.listItem()
                 .title('Categories')
@@ -158,6 +169,8 @@ export default () =>
                     .id('shopsCategories')
                     .title('Categories')
                     .filter('_type == "shopsCategory"')
+                    .defaultOrdering([{field: 'title.en', direction: 'asc'}])
+                    .menuItems(S.documentTypeList('shopsCategory').getMenuItems())
                 )
               ]
             )
@@ -180,6 +193,8 @@ export default () =>
                     .id('noArticles')
                     .title('Norwegian articles')
                     .filter('_type == "article" && (!defined(locale) || locale == "no")')
+                    .defaultOrdering([{field: 'title', direction: 'asc'}])
+                    .menuItems(S.documentTypeList('article').getMenuItems())
                 ),
                 S.listItem()
                 .title('English')
@@ -190,6 +205,8 @@ export default () =>
                     .id('enArticles')
                     .title('English articles')
                     .filter('_type == "article" && (!defined(locale) || locale == "en")')
+                    .defaultOrdering([{field: 'title', direction: 'asc'}])
+                    .menuItems(S.documentTypeList('article').getMenuItems())
                 ),
                 S.listItem()
                 .title('Categories')
@@ -242,6 +259,8 @@ export default () =>
                     .id('faqQuestions')
                     .title('Questions')
                     .filter('_type == "faqQuestion"')
+                    .defaultOrdering([{field: 'question.en', direction: 'asc'}])
+                    .menuItems(S.documentTypeList('faqQuestion').getMenuItems())
                 ),
                 S.listItem()
                 .title('Categories')
@@ -252,6 +271,8 @@ export default () =>
                     .id('faqCategories')
                     .title('Categories')
                     .filter('_type == "faqCategory"')
+                    .defaultOrdering([{field: 'title.en', direction: 'asc'}])
+                    .menuItems(S.documentTypeList('faqCategory').getMenuItems())
                 )
               ]
             )
@@ -284,6 +305,8 @@ export default () =>
                     .id('people')
                     .title('People')
                     .filter('_type == "person"')
+                    .defaultOrdering([{field: 'name', direction: 'asc'}])
+                    .menuItems(S.documentTypeList('person').getMenuItems())
                 )
               ]
             )
