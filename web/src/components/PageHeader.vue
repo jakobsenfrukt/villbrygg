@@ -1,5 +1,5 @@
 <template>
-  <header class="page-header" :class="content.images.length ? '' : 'noimage'">
+  <header class="page-header" :class="content.images ? '' : 'noimage'">
     <div class="text">
       <h1 class="heading" v-if="content.heading">
         {{ content.heading[$context.locale] }}
