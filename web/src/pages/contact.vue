@@ -52,6 +52,7 @@ query {
         no
         en
       }
+      email
       image {
         asset {
           _id

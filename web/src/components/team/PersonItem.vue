@@ -18,6 +18,9 @@
       {{ person.name }}
       <span class="person-title">{{ person.title[$context.locale] }}</span>
     </h2>
+    <a :href="`mailto:${person.email}`" class="person-email" target="_blank">{{
+      person.email
+    }}</a>
   </li>
 </template>
 

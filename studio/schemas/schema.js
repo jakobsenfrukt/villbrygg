@@ -15,6 +15,8 @@ import faq from './documents/faq'
 import faqQuestion from './documents/faqQuestion'
 import faqCategory from './documents/faqCategory'
 import shops from './documents/shops'
+import location from './documents/location'
+import onlineShop from './documents/onlineShop'
 import shopsCity from './documents/shopsCity'
 import shopsCountry from './documents/shopsCountry'
 import shopsCategory from './documents/shopsCategory'
@@ -24,6 +26,7 @@ import frontpage from './documents/frontpage'
 import contactpage from './documents/contactpage'
 import productpage from './documents/productpage'
 import person from './documents/person'
+import reseller from './documents/reseller'
 
 // objects
 import body from './objects/body'
@@ -33,8 +36,8 @@ import simpleBody from './objects/simpleBody'
 import contact from './objects/contact'
 import newsletter from './objects/newsletter'
 import seo from './objects/seo'
-import shop from './objects/shop'
 import pageHeader from './objects/pageHeader'
+import shop from './objects/shop'
 
 // localized objects
 import localeString from './objects/localeString'
@@ -60,6 +63,8 @@ export default createSchema({
     faqQuestion,
     faqCategory,
     shops,
+    location,
+    onlineShop,
     shopsCity,
     shopsCountry,
     shopsCategory,
@@ -69,6 +74,7 @@ export default createSchema({
     contactpage,
     productpage,
     person,
+    reseller,
     // objects
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas

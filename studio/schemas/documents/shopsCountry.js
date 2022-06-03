@@ -6,16 +6,9 @@ export default {
     {
       name: 'name',
       type: 'localeString',
-      title: 'Country name'
+      title: 'Country name',
+      validation: Rule => Rule.required(),
     },
-    {
-      name: 'online',
-      type: 'array',
-      title: 'Online shops',
-      of: [{
-        type: 'shop'
-      }]
-    }
   ],
   preview: {
     select: {

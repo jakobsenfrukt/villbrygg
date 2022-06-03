@@ -1,9 +1,9 @@
 import S from '@sanity/desk-tool/structure-builder'
 
-import { MdSettings, MdLiquor, MdQuestionAnswer, MdInfo, MdLocationPin, MdArticle, MdOutlineArticle, MdStore, MdLocationCity, MdPublic, MdHome, MdCategory, MdEmail, MdPeople } from 'react-icons/md'
+import { MdSettings, MdLiquor, MdQuestionAnswer, MdInfo, MdLocationPin, MdArticle, MdOutlineArticle, MdStore, MdLocationCity, MdPublic, MdHome, MdCategory, MdEmail, MdPeople, MdLaptopMac, MdAddBusiness } from 'react-icons/md'
 
 const hiddenDocTypes = listItem =>
-  !['general', 'product', 'article', 'about', 'faq', 'faqQuestion', 'faqCategory', 'shops', 'shopsCountry', 'shopsCity', 'shopsCategory', 'articlesCategory', 'productCategory', 'frontpage', 'contactpage', 'productpage', 'person'].includes(listItem.getId())
+  !['general', 'article', 'about', 'faq', 'faqQuestion', 'faqCategory', 'shops', 'onlineShop', 'location', 'shopsCountry', 'shopsCity', 'shopsCategory', 'articlesCategory', 'productCategory', 'frontpage', 'contactpage', 'productpage', 'person', 'reseller'].includes(listItem.getId())
 
 export default () =>
   S.list()
@@ -55,20 +55,16 @@ export default () =>
                 .schemaType('product')
                 .icon(MdLiquor)
                 .child(
-                  S.documentList()
-                    .id('allProducts')
+                  S.documentTypeList('product')
                     .title('Product list')
-                    .filter('_type == "product"')
                 ),
                 S.listItem()
                 .title('Categories')
                 .schemaType('productCategory')
                 .icon(MdCategory)
                 .child(
-                  S.documentList()
-                    .id('productCategories')
+                  S.documentTypeList('productCategory')
                     .title('Categories')
-                    .filter('_type == "productCategory"')
                 )
               ]
             )
@@ -93,14 +89,55 @@ export default () =>
                     .documentId('shops')
                 ),
                 S.listItem()
+                .title('Online shops')
+                .icon(MdLaptopMac)
+                .child(
+                  S.documentList()
+                    .title('Online shops by country')
+                    .id('shopsCountries')
+                    .filter('_type == "shopsCountry"')
+                    .child(id =>
+                    S.documentList('onlineShop')
+                      .id('onlineShop')
+                      .title('Online Shops')
+                      .schemaType('onlineShop')
+                      .filter('_type == "onlineShop" && $id in countries[]._ref')
+                      .params({id})
+                      .defaultOrdering([{field: 'name', direction: 'asc'}])
+                      .menuItems(S.documentTypeList('onlineShop').getMenuItems())
+                    ) 
+                ),
+                S.listItem()
+                .title('Locations')
+                .icon(MdLocationPin)
+                .child(
+                  S.documentList()
+                    .title('Locations by city')
+                    .id('shopsCities')
+                    .filter('_type == "shopsCity"')
+                    .child(id =>
+                    S.documentList()
+                      .id('locations')
+                      .title('Locations')
+                      .filter('_type == "location" && city._ref == $id')
+                      .params({id})
+                    ) 
+                ),
+                S.listItem()
                 .title('Cities')
-                .schemaType('shopsCity')
                 .icon(MdLocationCity)
                 .child(
                   S.documentList()
-                    .id('shopsCities')
-                    .title('Cities')
-                    .filter('_type == "shopsCity"')
+                    .title('Cities by country')
+                    .id('shopsCountries')
+                    .filter('_type == "shopsCountry"')
+                    .child(id =>
+                    S.documentList()
+                      .id('cities')
+                      .title('Cities')
+                      .filter('_type == "shopsCity" && country._ref == $id')
+                      .params({id})
+                    ) 
                 ),
                 S.listItem()
                 .title('Countries')
@@ -250,6 +287,16 @@ export default () =>
                 )
               ]
             )
+        ),
+      S.listItem()
+        .title('Become a reseller')
+        .icon(MdAddBusiness)
+        .child(
+          S.editor()
+            .title('Become a reseller')
+            .id('reseller')
+            .schemaType('reseller')
+            .documentId('reseller')
         ),
       // This returns an array of all the document types
       // defined in schema.js. We filter out those that we have

@@ -8,20 +8,14 @@ export default {
       type: 'reference',
       to: [
         {type: 'shopsCountry'}
-      ]
+      ],
+      validation: Rule => Rule.required(),
     },
     {
       name: 'name',
       type: 'localeString',
-      title: 'City name'
-    },
-    {
-      name: 'shops',
-      type: 'array',
-      title: 'Locations',
-      of: [{
-        type: 'shop'
-      }]
+      title: 'City name',
+      validation: Rule => Rule.required(),
     }
   ],
   preview: {
