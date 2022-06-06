@@ -246,7 +246,7 @@ query {
       }
     }
   }
-  categories: allSanityShopsCategory(sortBy: "name", order: ASC) {
+  categories: allSanityShopsCategory(sortBy: "title", order: ASC) {
     edges {
       node {
         title {

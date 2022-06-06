@@ -70,7 +70,7 @@
             >
           </li>
           <li>
-            <g-link class="nav__link" :to="$tp('/')">{{
+            <g-link class="nav__link" :to="$tp('/reseller/')">{{
               $t("menu.reseller")
             }}</g-link>
           </li>
