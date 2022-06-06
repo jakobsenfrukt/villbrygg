@@ -112,7 +112,7 @@ export default {
   border-bottom-right-radius: var(--border-radius-l);
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .page-header {
     .text {
       grid-column: 1 / -1;
