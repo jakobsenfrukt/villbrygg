@@ -13,17 +13,20 @@
       />
     </h2>
     <div class="article-grid__scroll">
-      <ArticleItem
-        v-for="article in getLocaleArticles().slice(0, limit)"
-        :key="article.id"
-        :article="article.node"
-      />
-
-      <ArticleItem
-        v-for="article in getLocaleArticles().slice(0, limit)"
-        :key="article.id"
-        :article="article.node"
-      />
+      <template v-if="items">
+        <ArticleItem
+          v-for="article in items.slice(0, limit)"
+          :key="article.id"
+          :article="article"
+        />
+      </template>
+      <template v-else>
+        <ArticleItem
+          v-for="article in getLocaleArticles().slice(0, limit)"
+          :key="article.id"
+          :article="article.node"
+        />
+      </template>
     </div>
   </section>
 </template>
@@ -88,6 +91,10 @@ export default {
     BlockContent,
   },
   props: {
+    items: {
+      type: Array,
+      default: undefined,
+    },
     limit: {
       type: Number,
       default: 6,

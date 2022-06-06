@@ -12,11 +12,20 @@
         class="block-content body"
       />
     </h2>
-    <ProductItem
-      v-for="product in $static.products.edges.slice(0, limit)"
-      :key="product.id"
-      :product="product.node"
-    />
+    <template v-if="items">
+      <ProductItem
+        v-for="product in items.slice(0, limit)"
+        :key="product.id"
+        :product="product"
+      />
+    </template>
+    <template v-else>
+      <ProductItem
+        v-for="product in $static.products.edges.slice(0, limit)"
+        :key="product.id"
+        :product="product.node"
+      />
+    </template>
   </section>
 </template>
 
@@ -84,11 +93,22 @@ export default {
     BlockContent,
   },
   props: {
+    items: {
+      type: Array,
+      default: undefined,
+    },
     limit: {
       type: Number,
       default: 12,
     },
     heading: Object,
+  },
+  methods: {
+    shuffle(array) {
+      return array
+        .filter((item) => item.node.id != this.current)
+        .sort(() => Math.random() - Math.random());
+    },
   },
 };
 </script>
