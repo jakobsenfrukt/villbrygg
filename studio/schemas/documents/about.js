@@ -19,6 +19,10 @@ export default {
       type: 'localeBody',
     },
     {
+      name: 'pageContent',
+      type: 'localePageContent'
+    },
+    {
       name: 'info',
       title: 'Background info',
       type: 'localeText'

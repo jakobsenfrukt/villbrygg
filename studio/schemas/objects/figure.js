@@ -14,6 +14,15 @@ export default {
       options: {
         isHighlighted: true
       }
+    },
+    {
+      name: 'caption',
+      type: 'string',
+      title: 'Caption',
+      description: '(optional)',
+      options: {
+        isHighlighted: true
+      }
     }
   ],
   preview: {

@@ -1,3 +1,9 @@
+import React from 'react'
+
+const QuoteStyle = props => (
+  <blockquote style={{fontSize: '1.25em'}}>{props.children}</blockquote>
+)
+
 export default {
   title: 'Body',
   name: 'body',
@@ -16,7 +22,9 @@ export default {
         {title: 'H2', value: 'h2'},
         {title: 'H3', value: 'h3'},
         {title: 'H4', value: 'h4'},
-        {title: 'Quote', value: 'blockquote'},
+        {title: 'Quote', value: 'blockquote', blockEditor: {
+          render: QuoteStyle
+        }}
       ],
       lists: [{title: 'Bullet', value: 'bullet'}, {title: 'Number', value: 'number'}],
       // Marks let you mark up inline text in the block editor.
@@ -56,6 +64,6 @@ export default {
     {
       type: 'figure',
       options: {hotspot: true},
-    },
+    }
   ],
 }

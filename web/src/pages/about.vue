@@ -2,16 +2,30 @@
   <Layout>
     <PageHeader :content="$page.about.pageHeader" />
     <main class="page-content about-content">
-      <block-content
-        :blocks="$page.about.body._rawNo"
-        v-if="$page.about.body._rawNo && $context.locale == 'no'"
-        class="block-content body"
-      />
-      <block-content
-        :blocks="$page.about.body._rawEn"
-        v-else-if="$page.about.body._rawEn && $context.locale == 'en'"
-        class="block-content body"
-      />
+      <template v-if="$context.locale == 'no'">
+        <block-content
+          :blocks="$page.about.body._rawNo"
+          v-if="$page.about.body._rawNo"
+          class="block-content body"
+        />
+        <PageContent
+          :content="$page.about.pageContent.pageContentNo.blocks"
+          v-if="$page.about.pageContent.pageContentNo"
+          class="content-blocks"
+        />
+      </template>
+      <template v-else-if="$context.locale == 'en'">
+        <block-content
+          :blocks="$page.about.body._rawEn"
+          v-if="$page.about.body._rawEn"
+          class="block-content body"
+        />
+        <PageContent
+          :content="$page.about.pageContent.pageContentEn.blocks"
+          v-if="$page.about.pageContent.pageContentEn"
+          class="content-blocks"
+        />
+      </template>
       <p v-if="$page.about.info" class="background-info">
         {{ $page.about.info[$context.locale] }}
       </p>
@@ -66,6 +80,118 @@ query {
       _rawEn
       _rawNo
     }
+    pageContent {
+      pageContentNo {
+        blocks {
+          ... on SanityBodyBlock {
+            _type
+            _rawBody
+          }
+          ... on SanityTextBlock {
+            _type
+            text
+          }
+          ... on SanityFigure {
+            _type
+            asset {
+              _id
+              url
+            }
+            alt
+            caption
+          }
+          ... on SanityImageAndText {
+            _type
+            image {
+              asset {
+                _id
+                url
+              }
+              alt
+              caption
+            }
+            text
+          }
+          ... on SanityFigureTwoColumn {
+            _type
+            images {
+              asset {
+                _id
+                url
+              }
+              alt
+              caption
+            }
+          }
+          ... on SanityImageGallery {
+            _type
+            images {
+              asset {
+                _id
+                url
+              }
+              alt
+              caption
+            }
+          }
+        }
+      }
+      pageContentEn {
+        blocks {
+          ... on SanityBodyBlock {
+            _type
+            _rawBody
+          }
+          ... on SanityTextBlock {
+            _type
+            text
+          }
+          ... on SanityFigure {
+            _type
+            asset {
+              _id
+              url
+            }
+            alt
+            caption
+          }
+          ... on SanityImageAndText {
+            _type
+            image {
+              asset {
+                _id
+                url
+              }
+              alt
+              caption
+            }
+            text
+          }
+          ... on SanityFigureTwoColumn {
+            _type
+            images {
+              asset {
+                _id
+                url
+              }
+              alt
+              caption
+            }
+          }
+          ... on SanityImageGallery {
+            _type
+            images {
+              asset {
+                _id
+                url
+              }
+              alt
+              caption
+            }
+          }
+        }
+      }
+    }
     info {
       no
       en
@@ -77,11 +203,13 @@ query {
 <script>
 import PageHeader from "~/components/PageHeader";
 import BlockContent from "~/components/tools/BlockContent";
+import PageContent from "~/components/PageContent";
 
 export default {
   components: {
     PageHeader,
     BlockContent,
+    PageContent,
   },
   metaInfo: {
     title: "About",
@@ -104,9 +232,14 @@ export default {
     order: 2;
     padding: 0 var(--spacing-sitepadding) var(--spacing-sitepadding) 0;
   }
+  .content-blocks {
+    grid-column: 1 / -1;
+    order: 3;
+  }
   .background-info {
     grid-column: 1 / span 4;
     order: 1;
+    margin-bottom: 3rem;
     padding-right: 3rem;
     font-size: var(--font-size-xs);
     color: var(--color-gray);
@@ -116,7 +249,8 @@ export default {
 @media (max-width: 800px) {
   .about-content {
     .lead,
-    .body {
+    .body,
+    .background-info {
       grid-column: 1 / -1;
       padding-right: 0;
     }

@@ -4,7 +4,6 @@
     :serializers="serializers"
     :projectId="$static.metadata.sanityOptions.projectId"
     :dataset="$static.metadata.sanityOptions.dataset"
-    class="block-content"
   />
 </template>
 
@@ -70,5 +69,9 @@ export default {
     font-weight: 400;
     font-size: var(--font-size-l);
   }
+}
+figcaption {
+  font-size: var(--font-size-xs);
+  margin-top: 0.5rem;
 }
 </style>

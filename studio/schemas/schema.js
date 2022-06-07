@@ -31,13 +31,18 @@ import reseller from './documents/reseller'
 // objects
 import body from './objects/body'
 import figure from './objects/figure'
-import figureCaptioned from './objects/figureCaptioned'
+import figureTwoColumn from './objects/figureTwoColumn'
+import imageGallery from './objects/imageGallery'
+import imageAndText from './objects/imageAndText'
 import simpleBody from './objects/simpleBody'
 import contact from './objects/contact'
 import newsletter from './objects/newsletter'
 import seo from './objects/seo'
-import pageHeader from './objects/pageHeader'
 import shop from './objects/shop'
+import pageHeader from './objects/pageHeader'
+import pageContent from './objects/pageContent'
+import textBlock from './objects/textBlock'
+import bodyBlock from './objects/bodyBlock'
 
 // localized objects
 import localeString from './objects/localeString'
@@ -45,7 +50,7 @@ import localeText from './objects/localeText'
 import localeSimpleBody from './objects/localeSimpleBody'
 import localeBody from './objects/localeBody'
 import localeFigure from './objects/localeFigure'
-import localeFigureCaptioned from './objects/localeFigureCaptioned'
+import localePageContent from './objects/localePageContent'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -80,19 +85,24 @@ export default createSchema({
     // { type: 'typename' } in other document schemas
     body,
     figure,
-    figureCaptioned,
+    figureTwoColumn,
+    imageGallery,
+    imageAndText,
     simpleBody,
     contact,
     newsletter,
     seo,
     shop,
     pageHeader,
+    pageContent,
+    textBlock,
+    bodyBlock,
     // localized objects
     localeString,
     localeText,
     localeSimpleBody,
     localeBody,
     localeFigure,
-    localeFigureCaptioned
+    localePageContent
   ])
 })
