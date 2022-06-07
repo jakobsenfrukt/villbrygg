@@ -72,6 +72,6 @@ export default {
 }
 figcaption {
   font-size: var(--font-size-xs);
-  margin-top: 0.5rem;
+  margin: 0.5rem 0 1rem;
 }
 </style>

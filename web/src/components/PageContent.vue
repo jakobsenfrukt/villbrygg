@@ -137,6 +137,7 @@ export default {
 .content-blocks {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
+  row-gap: 2rem;
   figure {
     margin: 0;
   }
@@ -145,9 +146,13 @@ export default {
     width: 100%;
     border-radius: var(--border-radius);
   }
+  p {
+    margin-bottom: 1rem;
+  }
 }
 .content-block {
   grid-column: 1 / -1;
+  margin: 0;
 }
 .textBlock {
   font-size: var(--font-size-l);
@@ -159,12 +164,12 @@ export default {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   align-items: flex-start;
-  margin: var(--spacing-sitepadding) auto;
 
   p {
     grid-column: 1 / span 4;
     font-size: var(--font-size-l);
     padding-right: 2rem;
+    margin: 0;
   }
   figure {
     grid-column: 5 / span 6;
@@ -175,19 +180,36 @@ export default {
   grid-template-columns: repeat(2, 1fr);
   align-items: flex-start;
   gap: 0.75rem;
-  margin: var(--spacing-sitepadding) auto;
 }
 
 .imageGallery {
   display: flex;
   gap: 0.75rem;
-  margin: var(--spacing-sitepadding) auto;
-  margin: 0 calc(var(--spacing-sitepadding) * -2);
-  padding: calc(var(--spacing-sitepadding) * 1.5)
-    calc(var(--spacing-sitepadding) * 2);
 
   img {
     width: 100%;
+  }
+}
+@media (max-width: 1000px) {
+  .imageAndText {
+    row-gap: 2rem;
+
+    p,
+    figure {
+      grid-column: 1 / -1;
+    }
+    p {
+      margin: 1rem 0;
+    }
+  }
+}
+@media (max-width: 800px) {
+  .imageAndText,
+  .figureTwoColumn {
+    display: block;
+  }
+  .bodyBlock {
+    grid-column: 1 / -1;
   }
 }
 </style>
