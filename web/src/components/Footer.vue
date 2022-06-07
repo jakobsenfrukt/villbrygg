@@ -153,6 +153,7 @@ export default {
 .footer-nav {
   font-size: var(--font-size-l);
   text-align: right;
+  margin-bottom: 1.3rem;
   ul {
     list-style: none;
     margin: 0;

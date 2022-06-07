@@ -1,5 +1,5 @@
 <template>
-  <header class="page-header" :class="content.images ? '' : 'noimage'">
+  <header class="page-header">
     <div class="text">
       <h1 class="heading" v-if="content.heading">
         {{ content.heading[$context.locale] }}
@@ -69,7 +69,6 @@ export default {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
-    padding-bottom: 2rem;
   }
   .heading {
     width: 100%;
@@ -93,6 +92,7 @@ export default {
     width: 100%;
     max-height: 86vh;
     object-fit: cover;
+    margin-top: 2rem;
     &.single {
       grid-column: span 10;
     }

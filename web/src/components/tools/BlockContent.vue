@@ -67,7 +67,7 @@ export default {
     margin: 2.5rem 0 2.8rem;
     padding: 0 20% 0 0;
     font-weight: 400;
-    font-size: var(--font-size-l);
+    font-size: var(--font-size-m);
   }
 }
 figcaption {
