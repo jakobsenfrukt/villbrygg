@@ -3,6 +3,33 @@
   background: var(--color-background);
   border-bottom-left-radius: var(--border-radius-l);
   border-bottom-right-radius: var(--border-radius-l);
+
+  &--grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+
+    .lead {
+      grid-column: 1 / span 4;
+      font-size: var(--font-size-l);
+      padding-right: calc(var(--spacing-sitepadding) * 2);
+    }
+    .body {
+      grid-column: 5 / span 6;
+      order: 2;
+      padding: 0 var(--spacing-sitepadding) var(--spacing-sitepadding) 0;
+    }
+    .content-blocks {
+      grid-column: 1 / -1;
+      order: 3;
+    }
+    @media (max-width: 800px) {
+      .lead,
+      .body {
+        grid-column: 1 / -1;
+        padding-right: 0;
+      }
+    }
+  }
 }
 
 .categories {

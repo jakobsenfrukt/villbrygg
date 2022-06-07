@@ -31,38 +31,20 @@
         </ul>
       </header>
 
-      <main class="page-content article-content">
+      <main class="page-content page-content--grid article-content">
         <p class="lead">
           {{ $page.article.lead }}
         </p>
-        <!--<block-content
+        <block-content
           :blocks="$page.article._rawBody"
           v-if="$page.article._rawBody"
-          class="block-content"
-        />-->
-        <div class="body">
-          <p>
-            Contrary to popular belief, Lorem Ipsum is not simply random text.
-            It has roots in a piece of classical Latin literature from 45 BC,
-            making it over 2000 years old. Richard McClintock, a Latin professor
-            at Hampden-Sydney College in Virginia, looked up one of the more
-            obscure Latin words, consectetur, from a Lorem Ipsum passage, and
-            going through the cites of the word in classical literature,
-            discovered the undoubtable source. Lorem Ipsum comes from sections
-            1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes
-            of Good and Evil) by Cicero, written in 45 BC. This book is a
-            treatise on the theory of ethics, very popular during the
-            Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
-            amet..", comes from a line in section 1.10.32.
-          </p>
-          <p>
-            The standard chunk of Lorem Ipsum used since the 1500s is reproduced
-            below for those interested. Sections 1.10.32 and 1.10.33 from "de
-            Finibus Bonorum et Malorum" by Cicero are also reproduced in their
-            exact original form, accompanied by English versions from the 1914
-            translation by H. Rackham.
-          </p>
-        </div>
+          class="block-content body"
+        />
+        <PageContent
+          :content="$page.article.pageContent.blocks"
+          v-if="$page.article.pageContent"
+          class="content-blocks"
+        />
       </main>
     </div>
   </Layout>
@@ -107,16 +89,74 @@ query article ($id: ID!) {
         right
       }
     }
+    _rawBody
+    pageContent {
+      blocks {
+          ... on SanityBodyBlock {
+            _type
+            _rawBody
+          }
+          ... on SanityTextBlock {
+            _type
+            text
+          }
+          ... on SanityFigure {
+            _type
+            asset {
+              _id
+              url
+            }
+            alt
+            caption
+          }
+          ... on SanityImageAndText {
+            _type
+            image {
+              asset {
+                _id
+                url
+              }
+              alt
+              caption
+            }
+            text
+          }
+          ... on SanityFigureTwoColumn {
+            _type
+            images {
+              asset {
+                _id
+                url
+              }
+              alt
+              caption
+            }
+          }
+          ... on SanityImageGallery {
+            _type
+            images {
+              asset {
+                _id
+                url
+              }
+              alt
+              caption
+            }
+          }
+        }
+    }
   }
 }
 </page-query>
 
 <script>
 import BlockContent from "~/components/tools/BlockContent";
+import PageContent from "~/components/PageContent";
 
 export default {
   components: {
     BlockContent,
+    PageContent,
   },
   metaInfo() {
     return {
@@ -146,7 +186,7 @@ export default {
   gap: calc(var(--spacing-sitepadding) / 2);
 
   .text {
-    min-height: 16rem;
+    min-height: 13rem;
     grid-column: 5 / span 6;
     display: flex;
     align-items: flex-end;

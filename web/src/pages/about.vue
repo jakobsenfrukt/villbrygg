@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <PageHeader :content="$page.about.pageHeader" />
-    <main class="page-content about-content">
+    <main class="page-content page-content--grid about-content">
       <template v-if="$context.locale == 'no'">
         <block-content
           :blocks="$page.about.body._rawNo"
