@@ -134,7 +134,7 @@ export default {
   a {
     color: inherit;
     &:hover {
-      color: var(--color-active);
+      color: var(--color-hover-light);
     }
   }
 }

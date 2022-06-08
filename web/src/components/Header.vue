@@ -184,6 +184,7 @@ export default {
 
     &.active--exact,
     &:hover {
+      color: var(--color-hover-light);
       &:before {
         display: none;
       }

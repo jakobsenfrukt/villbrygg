@@ -148,4 +148,9 @@ export default {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+@media (max-width: 500px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
 </style>

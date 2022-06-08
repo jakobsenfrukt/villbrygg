@@ -120,4 +120,14 @@ export default {
     }
   }
 }
+@media (max-width: 800px) {
+  .page-header {
+    img {
+      grid-column: 1 / -1;
+    }
+    img:nth-of-type(even) {
+      display: none;
+    }
+  }
+}
 </style>

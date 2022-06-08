@@ -100,11 +100,17 @@ export default {
   }
   .localebutton {
     color: var(--color-background);
+    opacity: 0.6;
     &.active {
       color: var(--color-background);
+      opacity: 1;
       &:before {
         background: var(--color-background);
       }
+    }
+    &:hover {
+      opacity: 1;
+      color: inherit;
     }
   }
 }
