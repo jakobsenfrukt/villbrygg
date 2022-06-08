@@ -10,7 +10,9 @@
 
     <Footer />
 
-    <CursorFriend :color="$static.general.cursorColor.hex" />
+    <div class="cursor">
+      <CursorFriend :color="$static.general.cursorColor.hex" />
+    </div>
   </div>
 </template>
 
@@ -45,6 +47,15 @@ export default {
 .layout {
   margin: 0 auto;
   cursor: none;
+
+  .cursor {
+    display: none;
+  }
+  &:hover {
+    .cursor {
+      display: block;
+    }
+  }
 }
 
 .site-main {
