@@ -12,22 +12,20 @@
         class="block-content body"
       />
     </h2>
-    <div class="article-grid__scroll">
-      <template v-if="items">
-        <ArticleItem
-          v-for="article in items.slice(0, limit)"
-          :key="article.id"
-          :article="article"
-        />
-      </template>
-      <template v-else>
-        <ArticleItem
-          v-for="article in getLocaleArticles().slice(0, limit)"
-          :key="article.id"
-          :article="article.node"
-        />
-      </template>
-    </div>
+    <template v-if="items">
+      <ArticleItem
+        v-for="article in items.slice(0, limit)"
+        :key="article.id"
+        :article="article"
+      />
+    </template>
+    <template v-else>
+      <ArticleItem
+        v-for="article in getLocaleArticles().slice(0, limit)"
+        :key="article.id"
+        :article="article.node"
+      />
+    </template>
   </section>
 </template>
 
@@ -113,11 +111,14 @@ export default {
 
 <style lang="scss">
 .article-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: var(--spacing-sitepadding);
   padding: var(--spacing-sitepadding) var(--spacing-sitepadding)
     calc(var(--spacing-sitepadding) * 2);
   background: var(--color-background);
   border-radius: var(--border-radius-l);
-  overflow: hidden;
   &__title {
     grid-column: 1 / -1;
     max-width: 14em;
@@ -133,10 +134,6 @@ export default {
     p {
       margin-bottom: 0;
     }
-  }
-  &__scroll {
-    width: 200vw;
-    overflow-y: scroll;
   }
 }
 </style>

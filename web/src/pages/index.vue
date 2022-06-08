@@ -10,7 +10,7 @@
       <ArticleGrid
         :heading="$page.frontpage.articleText"
         :items="$page.frontpage.featuredArticlesNo"
-        :limit="9"
+        :limit="3"
       />
     </template>
     <template v-else>

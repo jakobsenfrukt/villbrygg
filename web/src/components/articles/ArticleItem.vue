@@ -74,11 +74,6 @@ export default {
 
 <style lang="scss" scoped>
 .article {
-  display: inline-block;
-  vertical-align: top;
-  margin: 0 var(--spacing-sitepadding) var(--spacing-sitepadding) 0;
-  width: 26vw;
-  min-width: 16rem;
   position: relative;
   background: var(--color-palegreen);
   padding: calc(var(--spacing-sitepadding) * 0.7);
