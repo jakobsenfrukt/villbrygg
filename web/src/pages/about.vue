@@ -123,17 +123,6 @@ query {
               caption
             }
           }
-          ... on SanityImageGallery {
-            _type
-            images {
-              asset {
-                _id
-                url
-              }
-              alt
-              caption
-            }
-          }
         }
       }
       pageContentEn {
@@ -168,17 +157,6 @@ query {
             text
           }
           ... on SanityFigureTwoColumn {
-            _type
-            images {
-              asset {
-                _id
-                url
-              }
-              alt
-              caption
-            }
-          }
-          ... on SanityImageGallery {
             _type
             images {
               asset {

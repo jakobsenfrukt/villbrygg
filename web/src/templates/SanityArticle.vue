@@ -132,17 +132,6 @@ query article ($id: ID!) {
               caption
             }
           }
-          ... on SanityImageGallery {
-            _type
-            images {
-              asset {
-                _id
-                url
-              }
-              alt
-              caption
-            }
-          }
         }
     }
   }

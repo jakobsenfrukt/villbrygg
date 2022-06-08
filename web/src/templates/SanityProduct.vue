@@ -135,17 +135,6 @@ query product ($id: ID!) {
               caption
             }
           }
-          ... on SanityImageGallery {
-            _type
-            images {
-              asset {
-                _id
-                url
-              }
-              alt
-              caption
-            }
-          }
         }
       }
       pageContentEn {
@@ -180,17 +169,6 @@ query product ($id: ID!) {
             text
           }
           ... on SanityFigureTwoColumn {
-            _type
-            images {
-              asset {
-                _id
-                url
-              }
-              alt
-              caption
-            }
-          }
-          ... on SanityImageGallery {
             _type
             images {
               asset {

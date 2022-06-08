@@ -31,10 +31,10 @@ export default {
           name: 'figureTwoColumn',
           type: 'figureTwoColumn'
         },
-        {
+        /*{
           name: 'imageGallery',
           type: 'imageGallery'
-        },
+        },*/
       ]
     }
   ]
