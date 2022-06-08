@@ -58,6 +58,9 @@ export default {
     margin: 0;
   }
   &-title {
+    color: var(--color-gray);
+  }
+  a {
     color: var(--color-lightgray);
   }
 }
