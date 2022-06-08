@@ -8,5 +8,37 @@ export default {
       name: 'pageHeader',
       type: 'pageHeader'
     },
+    {
+      title: 'Featured articles (Norwegian)',
+      name: 'featuredArticlesNo',
+      type: 'array',
+      of: [
+        {
+          title: 'Article',
+          type: 'reference',
+          to: [
+            {
+              type: 'article'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Featured articles (English)',
+      name: 'featuredArticlesEn',
+      type: 'array',
+      of: [
+        {
+          title: 'Article',
+          type: 'reference',
+          to: [
+            {
+              type: 'article'
+            }
+          ]
+        }
+      ]
+    }
   ]
 }

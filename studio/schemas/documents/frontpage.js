@@ -35,8 +35,8 @@ export default {
       type: 'localeSimpleBody'
     },
     {
-      title: 'Featured articles (English)',
-      name: 'featuredArticlesEn',
+      title: 'Featured articles (Norwegian)',
+      name: 'featuredArticlesNo',
       type: 'array',
       of: [
         {
@@ -51,8 +51,8 @@ export default {
       ]
     },
     {
-      title: 'Featured articles (Norwegian)',
-      name: 'featuredArticlesNo',
+      title: 'Featured articles (English)',
+      name: 'featuredArticlesEn',
       type: 'array',
       of: [
         {
