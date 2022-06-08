@@ -44,5 +44,10 @@ section {
 }
 
 a {
+  color: inherit;
   cursor: none;
+
+  &:hover {
+    color: var(--color-hover);
+  }
 }

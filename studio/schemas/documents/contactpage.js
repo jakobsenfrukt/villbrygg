@@ -9,6 +9,11 @@ export default {
       type: 'pageHeader'
     },
     {
+      name: 'body',
+      type: 'localeBody', 
+      title: 'Body'
+    },
+    {
       name: 'team',
       type: 'array',
       of: [{

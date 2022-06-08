@@ -25,12 +25,13 @@ export default {
 .person-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 0.75rem;
+  column-gap: 0.75rem;
+  row-gap: var(--spacing-sitepadding);
   padding: var(--spacing-sitepadding) var(--spacing-sitepadding)
     calc(var(--spacing-sitepadding) * 2);
 
   list-style: none;
-  margin: 0;
+  margin: 0 0 calc(var(--spacing-sitepadding) * 2);
   padding: 0;
 }
 @media (max-width: 1000px) {

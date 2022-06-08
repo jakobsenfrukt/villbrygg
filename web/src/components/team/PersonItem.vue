@@ -51,9 +51,11 @@ export default {
     }
   }
   &-name,
-  &-title {
+  &-title,
+  a {
     display: block;
-    font-size: var(--font-size-m);
+    font-size: var(--font-size-s);
+    margin: 0;
   }
   &-title {
     color: var(--color-lightgray);

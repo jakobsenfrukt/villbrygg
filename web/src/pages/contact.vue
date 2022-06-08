@@ -2,6 +2,20 @@
   <Layout>
     <PageHeader :content="$page.contact.pageHeader" />
     <main class="page-content contact-content">
+      <template v-if="$context.locale == 'no'">
+        <block-content
+          :blocks="$page.contact.body._rawNo"
+          v-if="$page.contact.body && $page.contact.body._rawNo"
+          class="block-content body"
+        />
+      </template>
+      <template v-else-if="$context.locale == 'en'">
+        <block-content
+          :blocks="$page.contact.body._rawEn"
+          v-if="$page.contact.body && $page.contact.body._rawEn"
+          class="block-content body"
+        />
+      </template>
       <PersonGrid :content="$page.contact.team" />
     </main>
   </Layout>
@@ -45,6 +59,10 @@ query {
           right
         }
       }
+    }
+    body {
+      _rawNo
+      _rawEn
     }
     team {
       name
@@ -96,3 +114,10 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.body,
+p.body {
+  margin-bottom: calc(var(--spacing-sitepadding) * 2);
+}
+</style>
