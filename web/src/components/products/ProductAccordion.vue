@@ -157,4 +157,17 @@ export default {
     }
   }
 }
+
+@media (max-width: 1000px) {
+  .product {
+    grid-template-columns: 1fr;
+    &-image,
+    &-text {
+      grid-column: 1 / -1;
+    }
+    &-text {
+      padding-left: 0;
+    }
+  }
+}
 </style>

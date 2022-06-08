@@ -159,7 +159,12 @@ export default {
 }*/
 @media (max-width: 1000px) {
   .product-grid-sorted {
-    grid-template-columns: repeat(2, 1fr);
+    &__text {
+      display: block;
+      h2 {
+        margin-bottom: 1rem;
+      }
+    }
   }
 }
 </style>
