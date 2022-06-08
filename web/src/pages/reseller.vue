@@ -1,15 +1,37 @@
 <template>
   <Layout>
     <PageHeader :content="$page.reseller.pageHeader" />
-    <main class="page-content reseller-content">
-      <p class="lead">
-        Innhold kommer her
-      </p>
-      <!--<block-content
-          :blocks="$page.reseller._rawBody"
-          v-if="$page.reseller._rawBody"
-          class="block-content"
-        />-->
+    <main class="page-content page-content--grid reseller-content">
+      <template v-if="$context.locale == 'no'">
+        <block-content
+          :blocks="$page.reseller.body._rawNo"
+          v-if="$page.reseller.body && $page.reseller.body._rawNo"
+          class="block-content body"
+        />
+        <PageContent
+          :content="$page.reseller.pageContent.pageContentNo.blocks"
+          v-if="
+            $page.reseller.pageContent &&
+              $page.reseller.pageContent.pageContentNo
+          "
+          class="content-blocks"
+        />
+      </template>
+      <template v-else-if="$context.locale == 'en'">
+        <block-content
+          :blocks="$page.reseller.body._rawEn"
+          v-if="$page.reseller.body && $page.reseller.body._rawEn"
+          class="block-content body"
+        />
+        <PageContent
+          :content="$page.reseller.pageContent.pageContentEn.blocks"
+          v-if="
+            $page.reseller.pageContent &&
+              $page.reseller.pageContent.pageContentEn
+          "
+          class="content-blocks"
+        />
+      </template>
     </main>
   </Layout>
 </template>
@@ -50,6 +72,122 @@ query {
           bottom
           left
           right
+        }
+      }
+    }
+    body {
+      _rawNo
+      _rawEn
+    }
+    pageContent {
+      pageContentNo {
+        blocks {
+          ... on SanityBodyBlock {
+            _type
+            _rawBody
+          }
+          ... on SanityTextBlock {
+            _type
+            text
+          }
+          ... on SanityFigure {
+            _type
+            asset {
+              _id
+              url
+            }
+            alt
+            caption
+          }
+          ... on SanityImageAndText {
+            _type
+            image {
+              asset {
+                _id
+                url
+              }
+              alt
+              caption
+            }
+            text
+          }
+          ... on SanityFigureTwoColumn {
+            _type
+            images {
+              asset {
+                _id
+                url
+              }
+              alt
+              caption
+            }
+          }
+          ... on SanityImageGallery {
+            _type
+            images {
+              asset {
+                _id
+                url
+              }
+              alt
+              caption
+            }
+          }
+        }
+      }
+      pageContentEn {
+        blocks {
+          ... on SanityBodyBlock {
+            _type
+            _rawBody
+          }
+          ... on SanityTextBlock {
+            _type
+            text
+          }
+          ... on SanityFigure {
+            _type
+            asset {
+              _id
+              url
+            }
+            alt
+            caption
+          }
+          ... on SanityImageAndText {
+            _type
+            image {
+              asset {
+                _id
+                url
+              }
+              alt
+              caption
+            }
+            text
+          }
+          ... on SanityFigureTwoColumn {
+            _type
+            images {
+              asset {
+                _id
+                url
+              }
+              alt
+              caption
+            }
+          }
+          ... on SanityImageGallery {
+            _type
+            images {
+              asset {
+                _id
+                url
+              }
+              alt
+              caption
+            }
+          }
         }
       }
     }

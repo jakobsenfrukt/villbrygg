@@ -151,12 +151,6 @@ export default {
   }
 }
 
-@media (max-width: 1000px) {
-  .nav-main {
-    display: none;
-  }
-}
-
 .nav-mobile {
   position: fixed;
   top: 0;
@@ -220,9 +214,10 @@ export default {
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1110px) {
   .nav {
     &-main {
+      display: none;
       .nav-link {
         display: none;
       }

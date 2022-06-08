@@ -16,20 +16,38 @@
       />
     </header>
 
-    <main class="page-content product-content">
+    <main class="page-content page-content--grid product-content">
       <p class="lead">
         {{ $page.product.lead[$context.locale] }}
       </p>
-      <block-content
-        :blocks="$page.product.body._rawNo"
-        v-if="$page.product.body._rawNo && $context.locale == 'no'"
-        class="block-content body"
-      />
-      <block-content
-        :blocks="$page.product.body._rawEn"
-        v-else-if="$page.product.body._rawEn && $context.locale == 'en'"
-        class="block-content body"
-      />
+      <template v-if="$context.locale == 'no'">
+        <block-content
+          :blocks="$page.product.body._rawNo"
+          v-if="$page.product.body._rawNo"
+          class="block-content body"
+        />
+        <PageContent
+          :content="$page.product.pageContent.pageContentNo.blocks"
+          v-if="
+            $page.product.pageContent && $page.product.pageContent.pageContentNo
+          "
+          class="content-blocks"
+        />
+      </template>
+      <template v-else-if="$context.locale == 'en'">
+        <block-content
+          :blocks="$page.product.body._rawEn"
+          v-if="$page.product.body._rawEn"
+          class="block-content body"
+        />
+        <PageContent
+          :content="$page.product.pageContent.pageContentEn.blocks"
+          v-if="
+            $page.product.pageContent && $page.product.pageContent.pageContentEn
+          "
+          class="content-blocks"
+        />
+      </template>
     </main>
   </Layout>
 </template>
@@ -74,16 +92,130 @@ query product ($id: ID!) {
         right
       }
     }
+    pageContent {
+      pageContentNo {
+        blocks {
+          ... on SanityBodyBlock {
+            _type
+            _rawBody
+          }
+          ... on SanityTextBlock {
+            _type
+            text
+          }
+          ... on SanityFigure {
+            _type
+            asset {
+              _id
+              url
+            }
+            alt
+            caption
+          }
+          ... on SanityImageAndText {
+            _type
+            image {
+              asset {
+                _id
+                url
+              }
+              alt
+              caption
+            }
+            text
+          }
+          ... on SanityFigureTwoColumn {
+            _type
+            images {
+              asset {
+                _id
+                url
+              }
+              alt
+              caption
+            }
+          }
+          ... on SanityImageGallery {
+            _type
+            images {
+              asset {
+                _id
+                url
+              }
+              alt
+              caption
+            }
+          }
+        }
+      }
+      pageContentEn {
+        blocks {
+          ... on SanityBodyBlock {
+            _type
+            _rawBody
+          }
+          ... on SanityTextBlock {
+            _type
+            text
+          }
+          ... on SanityFigure {
+            _type
+            asset {
+              _id
+              url
+            }
+            alt
+            caption
+          }
+          ... on SanityImageAndText {
+            _type
+            image {
+              asset {
+                _id
+                url
+              }
+              alt
+              caption
+            }
+            text
+          }
+          ... on SanityFigureTwoColumn {
+            _type
+            images {
+              asset {
+                _id
+                url
+              }
+              alt
+              caption
+            }
+          }
+          ... on SanityImageGallery {
+            _type
+            images {
+              asset {
+                _id
+                url
+              }
+              alt
+              caption
+            }
+          }
+        }
+      }
+    }
   }
 }
 </page-query>
 
 <script>
 import BlockContent from "~/components/tools/BlockContent";
+import PageContent from "~/components/PageContent";
 
 export default {
   components: {
     BlockContent,
+    PageContent,
   },
   metaInfo() {
     return {

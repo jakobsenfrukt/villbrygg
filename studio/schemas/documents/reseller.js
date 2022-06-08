@@ -8,5 +8,15 @@ export default {
       name: 'pageHeader',
       type: 'pageHeader'
     },
+    {
+      name: 'body',
+      type: 'localeBody', 
+      title: 'Body'
+    },
+    {
+      name: 'pageContent',
+      type: 'localePageContent', 
+      title: 'Additional content'
+    }
   ]
 }

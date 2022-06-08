@@ -85,25 +85,7 @@
 
       <!-- Image gallery blocks -->
       <template v-if="block._type === 'imageGallery'">
-        <figure
-          v-for="(image, index) in block.images"
-          :key="index"
-          class="image"
-        >
-          <img
-            v-if="image"
-            :src="
-              $urlForImage(image, $static.metadata.sanityOptions)
-                .width(600)
-                .auto('format')
-                .url()
-            "
-            :alt="image.alt"
-          />
-          <figcaption v-if="image.caption && image.caption">
-            {{ image.caption }}
-          </figcaption>
-        </figure>
+        <ImageGallery :items="block.images" />
       </template>
     </div>
   </section>
@@ -122,10 +104,12 @@ query {
 
 <script>
 import BlockContent from "@/components/tools/BlockContent";
+import ImageGallery from "@/components/blocks/ImageGallery";
 
 export default {
   components: {
     BlockContent,
+    ImageGallery,
   },
   props: {
     content: Array,
@@ -180,15 +164,6 @@ export default {
   grid-template-columns: repeat(2, 1fr);
   align-items: flex-start;
   gap: 0.75rem;
-}
-
-.imageGallery {
-  display: flex;
-  gap: 0.75rem;
-
-  img {
-    width: 100%;
-  }
 }
 @media (max-width: 1000px) {
   .imageAndText {

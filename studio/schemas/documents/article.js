@@ -55,6 +55,16 @@ export default {
       name: 'lead',
       type: 'text',
       title: 'Lead'
+    },
+    {
+      name: 'body',
+      type: 'body', 
+      title: 'Body'
+    },
+    {
+      name: 'pageContent',
+      type: 'pageContent', 
+      title: 'Additional content'
     }
   ],
   orderings: [

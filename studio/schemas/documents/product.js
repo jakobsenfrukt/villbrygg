@@ -40,6 +40,11 @@ export default {
       title: 'Body',
       type: 'localeBody',
     },
+    {
+      name: 'pageContent',
+      type: 'localePageContent', 
+      title: 'Additional content'
+    }
   ],
 
   preview: {

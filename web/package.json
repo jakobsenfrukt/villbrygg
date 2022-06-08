@@ -14,7 +14,8 @@
     "gridsome-plugin-i18n": "^1.6.0",
     "gridsome-source-sanity": "^1.0.5",
     "sanity-blocks-vue-component": "^0.1.0",
-    "sass": "^1.43.4"
+    "sass": "^1.43.4",
+    "vue-horizontal": "^0.8.12"
   },
   "devDependencies": {
     "sass-loader": "^8.0.2"
