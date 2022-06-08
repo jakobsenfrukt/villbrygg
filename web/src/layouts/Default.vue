@@ -10,7 +10,7 @@
 
     <Footer />
 
-    <CursorFriend />
+    <CursorFriend :color="$static.general.cursorColor.hex" />
   </div>
 </template>
 
@@ -18,6 +18,11 @@
 query {
   metadata {
     siteName
+  }
+  general: sanityGeneral (id: "general") {
+    cursorColor {
+      hex
+    }
   }
 }
 </static-query>

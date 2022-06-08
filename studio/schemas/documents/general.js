@@ -16,6 +16,11 @@ export default {
       description: 'The URL to signing up for the newsletter. Remember to add the entire URL, including https:// etc.'
     },
     {
+      name: 'cursorColor',
+      type: 'color',
+      title: 'Cursor color'
+    },
+    {
       name: 'seo',
       type: 'seo',
       title: 'Sharing & SEO'
