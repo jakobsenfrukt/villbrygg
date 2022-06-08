@@ -7,7 +7,7 @@ export default {
   props: {
     color: {
       type: String,
-      default: "lime",
+      default: "hotpink",
     },
   },
   data() {
