@@ -87,7 +87,7 @@ export default {
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1110px) {
   .locale-switcher {
     transform: none;
     position: absolute;
