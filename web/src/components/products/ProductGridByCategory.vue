@@ -16,7 +16,7 @@
           {{ category.node.description[$context.locale] }}
         </p>
       </div>
-      <ProductItem
+      <ProductAccordion
         v-for="product in getProductsByCategory(category)"
         :key="product.id"
         :product="product.node"
@@ -29,7 +29,7 @@
 <static-query>
 query {
   productCategories: allSanityProductCategory(
-    sortBy: "title", order: DESC
+    sortBy: "title", order: ASC
   ) {
     edges {
       node {
@@ -50,7 +50,7 @@ query {
   }
   products: allSanityProduct(
     filter: {slug: {current: {ne: null}}},
-    sortBy: "title", order: DESC
+    sortBy: "title", order: ASC
   ) {
     edges {
       node {
@@ -101,11 +101,11 @@ query {
 </static-query>
 
 <script>
-import ProductItem from "@/components/products/ProductItem";
+import ProductAccordion from "@/components/products/ProductAccordion";
 
 export default {
   components: {
-    ProductItem,
+    ProductAccordion,
   },
   methods: {
     getProductsByCategory(category) {
@@ -119,30 +119,36 @@ export default {
 
 <style lang="scss" scoped>
 .product-grid-sorted {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 0.75rem;
   border-top: 1px solid var(--color-text);
   border-radius: 0;
-  padding: calc(var(--spacing-sitepadding) * 0.5) 0 var(--spacing-sitepadding);
+  padding: var(--spacing-sitepadding) 0;
   &__text {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
     grid-column: 1 / -1;
     line-height: 1.2;
+    padding-bottom: calc(var(--spacing-sitepadding) * 2);
     h2 {
+      grid-column: 1 / span 4;
       font-weight: 400;
+      font-size: var(--font-size-l);
       position: relative;
-      padding-left: 2rem;
+      padding-left: 1.4em;
+      margin: 0;
       &:before {
         content: " ";
         display: block;
         background: var(--category-color);
-        width: 1.2rem;
-        height: 1.2rem;
-        border-radius: 1.2rem;
+        width: 1em;
+        height: 1em;
+        border-radius: 1.2em;
         position: absolute;
-        left: 0.25rem;
-        top: 0.25rem;
+        left: 0;
+        top: 0.05em;
       }
+    }
+    p {
+      grid-column: 5 / span 6;
     }
   }
 }
