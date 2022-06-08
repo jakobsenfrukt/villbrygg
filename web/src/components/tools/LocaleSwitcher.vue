@@ -61,7 +61,7 @@ export default {
   text-transform: uppercase;
   color: var(--color-lightgray);
   position: relative;
-  cursor: pointer;
+  cursor: none;
   &:nth-of-type(2) {
     order: 1;
   }

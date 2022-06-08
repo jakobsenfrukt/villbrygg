@@ -130,6 +130,7 @@ export default {
   text-decoration: none;
   text-transform: uppercase;
   position: relative;
+  cursor: none;
 
   span {
     position: relative;
@@ -179,7 +180,7 @@ export default {
     font-size: var(--font-size-l);
     text-transform: uppercase;
     letter-spacing: var(--letter-spacing);
-    cursor: pointer;
+    cursor: none;
 
     &.active--exact,
     &:hover {
@@ -204,7 +205,7 @@ export default {
   right: 0.25rem;
   padding: var(--spacing-sitepadding);
   z-index: 101;
-  cursor: pointer;
+  cursor: none;
   display: none;
 
   &-icon {

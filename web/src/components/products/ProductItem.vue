@@ -140,6 +140,7 @@ export default {
     color: inherit;
     transition: opacity 0.2s ease;
     opacity: 0;
+    cursor: none;
 
     &:hover {
       opacity: 1;

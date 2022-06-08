@@ -9,6 +9,8 @@
     </transition>
 
     <Footer />
+
+    <CursorFriend />
   </div>
 </template>
 
@@ -23,11 +25,13 @@ query {
 <script>
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CursorFriend from "@/components/CursorFriend";
 
 export default {
   components: {
     Header,
     Footer,
+    CursorFriend,
   },
 };
 </script>
@@ -35,6 +39,7 @@ export default {
 <style lang="scss" scoped>
 .layout {
   margin: 0 auto;
+  cursor: none;
 }
 
 .site-main {

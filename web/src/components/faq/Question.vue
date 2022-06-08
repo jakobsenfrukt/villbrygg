@@ -32,7 +32,7 @@ export default {
   font-size: var(--font-size-l);
   font-weight: 400;
   margin: 1.5rem 0;
-  cursor: pointer;
+  cursor: none;
   &:after {
     content: "→";
     position: absolute;

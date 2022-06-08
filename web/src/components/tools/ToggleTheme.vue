@@ -50,29 +50,29 @@
 export default {
   data() {
     return {
-      darkTheme: false
-    }
+      darkTheme: false,
+    };
   },
   methods: {
     toggleTheme() {
-      this.darkTheme = !this.darkTheme
+      this.darkTheme = !this.darkTheme;
 
       // This is using a script that is added in index.html
-      window.__setPreferredTheme(this.darkTheme ? 'dark' : 'light')
-    }
+      window.__setPreferredTheme(this.darkTheme ? "dark" : "light");
+    },
   },
   mounted() {
-    if (window.__theme == 'dark') this.darkTheme = true
-  }
-}
+    if (window.__theme == "dark") this.darkTheme = true;
+  },
+};
 </script>
 
 <style lang="scss">
 .toggle-theme {
   background-color: transparent;
   border: 0;
-  color: inherit;;
-  cursor: pointer;
+  color: inherit;
+  cursor: none;
 
   &:hover {
     opacity: 0.8;

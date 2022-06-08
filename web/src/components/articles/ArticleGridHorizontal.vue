@@ -129,7 +129,7 @@ export default {
 
 .dot {
   padding: 4px;
-  cursor: pointer;
+  cursor: none;
 }
 
 .dot > div {
