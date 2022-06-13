@@ -361,6 +361,8 @@ h3 {
   }
   p {
     font-size: var(--font-size-xs);
+    color: var(--color-gray);
+    margin: 0 0 0.5rem;
   }
 }
 .search {
