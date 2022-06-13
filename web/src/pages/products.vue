@@ -1,13 +1,21 @@
 <template>
   <Layout>
     <PageHeader :content="$page.productpage.pageHeader" />
-    <main class="page-content">
+    <main class="page-content product-page">
       <ProductGrid />
       <template v-if="$context.locale == 'no'">
-        <ArticleGrid :items="$page.productpage.featuredArticlesNo" :limit="3" />
+        <ArticleGrid
+          :heading="$page.productpage.articleText"
+          :items="$page.productpage.featuredArticlesNo"
+          :limit="3"
+        />
       </template>
       <template v-else>
-        <ArticleGrid :items="$page.productpage.featuredArticlesEn" :limit="9" />
+        <ArticleGrid
+          :heading="$page.productpage.articleText"
+          :items="$page.productpage.featuredArticlesEn"
+          :limit="9"
+        />
       </template>
     </main>
   </Layout>
@@ -51,6 +59,10 @@ query {
           right
         }
       }
+    }
+    articleText {
+      _rawNo
+      _rawEn
     }
     featuredArticlesEn {
       id

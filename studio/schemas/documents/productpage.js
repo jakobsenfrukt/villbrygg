@@ -9,6 +9,11 @@ export default {
       type: 'pageHeader'
     },
     {
+      title: 'Featured articles heading',
+      name: 'articleText',
+      type: 'localeSimpleBody'
+    },
+    {
       title: 'Featured articles (Norwegian)',
       name: 'featuredArticlesNo',
       type: 'array',
