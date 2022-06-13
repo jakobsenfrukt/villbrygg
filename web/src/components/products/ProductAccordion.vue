@@ -2,6 +2,7 @@
   <article
     class="product"
     :style="`--product-category-color: ${product.category.color.hex}`"
+    :id="product.slug.current"
   >
     <div class="product-text" :class="{ hideCategory: hideCategory }">
       <h3 class="product-title">{{ product.title }}</h3>
@@ -20,17 +21,6 @@
         "
         :alt="product.mainImage.alt[$context.locale]"
       />
-      <g-link
-        class="product-link"
-        :to="$tp(`/products/${product.slug.current}`)"
-      >
-        <div class="product-overlay">
-          <span class="product-link__title">{{ product.title }}</span>
-          <span class="product-link__readmore"
-            >{{ $t("navigation.readmore") }} &rarr;</span
-          >
-        </div>
-      </g-link>
     </div>
   </article>
 </template>
@@ -72,6 +62,9 @@ export default {
   position: relative;
   margin-bottom: var(--spacing-sitepadding);
   padding: 0.75rem;
+  &:hover {
+    background: var(--color-paleyellow);
+  }
   &-text {
     grid-column: 2 / span 3;
     padding: 1rem;
@@ -120,40 +113,6 @@ export default {
 
     img {
       display: block;
-    }
-  }
-  &-overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    padding: 1.25rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  &-link {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--product-category-color);
-    border-radius: var(--border-radius);
-    color: inherit;
-    transition: opacity 0.2s ease;
-    opacity: 0;
-    cursor: none;
-
-    &:hover {
-      opacity: 1;
-    }
-
-    &__title {
-      font-size: var(--font-size-l);
-      text-transform: uppercase;
-      line-height: 1;
     }
   }
 }
