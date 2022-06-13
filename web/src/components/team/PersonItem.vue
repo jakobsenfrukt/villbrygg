@@ -7,7 +7,7 @@
         :src="
           $urlForImage(person.image, $static.metadata.sanityOptions)
             .width(420)
-            .height(600)
+            .height(500)
             .auto('format')
             .url()
         "
@@ -46,6 +46,7 @@ export default {
 <style lang="scss" scoped>
 .person {
   &-image {
+    margin-bottom: 0.75rem;
     img {
       border-radius: var(--border-radius);
     }
@@ -62,6 +63,9 @@ export default {
   }
   a {
     color: var(--color-lightgray);
+    &:hover {
+      color: var(--color-hover);
+    }
   }
 }
 </style>

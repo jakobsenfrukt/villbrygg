@@ -21,5 +21,25 @@ export default {
         to: [{ type: 'person' }]
       }]
     },
+    {
+      name: 'generalHeading',
+      type: 'localeText', 
+      title: 'General contact heading'
+    },
+    {
+      name: 'generalLabel',
+      type: 'localeString', 
+      title: 'General contact label'
+    },
+    {
+      name: 'email',
+      type: 'string', 
+      title: 'Email'
+    },
+    {
+      name: 'phone',
+      type: 'string', 
+      title: 'Phone'
+    }
   ]
 }

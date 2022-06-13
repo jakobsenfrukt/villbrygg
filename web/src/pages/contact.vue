@@ -17,6 +17,22 @@
         />
       </template>
       <PersonGrid :content="$page.contact.team" />
+      <div class="general">
+        <p class="general-heading">
+          {{ $page.contact.generalHeading[$context.locale] }}
+        </p>
+        <p class="general-links">
+          <span class="general-label">{{
+            $page.contact.generalLabel[$context.locale]
+          }}</span>
+          <a :href="`mailto:${$page.contact.email}`" target="_blank">{{
+            $page.contact.email
+          }}</a>
+          <a :href="`tel:${$page.contact.phone}`" target="_blank">{{
+            $page.contact.phone
+          }}</a>
+        </p>
+      </div>
     </main>
   </Layout>
 </template>
@@ -94,6 +110,16 @@ query {
         }
       }
     }
+    generalHeading {
+      no
+      en
+    }
+    generalLabel {
+      no
+      en
+    }
+    email
+    phone
   }
 }
 </page-query>
@@ -119,5 +145,23 @@ export default {
 .body,
 p.body {
   margin-bottom: calc(var(--spacing-sitepadding) * 2);
+}
+.general {
+  padding: calc(var(--spacing-sitepadding) * 3) 0;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  &-heading {
+    font-size: var(--font-size-l);
+    grid-column: 1 / span 6;
+    margin-bottom: calc(var(--spacing-sitepadding) * 2);
+  }
+  &-links {
+    grid-column: 1 / span 6;
+    font-size: var(--font-size-m);
+    span,
+    a {
+      display: block;
+    }
+  }
 }
 </style>
