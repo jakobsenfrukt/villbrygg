@@ -27,18 +27,54 @@
       />
     </div>
     <div class="product-info">
+      <div class="product-info-images">
+        <g-image
+          v-if="product.mainImage"
+          :src="
+            $urlForImage(product.mainImage, $static.metadata.sanityOptions)
+              .height(800)
+              .width(800)
+              .auto('format')
+              .url()
+          "
+          :alt="product.mainImage.alt[$context.locale]"
+        />
+        <g-image
+          v-if="product.detailImage"
+          :src="
+            $urlForImage(product.detailImage, $static.metadata.sanityOptions)
+              .width(800)
+              .auto('format')
+              .url()
+          "
+          :alt="product.detailImage.alt[$context.locale]"
+        />
+      </div>
       <ul class="product-info-tabs">
-        <li><button class="active">Tab title</button></li>
-        <li><button>Tab title</button></li>
-        <li><button>Tab title</button></li>
+        <li v-for="(block, index) in product.info" :key="index">
+          <button
+            :class="index === activeBlock ? 'active' : ''"
+            @click="setActiveBlock(index)"
+          >
+            {{ block.title[$context.locale] }}
+          </button>
+        </li>
       </ul>
       <div class="product-info-content">
-        <p>
-          Perlende fermentert te av nordiske ville vekster og urter fra lokale
-          bønder, sankere og urbane hager. Opplev tropiske smaker fra norsk
-          natur. Ja du leste riktig. Ville vekster kan ha smaker som vanilje,
-          mandel og ananas!
-        </p>
+        <template v-if="$context.locale == 'no'">
+          <block-content
+            :blocks="product.info[activeBlock].body._rawNo"
+            v-if="product.info[activeBlock].body._rawNo"
+            class="block-content body"
+          />
+        </template>
+        <template v-else-if="$context.locale == 'en'">
+          <block-content
+            :blocks="product.info[activeBlock].body._rawEn"
+            v-if="product.info[activeBlock].body._rawEn"
+            class="block-content body"
+          />
+        </template>
       </div>
     </div>
   </article>
@@ -72,11 +108,15 @@ export default {
   data() {
     return {
       open: false,
+      activeBlock: 0,
     };
   },
   methods: {
     expandAccordion() {
       this.open = !this.open;
+    },
+    setActiveBlock(block) {
+      this.activeBlock = block;
     },
   },
 };
@@ -107,11 +147,6 @@ export default {
     right: var(--spacing-sitepadding);
     transform: rotate(45deg);
   }
-  &.open {
-    &:after {
-      transform: rotate(0deg);
-    }
-  }
   &-text {
     grid-column: 2 / span 3;
     padding: 1rem;
@@ -137,8 +172,11 @@ export default {
     position: relative;
     order: 1;
 
+    height: 100%;
+
     img {
       display: block;
+      object-fit: cover;
     }
   }
   .expand {
@@ -151,20 +189,25 @@ export default {
     cursor: none;
     z-index: 1000;
   }
-  &.open .expand {
-    left: auto;
-    right: 0;
-    width: 5rem;
-    height: 5rem;
-  }
   &-info {
     order: 3;
     grid-column: 1 / -1;
 
     display: none;
   }
-  &.open &-info {
-    display: block;
+  &-info-images {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    gap: 0.75rem;
+    img {
+      border-radius: var(--border-radius);
+    }
+    img:first-of-type {
+      grid-column: 1 / span 9;
+    }
+    img:nth-of-type(2) {
+      grid-column: 10 / span 11;
+    }
   }
   &-info-tabs {
     list-style: none;
@@ -193,6 +236,27 @@ export default {
   }
   &-info-content {
     font-size: var(--font-size-m);
+  }
+  &.open {
+    &:after {
+      transform: rotate(0deg);
+    }
+    .product-image {
+      display: none;
+    }
+    .product-text {
+      grid-column: 1 / -1;
+      padding-left: 0;
+    }
+    .expand {
+      left: auto;
+      right: 0;
+      width: 5rem;
+      height: 5rem;
+    }
+    .product-info {
+      display: block;
+    }
   }
 }
 

@@ -43,6 +43,7 @@ import pageHeader from './objects/pageHeader'
 import pageContent from './objects/pageContent'
 import textBlock from './objects/textBlock'
 import bodyBlock from './objects/bodyBlock'
+import productInfo from './objects/productInfo'
 
 // localized objects
 import localeString from './objects/localeString'
@@ -97,6 +98,7 @@ export default createSchema({
     pageContent,
     textBlock,
     bodyBlock,
+    productInfo,
     // localized objects
     localeString,
     localeText,

@@ -23,28 +23,40 @@ export default {
       type: 'reference',
       to: [
         {type: 'productCategory'}
-      ]
+      ],
+      validation: Rule => Rule.required(),
     },
     {
       name: 'mainImage',
       title: 'Main image',
+      type: 'localeFigure',
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'detailImage',
+      title: 'Detail image',
       type: 'localeFigure'
     },
     {
       name: 'lead',
       type: 'localeText',
-      title: 'Lead'
+      title: 'Lead',
+      validation: Rule => Rule.required(),
+    },
+    {
+      name: 'info',
+      type: 'array',
+      title: 'Product info tabs',
+      of: [{
+        type: 'productInfo'
+      }],
+      validation: Rule => Rule.required(),
     },
     {
       name: 'body',
-      title: 'Body',
+      title: 'Body (NOT IN USE)',
       type: 'localeBody',
     },
-    {
-      name: 'pageContent',
-      type: 'localePageContent', 
-      title: 'Additional content'
-    }
   ],
 
   preview: {

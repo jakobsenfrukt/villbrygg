@@ -94,6 +94,40 @@ query {
             right
           }
         }
+        detailImage {
+          asset {
+            _id
+            url
+          }
+          alt {
+            no
+            en
+          }
+          hotspot {
+            x
+            y
+            height
+            width
+          }
+          crop {
+            top
+            bottom
+            left
+            right
+          }
+        }
+        info {
+          ... on SanityProductInfo {
+            title {
+              no
+              en
+            }
+            body {
+              _rawNo
+              _rawEn
+            }
+          }
+        }
       }
     }
   }
