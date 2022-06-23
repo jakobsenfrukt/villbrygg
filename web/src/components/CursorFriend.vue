@@ -22,7 +22,8 @@ export default {
       const mouseX = e.clientX;
 
       cursorFriend.style.display = `block`;
-      cursorFriend.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+      cursorFriend.style.top = `${mouseY}px`;
+      cursorFriend.style.left = `${mouseX}px`;
     },
   },
   mounted() {
@@ -33,14 +34,16 @@ export default {
 
 <style lang="scss" scoped>
 .cursorfriend {
-  width: 2rem;
-  height: 2rem;
+  width: 1.4rem;
+  height: 1.4rem;
   border-radius: 1rem;
   background: var(--cursor-color);
   z-index: 1000;
   position: fixed;
   top: 0;
   left: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
 
   display: none;
 }
