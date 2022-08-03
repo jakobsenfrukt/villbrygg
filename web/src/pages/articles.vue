@@ -198,7 +198,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .article-grid {
   width: 100%;
   display: grid;
