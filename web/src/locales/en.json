@@ -12,7 +12,7 @@
   "navigation": {
     "readmore": "Read more",
     "showall": "Show all",
-    "shopSearchLabel": "Search",
-    "shopSearchPlaceholder": "Search by city, name, etc."
+    "shopSearchLabel": "Search by city",
+    "shopSearchPlaceholder": "Start writing the name of your city"
   }
 }

@@ -4,10 +4,7 @@
     <main class="page-content">
       <ul class="category-list">
         <li>
-          <button
-            :class="currentCategory === 'all' ? 'active' : ''"
-            @click="changeFilter('all')"
-          >
+          <button :class="{ active: showAll }" @click="resetFilter()">
             Show all
           </button>
         </li>
@@ -15,7 +12,12 @@
           v-for="(category, index) in $page.categories.edges"
           :key="`category-${index}`"
         >
-          <button @click="changeFilter(category.node.title.en)">
+          <button
+            @click="changeFilter(category.node.title.en)"
+            :class="
+              activeFilters.includes(category.node.title.en) ? 'active' : ''
+            "
+          >
             {{ category.node.title[$context.locale] }}
           </button>
         </li>
@@ -25,6 +27,7 @@
         <input
           type="text"
           :placeholder="$t('navigation.shopSearchPlaceholder')"
+          v-model="searchQuery"
         />
       </div>
       <ul class="countries">
@@ -40,7 +43,11 @@
           <ul class="country-list">
             <li
               class="online accordion"
-              v-if="getOnlineShopsByCountry(country).length"
+              v-if="
+                !searchQuery &&
+                  getOnlineShopsByCountry(country).length &&
+                  (showAll || checkActiveFilter('Online'))
+              "
             >
               <h3 class="list-heading online">Online</h3>
               <ul class="location-list">
@@ -67,7 +74,7 @@
               </ul>
             </li>
             <li
-              v-for="(city, index) in $page.cities.edges"
+              v-for="(city, index) in visibleCities"
               :key="`city-${index}`"
               class="city accordion"
             >
@@ -86,7 +93,10 @@
                   >
                     <div
                       class="category-wrapper"
-                      v-if="getLocationsByCategory(city, category).length"
+                      v-if="
+                        getLocationsByCategory(city, category).length &&
+                          (showAll || checkActiveFilter(category.node.title.en))
+                      "
                     >
                       <h4 class="list-heading category-name">
                         {{ category.node.title[$context.locale] }}
@@ -270,8 +280,34 @@ export default {
   },
   data() {
     return {
-      currentCategory: "all",
+      showAll: true,
+      activeFilters: [],
+      searchQuery: undefined,
     };
+  },
+  computed: {
+    visibleCities() {
+      let cities = [];
+      if (this.searchQuery) {
+        // show cities matching search query
+        cities = this.$page.cities.edges.filter(
+          (item) =>
+            item.node.name.en.toLowerCase().includes(this.searchQuery) ||
+            item.node.name.no.toLowerCase().includes(this.searchQuery)
+        );
+      } /*else if (this.activeFilters.length) {
+        // check each city if there are any locations matching the current filters
+        cities = this.$page.cities.edges.filter((city) =>
+          this.activeFilters.forEach((category) =>
+            this.getLocationsByCategory(city, category)
+          )
+        );
+      } */ else {
+        cities = this.$page.cities.edges;
+      }
+
+      return cities;
+    },
   },
   methods: {
     getOnlineShopsByCountry(country) {
@@ -292,6 +328,26 @@ export default {
           item.node.city.name.en === city.node.name.en &&
           item.node.category.title.en === category.node.title.en
       );
+    },
+    resetFilter() {
+      (this.showAll = true), (this.activeFilters = []);
+    },
+    changeFilter(category) {
+      this.showAll = false;
+      if (this.activeFilters.includes(category)) {
+        const index = this.activeFilters.indexOf(category);
+        if (index > -1) {
+          this.activeFilters.splice(index, 1);
+        }
+        if (!this.activeFilters.length) {
+          this.showAll = true;
+        }
+      } else {
+        this.activeFilters.push(category);
+      }
+    },
+    checkActiveFilter(category) {
+      return this.activeFilters.includes(category);
     },
   },
   metaInfo: {
@@ -322,7 +378,7 @@ h3 {
   }
 }
 .accordion {
-  border-top: 1px solid var(--color-lightgray);
+  /*border-top: 1px solid var(--color-lightgray);
   position: relative;
   &:after {
     content: "+";
@@ -337,20 +393,25 @@ h3 {
   &:last-of-type {
     border-bottom: 1px solid var(--color-lightgray);
   }
+  background: var(--color-palegreen);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-sitepadding);*/
+  margin-bottom: 1rem;
   .list-heading {
     font-size: var(--font-size-l);
-    margin: 1.5rem 0;
-    &.online,
+    margin: 0;
+    //&.online,
     &.category-name {
       font-size: var(--font-size-s);
       color: var(--color-green);
+      margin-top: 2rem;
     }
   }
 }
 .location-list {
-  margin: 0 0 2rem;
+  margin: 1rem 0 2rem;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
 }
 .location {
