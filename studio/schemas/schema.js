@@ -25,6 +25,7 @@ import productCategory from './documents/productCategory'
 import frontpage from './documents/frontpage'
 import contactpage from './documents/contactpage'
 import productpage from './documents/productpage'
+import articlepage from './documents/articlepage'
 import person from './documents/person'
 import reseller from './documents/reseller'
 
@@ -79,6 +80,7 @@ export default createSchema({
     frontpage,
     contactpage,
     productpage,
+    articlepage,
     person,
     reseller,
     // objects

@@ -3,7 +3,7 @@ import S from '@sanity/desk-tool/structure-builder'
 import { MdSettings, MdLiquor, MdQuestionAnswer, MdInfo, MdLocationPin, MdArticle, MdOutlineArticle, MdStore, MdLocationCity, MdPublic, MdHome, MdCategory, MdEmail, MdPeople, MdLaptopMac, MdAddBusiness } from 'react-icons/md'
 
 const hiddenDocTypes = listItem =>
-  !['general', 'product', 'article', 'about', 'faq', 'faqQuestion', 'faqCategory', 'shops', 'onlineShop', 'location', 'shopsCountry', 'shopsCity', 'shopsCategory', 'articlesCategory', 'productCategory', 'frontpage', 'contactpage', 'productpage', 'person', 'reseller'].includes(listItem.getId())
+  !['general', 'product', 'article', 'about', 'faq', 'faqQuestion', 'faqCategory', 'shops', 'onlineShop', 'location', 'shopsCountry', 'shopsCity', 'shopsCategory', 'articlesCategory', 'productCategory', 'frontpage', 'contactpage', 'productpage', 'articlepage', 'person', 'reseller'].includes(listItem.getId())
 
 export default () =>
   S.list()
@@ -184,6 +184,16 @@ export default () =>
             .title('Articles')
             .items(
               [
+                S.listItem()
+                .title('Main page')
+                .icon(MdHome)
+                .child(
+                  S.editor()
+                    .title('Article page')
+                    .id('articlePage')
+                    .schemaType('articlepage')
+                    .documentId('articlepage')
+                ),
                 S.listItem()
                 .title('Norwegian')
                 .schemaType('article')

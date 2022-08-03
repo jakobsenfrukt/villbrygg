@@ -16,7 +16,7 @@
                 .auto('format')
                 .url()
             "
-            :alt="image.alt[$context.locale]"
+            :alt="image.alt"
           />
         </template>
         <ul class="categories">

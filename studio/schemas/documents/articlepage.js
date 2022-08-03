@@ -1,7 +1,7 @@
 export default {
-  name: 'shops',
+  name: 'articlepage',
   type: 'document',
-  title: 'Shops',
+  title: 'Article page',
   __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'], 
   fields: [
     {

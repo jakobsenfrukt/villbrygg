@@ -13,7 +13,8 @@ export default {
       description: 'Important for SEO and accessiblity. Briefly describe what is shown in the image as if to a blind person.',
       options: {
         isHighlighted: true
-      }
+      },
+      validation: Rule => Rule.required()
     },
     {
       name: 'caption',

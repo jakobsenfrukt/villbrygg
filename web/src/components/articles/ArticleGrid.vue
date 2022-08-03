@@ -26,6 +26,12 @@
         :article="article.node"
       />
     </template>
+    <div class="view-more">
+      <g-link :to="$tp(`/articles`)">{{
+        $t("navigation.showAllArticles")
+      }}</g-link>
+      &rarr;
+    </div>
   </section>
 </template>
 
@@ -135,6 +141,11 @@ export default {
       margin-bottom: 0;
     }
   }
+}
+.view-more {
+  grid-column: 1 / -1;
+  margin-top: var(--spacing-sitepadding);
+  text-align: right;
 }
 
 @media (max-width: 1000px) {

@@ -30,8 +30,10 @@
         <block-content :blocks="article._rawLead" />
       </div>
     </div>
-    <g-link class="article-link" :to="$tp(`/articles/${article.slug.current}`)"
-      >Link</g-link
+    <g-link
+      class="article-link"
+      :to="$tp(`/articles/${article.slug.current}`)"
+      >{{ $t("navigation.readmore") }}</g-link
     >
   </article>
 </template>

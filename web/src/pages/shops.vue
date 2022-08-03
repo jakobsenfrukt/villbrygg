@@ -5,7 +5,7 @@
       <ul class="category-list">
         <li>
           <button :class="{ active: showAll }" @click="resetFilter()">
-            Show all
+            {{ $t("navigation.showall") }}
           </button>
         </li>
         <li

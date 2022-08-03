@@ -2,7 +2,7 @@ export default {
   name: 'contactpage',
   type: 'document',
   title: 'Contact page',
-  //__experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'], 
+  __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'], 
   fields: [
     {
       name: 'pageHeader',
