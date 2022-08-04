@@ -16,7 +16,7 @@
                 .auto('format')
                 .url()
             "
-            :alt="image.alt"
+            :alt="image.alt ? image.alt : ''"
           />
         </template>
         <ul class="categories">

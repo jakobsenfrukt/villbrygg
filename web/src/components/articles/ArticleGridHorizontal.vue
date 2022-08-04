@@ -16,7 +16,7 @@
                 .auto('format')
                 .url()
             "
-            :alt="image.alt"
+            :alt="image.alt ? image.alt : ''"
           />
           <figcaption v-if="image.caption && image.caption">
             {{ image.caption }}

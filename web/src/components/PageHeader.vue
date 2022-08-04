@@ -22,7 +22,7 @@
             .auto('format')
             .url()
         "
-        :alt="image.alt[$context.locale]"
+        :alt="image.alt[$context.locale] ? image.alt[$context.locale] : ''"
       />
     </template>
   </header>

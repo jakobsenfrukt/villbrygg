@@ -10,7 +10,7 @@
             .auto('format')
             .url()
         "
-        :alt="article.mainImages[0].alt"
+        :alt="article.mainImages[0].alt ? article.mainImages[0].alt : ''"
       />
     </div>
     <div class="article-text">

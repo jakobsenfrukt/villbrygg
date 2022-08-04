@@ -30,7 +30,7 @@
                 .auto('format')
                 .url()
             "
-            :alt="block.alt"
+            :alt="block.alt ? block.alt : ''"
           />
           <figcaption v-if="block.caption && block.caption">
             {{ block.caption }}
@@ -52,7 +52,7 @@
                 .auto('format')
                 .url()
             "
-            :alt="block.image.alt"
+            :alt="block.image.alt ? block.image.alt : ''"
           />
           <figcaption v-if="block.image.caption && block.image.caption">
             {{ block.image.caption }}
@@ -75,7 +75,7 @@
                 .auto('format')
                 .url()
             "
-            :alt="image.alt"
+            :alt="image.alt ? image.alt : ''"
           />
           <figcaption v-if="image.caption && image.caption">
             {{ image.caption }}
@@ -99,7 +99,7 @@
                 .auto('format')
                 .url()
             "
-            :alt="image.alt"
+            :alt="image.alt ? image.alt : ''"
           />
           <figcaption v-if="image.caption && image.caption">
             {{ image.caption }}

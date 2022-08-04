@@ -30,7 +30,7 @@ export default {
                 )
                   .auto("format")
                   .url()}
-                alt={node.alt}
+                alt={node.alt ? node.alt : ""}
               />
               <figcaption>{node.caption}</figcaption>
             </figure>

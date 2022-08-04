@@ -23,7 +23,11 @@
             .auto('format')
             .url()
         "
-        :alt="product.mainImage.alt[$context.locale]"
+        :alt="
+          product.mainImage.alt[$context.locale]
+            ? product.mainImage.alt[$context.locale]
+            : ''
+        "
       />
     </div>
     <div class="product-info">
@@ -37,7 +41,11 @@
               .auto('format')
               .url()
           "
-          :alt="product.mainImage.alt[$context.locale]"
+          :alt="
+            product.mainImage.alt[$context.locale]
+              ? product.mainImage.alt[$context.locale]
+              : ''
+          "
         />
         <g-image
           v-if="product.detailImage"
@@ -47,7 +55,11 @@
               .auto('format')
               .url()
           "
-          :alt="product.detailImage.alt[$context.locale]"
+          :alt="
+            product.detailImage.alt[$context.locale]
+              ? product.detailImage.alt[$context.locale]
+              : ''
+          "
         />
       </div>
       <ul class="product-info-tabs">

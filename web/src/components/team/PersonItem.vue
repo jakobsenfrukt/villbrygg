@@ -11,7 +11,11 @@
             .auto('format')
             .url()
         "
-        :alt="person.image.alt[$context.locale]"
+        :alt="
+          person.image.alt[$context.locale]
+            ? person.image.alt[$context.locale]
+            : ''
+        "
       />
     </div>
     <h2 class="person-name">

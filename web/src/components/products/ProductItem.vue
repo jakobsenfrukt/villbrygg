@@ -20,7 +20,11 @@
             .auto('format')
             .url()
         "
-        :alt="product.mainImage.alt[$context.locale]"
+        :alt="
+          product.mainImage.alt[$context.locale]
+            ? product.mainImage.alt[$context.locale]
+            : ''
+        "
       />
       <g-link
         class="product-link"
