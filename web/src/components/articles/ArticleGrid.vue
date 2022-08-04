@@ -125,6 +125,7 @@ export default {
     calc(var(--spacing-sitepadding) * 2);
   background: var(--color-background);
   border-radius: var(--border-radius-l);
+  align-items: flex-start;
   &__title {
     grid-column: 1 / -1;
     max-width: 14em;

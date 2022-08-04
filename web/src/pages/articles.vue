@@ -14,9 +14,8 @@
         >
           <button
             @click="changeFilter(category.node.title.en)"
-            :class="
-              activeFilters.includes(category.node.title.en) ? 'active' : ''
-            "
+            class="category-button"
+            :class="activeFilter === category.node.title.en ? 'active' : ''"
           >
             {{ category.node.title[$context.locale] }}
           </button>
@@ -134,6 +133,9 @@ query {
           no
           en
         }
+        color {
+          hex
+        }
       }
     }
   }
@@ -158,14 +160,14 @@ export default {
     },
     limit: {
       type: Number,
-      default: 6,
+      default: 12,
     },
     heading: Object,
   },
   data() {
     return {
       showAll: true,
-      activeFilters: [],
+      activeFilter: undefined,
     };
   },
   methods: {
@@ -175,24 +177,14 @@ export default {
       });
     },
     resetFilter() {
-      (this.showAll = true), (this.activeFilters = []);
+      (this.showAll = true), (this.activeFilter = undefined);
     },
     changeFilter(category) {
       this.showAll = false;
-      if (this.activeFilters.includes(category)) {
-        const index = this.activeFilters.indexOf(category);
-        if (index > -1) {
-          this.activeFilters.splice(index, 1);
-        }
-        if (!this.activeFilters.length) {
-          this.showAll = true;
-        }
-      } else {
-        this.activeFilters.push(category);
-      }
+      this.activeFilter = category;
     },
     checkActiveFilter(category) {
-      return this.activeFilters.includes(category);
+      return this.activeFilter === category;
     },
   },
 };
@@ -203,12 +195,14 @@ export default {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  column-gap: var(--spacing-sitepadding);
+  gap: var(--spacing-sitepadding);
   margin-bottom: 6rem;
   background: var(--color-background);
   border-radius: var(--border-radius-l);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+  padding: 0;
+  align-items: flex-start;
   &__title {
     grid-column: 1 / -1;
     max-width: 14em;
@@ -226,7 +220,12 @@ export default {
     }
   }
 }
-
+.category-button {
+  &:hover,
+  &.active {
+    background: var(--color-active) !important;
+  }
+}
 @media (max-width: 1000px) {
   .article-grid {
     grid-template-columns: repeat(2, 1fr);
