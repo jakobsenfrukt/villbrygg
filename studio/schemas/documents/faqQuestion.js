@@ -17,7 +17,7 @@ export default {
     },
     {
       name: 'answer',
-      type: 'localeText',
+      type: 'localeSimpleBody',
       title: 'Answer'
     }
   ],

@@ -23,7 +23,7 @@
         >
           <Question
             :question="question.node.question[$context.locale]"
-            :answer="question.node.answer[$context.locale]"
+            :answer="question.node.answer"
           />
         </li>
       </ul>
@@ -85,8 +85,8 @@ query {
           en
         }
         answer {
-          no
-          en
+          _rawNo
+          _rawEn
         }
       }
     }

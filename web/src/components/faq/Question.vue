@@ -3,15 +3,35 @@
     <h2 @click="toggleAnswer()" class="question" aria-role="button">
       {{ question }}
     </h2>
-    <p class="answer">{{ answer }}</p>
+    <div class="answer">
+      <template v-if="$context.locale == 'no'">
+        <block-content
+          :blocks="answer._rawNo"
+          v-if="answer._rawNo"
+          class="block-content body"
+        />
+      </template>
+      <template v-else-if="$context.locale == 'en'">
+        <block-content
+          :blocks="answer._rawEn"
+          v-if="answer._rawEn"
+          class="block-content body"
+        />
+      </template>
+    </div>
   </div>
 </template>
 
 <script>
+import BlockContent from "@/components/tools/BlockContent";
+
 export default {
+  components: {
+    BlockContent,
+  },
   props: {
     question: String,
-    answer: String,
+    answer: Object,
   },
   data() {
     return {
