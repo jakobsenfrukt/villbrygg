@@ -65,7 +65,23 @@ export default {
       name: 'pageContent',
       type: 'pageContent', 
       title: 'Additional content'
-    }
+    },
+    {
+      title: 'Related articles',
+      name: 'related',
+      type: 'array',
+      of: [
+        {
+          title: 'Article',
+          type: 'reference',
+          to: [
+            {
+              type: 'article'
+            }
+          ]
+        }
+      ]
+    },
   ],
   orderings: [
     {

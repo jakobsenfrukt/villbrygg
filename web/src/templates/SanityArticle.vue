@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <div class="article">
+    <div class="article article-page">
       <header class="article-header">
         <div class="text">
           <h1 class="heading">{{ $page.article.title }}</h1>
@@ -44,6 +44,13 @@
           :content="$page.article.pageContent.blocks"
           v-if="$page.article.pageContent"
           class="content-blocks"
+        />
+        <ArticleGrid
+          v-if="$page.article.related.length"
+          :heading="$t('headings.related')"
+          :items="$page.article.related"
+          :limit="3"
+          class="article-grid"
         />
       </main>
     </div>
@@ -92,16 +99,26 @@ query article ($id: ID!) {
     _rawBody
     pageContent {
       blocks {
-          ... on SanityBodyBlock {
-            _type
-            _rawBody
+        ... on SanityBodyBlock {
+          _type
+          _rawBody
+        }
+        ... on SanityTextBlock {
+          _type
+          text
+        }
+        ... on SanityFigure {
+          _type
+          asset {
+            _id
+            url
           }
-          ... on SanityTextBlock {
-            _type
-            text
-          }
-          ... on SanityFigure {
-            _type
+          alt
+          caption
+        }
+        ... on SanityImageAndText {
+          _type
+          image {
             asset {
               _id
               url
@@ -109,30 +126,57 @@ query article ($id: ID!) {
             alt
             caption
           }
-          ... on SanityImageAndText {
-            _type
-            image {
-              asset {
-                _id
-                url
-              }
-              alt
-              caption
+          text
+        }
+        ... on SanityFigureTwoColumn {
+          _type
+          images {
+            asset {
+              _id
+              url
             }
-            text
-          }
-          ... on SanityFigureTwoColumn {
-            _type
-            images {
-              asset {
-                _id
-                url
-              }
-              alt
-              caption
-            }
+            alt
+            caption
           }
         }
+      }
+    }
+    related {
+      title
+      slug {
+        current
+      }
+      publishedAt
+      locale
+      lead
+      categories {
+        title {
+          no
+          en
+        }
+        color {
+          hex
+        }
+      }
+      mainImages {
+        asset {
+          _id
+          url
+        }
+        alt
+        hotspot {
+          x
+          y
+          height
+          width
+        }
+        crop {
+          top
+          bottom
+          left
+          right
+        }
+      }
     }
   }
 }
@@ -141,11 +185,13 @@ query article ($id: ID!) {
 <script>
 import BlockContent from "~/components/tools/BlockContent";
 import PageContent from "~/components/PageContent";
+import ArticleGrid from "~/components/articles/RelatedArticleGrid";
 
 export default {
   components: {
     BlockContent,
     PageContent,
+    ArticleGrid,
   },
   metaInfo() {
     return {
@@ -221,6 +267,14 @@ export default {
 .categories {
   grid-column: span 6;
   margin-top: 0;
+}
+
+.content-blocks {
+  order: 3;
+}
+.article-grid {
+  grid-column: 1 / -1;
+  order: 4;
 }
 
 @media (max-width: 800px) {

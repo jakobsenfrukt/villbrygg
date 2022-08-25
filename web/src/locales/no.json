@@ -15,5 +15,8 @@
     "shopSearchLabel": "Søk på by",
     "shopSearchPlaceholder": "Begynn å skrive inn navnet på byen din",
     "showAllArticles": "Se flere i arkivet"
+  },
+  "headings": {
+    "related": "Relatert innhold"
   }
 }

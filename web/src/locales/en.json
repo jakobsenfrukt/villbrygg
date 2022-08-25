@@ -15,5 +15,8 @@
     "shopSearchLabel": "Search by city",
     "shopSearchPlaceholder": "Start writing the name of your city",
     "showAllArticles": "View more in the archive"
+  },
+  "headings": {
+    "related": "Related content"
   }
 }
