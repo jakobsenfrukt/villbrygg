@@ -27,6 +27,15 @@
           :key="article.id"
           :article="article.node"
         />
+        <div class="showmore">
+          <button
+            class="button"
+            @click="showMore()"
+            v-if="filteredArticles.length > limit"
+          >
+            {{ $t("navigation.showmore") }}
+          </button>
+        </div>
       </section>
     </main>
   </Layout>
@@ -181,6 +190,9 @@ export default {
       this.showAll = false;
       this.activeFilter = category;
     },
+    showMore() {
+      this.limit += this.limit;
+    },
   },
 };
 </script>
@@ -219,6 +231,14 @@ export default {
   &:hover,
   &.active {
     background: var(--color-active) !important;
+  }
+}
+.showmore {
+  grid-column: 1 / -1;
+
+  .button {
+    display: block;
+    margin: 0 auto;
   }
 }
 @media (max-width: 1000px) {
