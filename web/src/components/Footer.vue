@@ -1,36 +1,12 @@
 <template>
   <footer class="site-footer">
-    <div class="logo-wrapper">
-      <g-link :to="$tp('/')" class="logo"><Logo /></g-link>
-    </div>
-    <!--<ul class="contact">
-      <li>
-        <a
-          :href="`https://instagram.com/${$static.general.contact.instagram}`"
-          target="_blank"
-          >Instagram</a
-        >
-      </li>
-      <li>
-        <a
-          :href="`https://facebook.com/${$static.general.contact.facebook}`"
-          target="_blank"
-          >Facebook</a
-        >
-      </li>
-    </ul>-->
-    <div class="footer-contact">
-      <ul>
+    <div class="site-footer-wrapper">
+      <div class="logo-wrapper">
+        <g-link :to="$tp('/')" class="logo"><Logo /></g-link>
+      </div>
+      <!--<ul class="contact">
         <li>
           <a
-            :href="`mailto:${$static.general.contact.email}`"
-            target="_blank"
-            >{{ $static.general.contact.email }}</a
-          >
-        </li>
-        <li>
-          <a
-            v-if="$static.general.contact.instagram"
             :href="`https://instagram.com/${$static.general.contact.instagram}`"
             target="_blank"
             >Instagram</a
@@ -38,44 +14,75 @@
         </li>
         <li>
           <a
-            v-if="$static.general.contact.facebook"
             :href="`https://facebook.com/${$static.general.contact.facebook}`"
             target="_blank"
             >Facebook</a
           >
         </li>
-        <li class="address">
-          <block-content
-            :blocks="$static.general.contact._rawAddress"
-            v-if="$static.general.contact._rawAddress"
-          />
-        </li>
-      </ul>
-    </div>
-    <div>
-      <nav class="footer-nav">
+      </ul>-->
+      <div class="footer-contact">
         <ul>
           <li>
-            <g-link class="nav__link" :to="$tp('/faq/')">{{
-              $t("menu.faq")
-            }}</g-link>
-          </li>
-          <li>
             <a
-              v-if="$static.general.newsletterUrl"
-              class="nav__link"
-              :href="$static.general.newsletterUrl"
+              :href="`mailto:${$static.general.contact.email}`"
               target="_blank"
-              >{{ $t("menu.newsletter") }}</a
+              >{{ $static.general.contact.email }}</a
             >
           </li>
           <li>
-            <g-link class="nav__link" :to="$tp('/reseller/')">{{
-              $t("menu.reseller")
-            }}</g-link>
+            <a
+              v-if="$static.general.contact.instagram"
+              :href="
+                `https://instagram.com/${$static.general.contact.instagram}`
+              "
+              target="_blank"
+              >Instagram</a
+            >
+          </li>
+          <li>
+            <a
+              v-if="$static.general.contact.facebook"
+              :href="`https://facebook.com/${$static.general.contact.facebook}`"
+              target="_blank"
+              >Facebook</a
+            >
+          </li>
+          <li class="address">
+            <block-content
+              :blocks="$static.general.contact._rawAddress"
+              v-if="$static.general.contact._rawAddress"
+            />
           </li>
         </ul>
-      </nav>
+      </div>
+      <div>
+        <nav class="footer-nav">
+          <ul>
+            <li>
+              <g-link class="nav__link" :to="$tp('/faq/')">{{
+                $t("menu.faq")
+              }}</g-link>
+            </li>
+            <li>
+              <a
+                v-if="$static.general.newsletterUrl"
+                class="nav__link"
+                :href="$static.general.newsletterUrl"
+                target="_blank"
+                >{{ $t("menu.newsletter") }}</a
+              >
+            </li>
+            <li>
+              <g-link class="nav__link" :to="$tp('/reseller/')">{{
+                $t("menu.reseller")
+              }}</g-link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="privacy">
+      <g-link :to="$tp('/privacy/')">{{ $t("menu.privacy") }}</g-link>
     </div>
   </footer>
 </template>
@@ -108,21 +115,21 @@ export default {
 
 <style lang="scss" scoped>
 .site-footer {
-  width: 100%;
-  background: var(--color-darkgreen);
-  color: var(--color-white);
-  padding: calc(var(--spacing-sitepadding) * 2) var(--spacing-sitepadding)
-    var(--spacing-sitepadding);
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--border-radius-l);
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  &-wrapper {
+    width: 100%;
+    background: var(--color-darkgreen);
+    color: var(--color-white);
+    padding: calc(var(--spacing-sitepadding) * 2) var(--spacing-sitepadding)
+      var(--spacing-sitepadding);
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius-l);
 
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: flex-end;
-  gap: calc(var(--spacing-sitepadding) * 2);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: flex-end;
+    gap: calc(var(--spacing-sitepadding) * 2);
+  }
 
   .logo-wrapper {
     grid-column: 1 / -1;
@@ -165,6 +172,14 @@ export default {
     &:after {
       content: " →";
     }
+  }
+}
+.privacy {
+  font-size: var(--font-size-xs);
+  color: var(--color-white);
+  padding: calc(var(--spacing-sitepadding) / 2) var(--spacing-sitepadding);
+  a {
+    opacity: 0.5;
   }
 }
 @media (max-width: 1000px) {

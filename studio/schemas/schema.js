@@ -28,6 +28,7 @@ import productpage from './documents/productpage'
 import articlepage from './documents/articlepage'
 import person from './documents/person'
 import reseller from './documents/reseller'
+import privacy from './documents/privacy'
 
 // objects
 import body from './objects/body'
@@ -83,6 +84,7 @@ export default createSchema({
     articlepage,
     person,
     reseller,
+    privacy,
     // objects
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas

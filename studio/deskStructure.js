@@ -1,9 +1,9 @@
 import S from '@sanity/desk-tool/structure-builder'
 
-import { MdSettings, MdLiquor, MdQuestionAnswer, MdInfo, MdLocationPin, MdArticle, MdOutlineArticle, MdStore, MdLocationCity, MdPublic, MdHome, MdCategory, MdEmail, MdPeople, MdLaptopMac, MdAddBusiness } from 'react-icons/md'
+import { MdSettings, MdLiquor, MdQuestionAnswer, MdInfo, MdLocationPin, MdArticle, MdOutlineArticle, MdStore, MdLocationCity, MdPublic, MdHome, MdCategory, MdEmail, MdPeople, MdLaptopMac, MdAddBusiness, MdPrivacyTip } from 'react-icons/md'
 
 const hiddenDocTypes = listItem =>
-  !['general', 'product', 'article', 'about', 'faq', 'faqQuestion', 'faqCategory', 'shops', 'onlineShop', 'location', 'shopsCountry', 'shopsCity', 'shopsCategory', 'articlesCategory', 'productCategory', 'frontpage', 'contactpage', 'productpage', 'articlepage', 'person', 'reseller'].includes(listItem.getId())
+  !['general', 'product', 'article', 'about', 'faq', 'faqQuestion', 'faqCategory', 'shops', 'onlineShop', 'location', 'shopsCountry', 'shopsCity', 'shopsCategory', 'articlesCategory', 'productCategory', 'frontpage', 'contactpage', 'productpage', 'articlepage', 'person', 'reseller', 'privacy'].includes(listItem.getId())
 
 export default () =>
   S.list()
@@ -34,7 +34,6 @@ export default () =>
         .icon(MdLiquor)
         .schemaType('product')
         .child(
-          //S.documentTypeList('product').title('Products'),
           S.list()
             .id('products')
             .title('Products')
@@ -330,6 +329,16 @@ export default () =>
             .id('reseller')
             .schemaType('reseller')
             .documentId('reseller')
+        ),
+      S.listItem()
+        .title('Privacy policy')
+        .icon(MdPrivacyTip)
+        .child(
+          S.editor()
+            .title('Privacy policy')
+            .id('privacy')
+            .schemaType('privacy')
+            .documentId('privacy')
         ),
       // This returns an array of all the document types
       // defined in schema.js. We filter out those that we have
