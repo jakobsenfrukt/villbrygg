@@ -22,20 +22,11 @@
         </li>
       </ul>
       <section class="article-grid">
-        <template v-if="items">
-          <ArticleItem
-            v-for="article in items.slice(0, limit)"
-            :key="article.id"
-            :article="article"
-          />
-        </template>
-        <template v-else>
-          <ArticleItem
-            v-for="article in getLocaleArticles().slice(0, limit)"
-            :key="article.id"
-            :article="article.node"
-          />
-        </template>
+        <ArticleItem
+          v-for="article in filteredArticles.slice(0, limit)"
+          :key="article.id"
+          :article="article.node"
+        />
       </section>
     </main>
   </Layout>
@@ -153,22 +144,29 @@ export default {
     ArticleItem,
     BlockContent,
   },
-  props: {
-    items: {
-      type: Array,
-      default: undefined,
-    },
-    limit: {
-      type: Number,
-      default: 12,
-    },
-    heading: Object,
-  },
   data() {
     return {
       showAll: true,
       activeFilter: undefined,
+      limit: 12,
     };
+  },
+  computed: {
+    filteredArticles() {
+      const articles = this.getLocaleArticles();
+      const activeFilter = this.activeFilter;
+      let filtered = articles;
+      if (activeFilter) {
+        filtered = filtered.filter((item) => {
+          const categories = item.node.categories.map(
+            (category) => category.title.en
+          );
+          console.log(categories);
+          return categories.some((category) => category === activeFilter);
+        });
+      }
+      return filtered;
+    },
   },
   methods: {
     getLocaleArticles() {
@@ -182,9 +180,6 @@ export default {
     changeFilter(category) {
       this.showAll = false;
       this.activeFilter = category;
-    },
-    checkActiveFilter(category) {
-      return this.activeFilter === category;
     },
   },
 };
