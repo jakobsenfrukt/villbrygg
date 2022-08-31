@@ -15,15 +15,16 @@
           </button>
         </li>
       </ul>
-      <ul class="questions">
+      <ul class="questions" key="questions">
         <li
-          v-for="(question, index) in sortedCategories()"
-          :key="`question-${index}`"
+          v-for="question in sortedCategories()"
+          :key="question.node.id"
           class="question"
         >
           <Question
             :question="question.node.question[$context.locale]"
             :answer="question.node.answer"
+            :key="question.node.id"
           />
         </li>
       </ul>
@@ -74,6 +75,7 @@ query {
   questions: allSanityFaqQuestion(sortBy: "category", order: ASC) {
     edges {
       node {
+        id
         category {
           title {
             no
@@ -145,12 +147,6 @@ export default {
   list-style: none;
   margin: 0 0 calc(var(--spacing-sitepadding) * 2);
   padding: 0;
-
-  h2 {
-    font-size: var(--font-size-l);
-    font-weight: 400;
-    margin: 0.5rem 0 2rem;
-  }
 }
 .question {
   border-top: 1px solid var(--color-lightgray);

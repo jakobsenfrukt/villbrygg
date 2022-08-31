@@ -51,12 +51,13 @@ export default {
   position: relative;
   font-size: var(--font-size-l);
   font-weight: 400;
-  margin: 1.5rem 0;
+  margin: 0;
+  padding: 1.5rem 3rem 1.5rem 0;
   cursor: none;
   &:after {
     content: "→";
     position: absolute;
-    top: 0;
+    top: calc(50% - 0.75em);
     right: 0;
     font-size: var(--font-size-l);
     font-weight: 400;
