@@ -164,4 +164,14 @@ p.body {
     }
   }
 }
+@media (max-width: 800px) {
+  .general {
+    &-heading {
+      grid-column: 1 / -1;
+    }
+    &-links {
+      grid-column: 1 / -1;
+    }
+  }
+}
 </style>

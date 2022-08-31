@@ -47,4 +47,10 @@ export default {
 
   display: none;
 }
+
+@media (pointer: coarse) {
+  .cursorfriend {
+    display: none !important;
+  }
+}
 </style>
