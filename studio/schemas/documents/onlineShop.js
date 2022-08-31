@@ -36,7 +36,8 @@ export default {
     {
       name: 'website',
       type: 'string',
-      title: 'Website',
+      title: 'URL',
+      description: 'Hele URLen til nettbutikken, inkludert https://',
       validation: Rule => Rule.required(),
     },
     {

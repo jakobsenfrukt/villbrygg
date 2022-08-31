@@ -9,7 +9,7 @@
           </button>
         </li>
         <li
-          v-for="(category, index) in $page.categories.edges"
+          v-for="(category, index) in sortedCategories[$context.locale]"
           :key="`category-${index}`"
         >
           <button
@@ -42,104 +42,21 @@
 
           <ul class="country-list">
             <li
-              class="online accordion"
               v-if="
                 !searchQuery &&
                   getOnlineShopsByCountry(country).length &&
                   (showAll || checkActiveFilter('Online'))
               "
             >
-              <h3 class="list-heading online">Online</h3>
-              <ul class="location-list">
-                <li
-                  v-for="(onlineShop, index) in getOnlineShopsByCountry(
-                    country
-                  )"
-                  :key="`onlineShop-${index}`"
-                  class="location"
-                >
-                  <h5 class="location-name">
-                    {{ onlineShop.node.name }}
-                  </h5>
-                  <p>
-                    The standard chunk of Lorem Ipsum used since the 1500s is
-                    reproduced below for those interested.
-                  </p>
-                  <a
-                    v-if="onlineShop.node.website"
-                    :href="onlineShop.node.website"
-                    >{{ onlineShop.node.website }}</a
-                  >
-                </li>
-              </ul>
+              <Online :shops="getOnlineShopsByCountry(country)" />
             </li>
-            <li
-              v-for="(city, index) in visibleCities"
-              :key="`city-${index}`"
-              class="city accordion"
-            >
-              <div class="city-wrapper" v-if="getLocationsByCity(city).length">
-                <h3 class="list-heading city-name">
-                  {{ city.node.name[$context.locale] }}
-                </h3>
-                <ul
-                  class="category-list"
-                  v-if="getLocationsByCity(city).length"
-                >
-                  <li
-                    v-for="(category, index) in $page.categories.edges"
-                    :key="`category-${index}`"
-                    class="locations-category"
-                  >
-                    <div
-                      class="category-wrapper"
-                      v-if="
-                        getLocationsByCategory(city, category).length &&
-                          (showAll || checkActiveFilter(category.node.title.en))
-                      "
-                    >
-                      <h4 class="list-heading category-name">
-                        {{ category.node.title[$context.locale] }}
-                      </h4>
-                      <ul class="location-list">
-                        <li
-                          v-for="(location, index) in getLocationsByCategory(
-                            city,
-                            category
-                          )"
-                          :key="`location-${index}`"
-                          class="location"
-                        >
-                          <h5 class="location-name">
-                            {{ location.node.name }}
-                          </h5>
-                          <p>
-                            The standard chunk of Lorem Ipsum used since the
-                            1500s is reproduced below for those interested.
-                          </p>
-                          <a
-                            v-if="location.node.website"
-                            :href="location.node.website"
-                            >{{ location.node.website }}</a
-                          >
-                          <!--<block-content
-                        :blocks="location.node.text._rawNo"
-                        v-if="location.node.text._rawNo && $context.locale == 'no'"
-                        class="block-content"
-                      />
-                      <block-content
-                        :blocks="location.node.text._rawEn"
-                        v-else-if="
-                          location.node.text._rawEn && $context.locale == 'en'
-                        "
-                        class="block-content"
-                      />-->
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                </ul>
-              </div>
+            <li v-for="(city, index) in visibleCities" :key="`city-${index}`">
+              <City
+                :city="city"
+                :locations="getLocationsByCity(city)"
+                :categories="sortedCategories[$context.locale]"
+                :activeFilters="activeFilters"
+              />
             </li>
           </ul>
         </li>
@@ -271,12 +188,14 @@ query {
 
 <script>
 import PageHeader from "~/components/PageHeader";
-import BlockContent from "~/components/tools/BlockContent";
+import City from "~/components/shops/City";
+import Online from "~/components/shops/Online";
 
 export default {
   components: {
     PageHeader,
-    BlockContent,
+    City,
+    Online,
   },
   data() {
     return {
@@ -287,26 +206,36 @@ export default {
   },
   computed: {
     visibleCities() {
-      let cities = [];
+      let cities = this.$page.cities.edges;
       if (this.searchQuery) {
         // show cities matching search query
-        cities = this.$page.cities.edges.filter(
+        cities = cities.filter(
           (item) =>
             item.node.name.en.toLowerCase().includes(this.searchQuery) ||
             item.node.name.no.toLowerCase().includes(this.searchQuery)
         );
-      } /*else if (this.activeFilters.length) {
-        // check each city if there are any locations matching the current filters
-        cities = this.$page.cities.edges.filter((city) =>
+      }
+      /*if (this.activeFilters.length >= 1) {
+        // check each city if it contains locations matching the current filters
+        cities = cities.filter((city) =>
           this.activeFilters.forEach((category) =>
             this.getLocationsByCategory(city, category)
           )
         );
-      } */ else {
-        cities = this.$page.cities.edges;
-      }
-
+      }*/
       return cities;
+    },
+    sortedCategories() {
+      const categories = this.$page.categories.edges;
+      const sortedCategories = {
+        en: categories
+          .slice()
+          .sort((a, b) => a.node.title.en.localeCompare(b.node.title.en)),
+        no: categories
+          .slice()
+          .sort((a, b) => a.node.title.no.localeCompare(b.node.title.no)),
+      };
+      return sortedCategories;
     },
   },
   methods: {
@@ -371,41 +300,14 @@ h3 {
   margin: 0.5rem 0 1.5rem;
 }
 .country {
-  margin: 3rem 0 6rem;
-  &-heading {
-    font-size: var(--font-size-l);
+  border-top: 1px solid var(--color-text);
+  border-radius: 0;
+  padding: var(--spacing-sitepadding) 0;
+  margin: var(--spacing-sitepadding) 0;
+  &-name {
+    font-size: var(--font-size-m);
     text-transform: uppercase;
-  }
-}
-.accordion {
-  /*border-top: 1px solid var(--color-lightgray);
-  position: relative;
-  &:after {
-    content: "+";
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: var(--font-size-l);
-    font-weight: 400;
-    transform: rotate(0deg);
-    transition: transform 0.3s ease;
-  }
-  &:last-of-type {
-    border-bottom: 1px solid var(--color-lightgray);
-  }
-  background: var(--color-palegreen);
-  border-radius: var(--border-radius);
-  padding: var(--spacing-sitepadding);*/
-  margin-bottom: 1rem;
-  .list-heading {
-    font-size: var(--font-size-l);
-    margin: 0;
-    //&.online,
-    &.category-name {
-      font-size: var(--font-size-s);
-      color: var(--color-green);
-      margin-top: 2rem;
-    }
+    margin: 0 0 var(--spacing-sitepadding) 0;
   }
 }
 .location-list {
@@ -426,15 +328,29 @@ h3 {
     margin: 0 0 0.5rem;
   }
 }
+.city-category-list,
+.location-list {
+  display: none;
+}
 .search {
   label {
     margin-right: 0.5rem;
+    font-family: inherit;
+    font-size: var(--font-size-s);
+
+    @media (max-width: 600px) {
+      display: block;
+      margin-bottom: 0.5rem;
+      margin-top: 1rem;
+    }
+
     &:after {
       content: ":";
     }
   }
   input {
     width: 20rem;
+    max-width: 100%;
   }
 }
 </style>

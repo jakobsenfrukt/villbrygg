@@ -26,11 +26,6 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
-      name: 'website',
-      type: 'string',
-      title: 'Website'
-    },
-    {
       name: 'text',
       type: 'localeSimpleBody',
       title: 'Text'

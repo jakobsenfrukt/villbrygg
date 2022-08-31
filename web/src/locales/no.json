@@ -16,7 +16,8 @@
     "showmore": "Last inn flere",
     "shopSearchLabel": "Søk på by",
     "shopSearchPlaceholder": "Begynn å skrive inn navnet på byen din",
-    "showAllArticles": "Se flere i arkivet"
+    "showAllArticles": "Se flere i arkivet",
+    "showLocations": "Vis steder"
   },
   "headings": {
     "related": "Relatert innhold"

@@ -16,7 +16,8 @@
     "showmore": "Load more",
     "shopSearchLabel": "Search by city",
     "shopSearchPlaceholder": "Start writing the name of your city",
-    "showAllArticles": "View more in the archive"
+    "showAllArticles": "View more in the archive",
+    "showLocations": "Show locations"
   },
   "headings": {
     "related": "Related content"
