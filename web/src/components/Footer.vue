@@ -182,8 +182,8 @@ export default {
     opacity: 0.5;
   }
 }
-@media (max-width: 1000px) {
-  .site-footer {
+@media (max-width: 900px) {
+  .site-footer-wrapper {
     grid-template-columns: 1fr;
   }
 }

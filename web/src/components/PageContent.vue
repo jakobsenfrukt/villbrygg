@@ -183,6 +183,9 @@ export default {
   grid-template-columns: repeat(2, 1fr);
   align-items: flex-start;
   gap: 0.75rem;
+  figure {
+    margin-bottom: var(--spacing-sitepadding);
+  }
 }
 
 .imageGallery {

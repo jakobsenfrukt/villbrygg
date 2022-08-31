@@ -281,6 +281,7 @@ export default {
     }
     &-text {
       padding-left: 0;
+      order: 1;
     }
   }
 }
