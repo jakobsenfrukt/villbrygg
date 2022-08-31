@@ -209,10 +209,11 @@ export default {
       let cities = this.$page.cities.edges;
       if (this.searchQuery) {
         // show cities matching search query
+        const query = this.searchQuery.toLowerCase();
         cities = cities.filter(
           (item) =>
-            item.node.name.en.toLowerCase().includes(this.searchQuery) ||
-            item.node.name.no.toLowerCase().includes(this.searchQuery)
+            item.node.name.en.toLowerCase().includes(query) ||
+            item.node.name.no.toLowerCase().includes(query)
         );
       }
       /*if (this.activeFilters.length >= 1) {
