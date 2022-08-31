@@ -16,7 +16,7 @@ export default {
     {
       name: 'text',
       type: 'localeText',
-      title: 'Text'
+      title: 'Intro text'
     },
     {
       name: 'images',

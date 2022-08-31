@@ -15,7 +15,7 @@ export default {
     },
     {
       name: 'body',
-      title: 'Body',
+      title: 'Main text',
       type: 'localeBody',
     },
     {

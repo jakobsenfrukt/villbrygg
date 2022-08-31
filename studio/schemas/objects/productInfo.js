@@ -11,7 +11,7 @@ export default {
     {
       name: 'body',
       type: 'localeBody',
-      title: 'Body'
+      title: 'Main text'
     }
   ],
   preview: {

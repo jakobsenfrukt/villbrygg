@@ -59,7 +59,7 @@ export default {
     {
       name: 'body',
       type: 'body', 
-      title: 'Body'
+      title: 'Main text'
     },
     {
       name: 'pageContent',

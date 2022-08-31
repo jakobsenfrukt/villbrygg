@@ -6,12 +6,12 @@ export default {
     {
       name: 'body',
       type: 'body',
-      title: 'Body'
+      title: 'Main text'
     }
   ],
   preview: {
     select: {
-      title: 'body'
+      title: 'Main text'
     }
   }
 }

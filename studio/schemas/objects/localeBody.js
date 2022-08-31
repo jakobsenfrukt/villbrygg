@@ -1,5 +1,5 @@
 export default {
-  title: 'Body',
+  title: 'Main text',
   name: 'localeBody',
   type: 'object',
   fields: [

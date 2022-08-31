@@ -5,7 +5,7 @@ const QuoteStyle = props => (
 )
 
 export default {
-  title: 'Body',
+  title: 'Main text',
   name: 'body',
   type: 'array',
   of: [
