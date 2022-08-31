@@ -2,7 +2,7 @@ export default {
   name: 'privacy',
   type: 'document',
   title: 'Privacy policy',
-  //__experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'], 
+  __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'], 
   fields: [
     {
       name: 'pageHeader',
