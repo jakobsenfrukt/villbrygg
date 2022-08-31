@@ -79,6 +79,7 @@ export default {
   position: relative;
   background: var(--color-palegreen);
   padding: calc(var(--spacing-sitepadding) * 0.7);
+  margin-bottom: var(--spacing-sitepadding);
   border-radius: var(--border-radius);
   transition: background 0.2s ease;
   &-image {

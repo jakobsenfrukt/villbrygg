@@ -143,6 +143,7 @@ export default {
   position: relative;
   margin-bottom: var(--spacing-sitepadding);
   padding: 0.75rem;
+  overflow: hidden;
   &:hover,
   &.open {
     background: var(--color-paleyellow);
@@ -183,10 +184,12 @@ export default {
     border-radius: var(--border-radius);
     position: relative;
     order: 1;
-
+    width: 100%;
     height: 100%;
 
     img {
+      width: 100%;
+      height: 100%;
       display: block;
       object-fit: cover;
     }
@@ -226,6 +229,7 @@ export default {
     margin: var(--spacing-sitepadding) 0 calc(var(--spacing-sitepadding) * 2);
     padding: 0;
     display: flex;
+    flex-wrap: wrap;
     button {
       border: 1px solid var(--color-lightgray);
       background: transparent;

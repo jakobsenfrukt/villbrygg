@@ -153,7 +153,7 @@ query {
       }
     }
   }
-  countries: allSanityShopsCountry(sortBy: "name", order: ASC) {
+  countries: allSanityShopsCountry(sortBy: "name.en", order: ASC) {
     edges {
       node {
         name {
@@ -163,7 +163,7 @@ query {
       }
     }
   }
-  cities: allSanityShopsCity(sortBy: "name", order: ASC) {
+  cities: allSanityShopsCity(sortBy: "name.en", order: ASC) {
     edges {
       node {
         name {
@@ -173,7 +173,7 @@ query {
       }
     }
   }
-  categories: allSanityShopsCategory(sortBy: "title", order: ASC) {
+  categories: allSanityShopsCategory(sortBy: "title.en", order: ASC) {
     edges {
       node {
         title {
