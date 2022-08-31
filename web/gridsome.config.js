@@ -46,6 +46,14 @@ module.exports = {
           'en': require('./src/locales/en.json'),
         }
       }
+    },
+    {
+      use: 'gridsome-plugin-gtm',
+      options: {
+        id: 'GTM-PKSR5CZ',
+        enabled: true,
+        debug: true
+      }
     }
   ]
 }
