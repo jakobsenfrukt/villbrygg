@@ -72,7 +72,7 @@ query {
       }
     }
   }
-  questions: allSanityFaqQuestion(sortBy: "category", order: ASC) {
+  questions: allSanityFaqQuestion(sortBy: "question.en", order: DESC) {
     edges {
       node {
         id
@@ -101,6 +101,16 @@ query {
           en
         }
       }
+    }
+  }
+  general: sanityGeneral(id: "general") {
+    seo {
+      ogimg {
+        asset {
+          url
+        }
+      }
+      description
     }
   }
 }
@@ -136,8 +146,25 @@ export default {
   mounted() {
     this.switchCategory(this.$page.categories.edges[0].node.title.en);
   },
-  metaInfo: {
-    title: "FAQ",
+  metaInfo() {
+    return {
+      title: "FAQ",
+      meta: [
+        {
+          name: "description",
+          content: this.$page.faq.pageHeader.text
+            ? this.$page.faq.pageHeader.text[this.$context.locale]
+            : this.$page.general.seo.description[this.$context.locale],
+        },
+        {
+          name: "og:image",
+          key: "og:image",
+          content: this.$page.faq.pageHeader.images.length
+            ? this.$page.faq.pageHeader.images[0].asset.url
+            : this.$page.general.seo.ogimg.asset.url,
+        },
+      ],
+    };
   },
 };
 </script>

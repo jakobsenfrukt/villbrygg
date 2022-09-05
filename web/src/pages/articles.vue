@@ -139,6 +139,16 @@ query {
       }
     }
   }
+  general: sanityGeneral(id: "general") {
+    seo {
+      ogimg {
+        asset {
+          url
+        }
+      }
+      description
+    }
+  }
 }
 </page-query>
 
@@ -193,6 +203,26 @@ export default {
     showMore() {
       this.limit += this.limit;
     },
+  },
+  metaInfo() {
+    return {
+      title: this.$context.locale === "no" ? "Artikler" : "Articles",
+      meta: [
+        {
+          name: "description",
+          content: this.$page.articlepage.pageHeader.text
+            ? this.$page.articlepage.pageHeader.text[this.$context.locale]
+            : this.$page.general.seo.description[this.$context.locale],
+        },
+        {
+          name: "og:image",
+          key: "og:image",
+          content: this.$page.articles.edges[0].node.mainImages.length
+            ? this.$page.articles.edges[0].node.mainImages[0].asset.url
+            : this.$page.general.seo.ogimg.asset.url,
+        },
+      ],
+    };
   },
 };
 </script>

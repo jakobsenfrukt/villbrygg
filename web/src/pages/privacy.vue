@@ -64,6 +64,16 @@ query {
       _rawNo
     }
   }
+  general: sanityGeneral(id: "general") {
+    seo {
+      ogimg {
+        asset {
+          url
+        }
+      }
+      description
+    }
+  }
 }
 </page-query>
 
@@ -76,8 +86,25 @@ export default {
     PageHeader,
     BlockContent,
   },
-  metaInfo: {
-    title: "Privacy",
+  metaInfo() {
+    return {
+      title: this.$context.locale === "no" ? "Personvern" : "Privacy",
+      meta: [
+        {
+          name: "description",
+          content: this.$page.privacy.pageHeader.text
+            ? this.$page.privacy.pageHeader.text[this.$context.locale]
+            : this.$page.general.seo.description[this.$context.locale],
+        },
+        {
+          name: "og:image",
+          key: "og:image",
+          content: this.$page.privacy.pageHeader.images.length
+            ? this.$page.privacy.pageHeader.images[0].asset.url
+            : this.$page.general.seo.ogimg.asset.url,
+        },
+      ],
+    };
   },
 };
 </script>

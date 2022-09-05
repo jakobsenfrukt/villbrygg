@@ -27,6 +27,13 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
+      name: 'intro',
+      type: 'localeString',
+      title: 'Front page intro',
+      description: 'Short text that shows up on hover. (Note: Not displayed on touch devices.)',
+      validation: Rule => Rule.required(),
+    },
+    {
       name: 'mainImage',
       title: 'Main image',
       type: 'localeFigure',

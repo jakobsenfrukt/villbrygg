@@ -170,6 +170,16 @@ query {
       }
     }
   }
+  general: sanityGeneral(id: "general") {
+    seo {
+      ogimg {
+        asset {
+          url
+        }
+      }
+      description
+    }
+  }
 }
 </page-query>
 
@@ -182,8 +192,28 @@ export default {
     PageHeader,
     BlockContent,
   },
-  metaInfo: {
-    title: "Reseller",
+  metaInfo() {
+    return {
+      title:
+        this.$context.locale === "no"
+          ? "Bli en forhandler"
+          : "Become a reseller",
+      meta: [
+        {
+          name: "description",
+          content: this.$page.reseller.pageHeader.text
+            ? this.$page.reseller.pageHeader.text[this.$context.locale]
+            : this.$page.general.seo.description[this.$context.locale],
+        },
+        {
+          name: "og:image",
+          key: "og:image",
+          content: this.$page.reseller.pageHeader.images.length
+            ? this.$page.reseller.pageHeader.images[0].asset.url
+            : this.$page.general.seo.ogimg.asset.url,
+        },
+      ],
+    };
   },
 };
 </script>

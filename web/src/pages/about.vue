@@ -175,6 +175,16 @@ query {
       en
     }
   }
+  general: sanityGeneral(id: "general") {
+    seo {
+      ogimg {
+        asset {
+          url
+        }
+      }
+      description
+    }
+  }
 }
 </page-query>
 
@@ -189,8 +199,25 @@ export default {
     BlockContent,
     PageContent,
   },
-  metaInfo: {
-    title: "About",
+  metaInfo() {
+    return {
+      title: this.$page.about.title[this.$context.locale],
+      meta: [
+        {
+          name: "description",
+          content: this.$page.about.pageHeader.text
+            ? this.$page.about.pageHeader.text[this.$context.locale]
+            : this.$page.general.seo.description[this.$context.locale],
+        },
+        {
+          name: "og:image",
+          key: "og:image",
+          content: this.$page.about.pageHeader.images.length
+            ? this.$page.about.pageHeader.images[0].asset.url
+            : this.$page.general.seo.ogimg.asset.url,
+        },
+      ],
+    };
   },
 };
 </script>
@@ -200,7 +227,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
 
-  .lead {
+  .text {
     grid-column: 1 / span 4;
     font-size: var(--font-size-l);
     padding-right: calc(var(--spacing-sitepadding) * 2);

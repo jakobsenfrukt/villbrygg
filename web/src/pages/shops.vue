@@ -121,7 +121,6 @@ query {
           }
         }
         name
-        website
         text {
           _rawNo
           _rawEn
@@ -181,6 +180,16 @@ query {
           en
         }
       }
+    }
+  }
+  general: sanityGeneral(id: "general") {
+    seo {
+      ogimg {
+        asset {
+          url
+        }
+      }
+      description
     }
   }
 }
@@ -280,8 +289,25 @@ export default {
       return this.activeFilters.includes(category);
     },
   },
-  metaInfo: {
-    title: "Shops",
+  metaInfo() {
+    return {
+      title: this.$context.locale === "no" ? "Butikker" : "Shops",
+      meta: [
+        {
+          name: "description",
+          content: this.$page.shops.pageHeader.text
+            ? this.$page.shops.pageHeader.text[this.$context.locale]
+            : this.$page.general.seo.description[this.$context.locale],
+        },
+        {
+          name: "og:image",
+          key: "og:image",
+          content: this.$page.shops.pageHeader.images.length
+            ? this.$page.shops.pageHeader.images[0].asset.url
+            : this.$page.general.seo.ogimg.asset.url,
+        },
+      ],
+    };
   },
 };
 </script>

@@ -76,6 +76,10 @@ query {
       slug {
         current
       }
+      intro {
+        no
+        en
+      }
       lead {
         no
         en
@@ -189,6 +193,16 @@ query {
       }
     }
   }
+  general: sanityGeneral(id: "general") {
+    seo {
+      ogimg {
+        asset {
+          url
+        }
+      }
+      description
+    }
+  }
 }
 </page-query>
 
@@ -203,8 +217,25 @@ export default {
     ProductGrid,
     ArticleGrid,
   },
-  metaInfo: {
-    title: "Welcome",
+  metaInfo() {
+    return {
+      title: this.$context.locale === "no" ? "Velkommen" : "Welcome",
+      meta: [
+        {
+          name: "description",
+          content: this.$page.frontpage.pageHeader.text
+            ? this.$page.frontpage.pageHeader.text[this.$context.locale]
+            : this.$page.general.seo.description[this.$context.locale],
+        },
+        {
+          name: "og:image",
+          key: "og:image",
+          content: this.$page.frontpage.pageHeader.images.length
+            ? this.$page.frontpage.pageHeader.images[0].asset.url
+            : this.$page.general.seo.ogimg.asset.url,
+        },
+      ],
+    };
   },
 };
 </script>

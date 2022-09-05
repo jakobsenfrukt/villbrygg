@@ -31,7 +31,9 @@
         :to="$tp(`/products#${product.slug.current}`)"
       >
         <div class="product-overlay">
-          <span class="product-link__title">{{ product.title }}</span>
+          <span class="product-link__intro" v-if="product.intro">{{
+            product.intro[$context.locale]
+          }}</span>
           <span class="product-link__readmore"
             >{{ $t("navigation.readmore") }} &rarr;</span
           >
@@ -150,10 +152,12 @@ export default {
       opacity: 1;
     }
 
-    &__title {
-      font-size: var(--font-size-l);
-      text-transform: uppercase;
+    &__intro {
+      font-size: var(--font-size-m);
       line-height: 1;
+    }
+    &__readmore {
+      margin: auto 0 0 0;
     }
   }
 }

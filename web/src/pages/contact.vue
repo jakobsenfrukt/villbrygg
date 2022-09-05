@@ -121,6 +121,16 @@ query {
     email
     phone
   }
+  general: sanityGeneral(id: "general") {
+    seo {
+      ogimg {
+        asset {
+          url
+        }
+      }
+      description
+    }
+  }
 }
 </page-query>
 
@@ -135,8 +145,25 @@ export default {
     BlockContent,
     PersonGrid,
   },
-  metaInfo: {
-    title: "Contact",
+  metaInfo() {
+    return {
+      title: this.$context.locale === "no" ? "Kontakt" : "Contact",
+      meta: [
+        {
+          name: "description",
+          content: this.$page.contact.pageHeader.text
+            ? this.$page.contact.pageHeader.text[this.$context.locale]
+            : this.$page.general.seo.description[this.$context.locale],
+        },
+        {
+          name: "og:image",
+          key: "og:image",
+          content: this.$page.contact.pageHeader.images.length
+            ? this.$page.contact.pageHeader.images[0].asset.url
+            : this.$page.general.seo.ogimg.asset.url,
+        },
+      ],
+    };
   },
 };
 </script>

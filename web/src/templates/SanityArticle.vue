@@ -179,6 +179,16 @@ query article ($id: ID!) {
       }
     }
   }
+  general: sanityGeneral(id: "general") {
+    seo {
+      ogimg {
+        asset {
+          url
+        }
+      }
+      description
+    }
+  }
 }
 </page-query>
 
@@ -200,6 +210,26 @@ export default {
         {
           name: "description",
           content: this.$page.article.description,
+        },
+      ],
+    };
+  },
+  metaInfo() {
+    return {
+      title: this.$page.article.title,
+      meta: [
+        {
+          name: "description",
+          content: this.$page.article.lead
+            ? this.$page.article.lead
+            : this.$page.general.seo.description,
+        },
+        {
+          name: "og:image",
+          key: "og:image",
+          content: this.$page.article.mainImages.length
+            ? this.$page.article.mainImages[0].asset.url
+            : this.$page.general.seo.ogimg.asset.url,
         },
       ],
     };
