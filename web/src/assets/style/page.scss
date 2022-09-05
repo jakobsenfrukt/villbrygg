@@ -1,8 +1,13 @@
-.page-content {
-  padding: var(--spacing-sitepadding);
+.page-content-wrapper {
   background: var(--color-background);
   border-bottom-left-radius: var(--border-radius-l);
   border-bottom-right-radius: var(--border-radius-l);
+}
+
+.page-content {
+  padding: var(--spacing-sitepadding);
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
 
   &--grid {
     display: grid;

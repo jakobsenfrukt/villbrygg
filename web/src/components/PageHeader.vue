@@ -1,30 +1,32 @@
 <template>
-  <header class="page-header">
-    <div class="text">
-      <h1 class="heading" v-if="content.heading">
-        {{ content.heading[$context.locale] }}
-        <span v-if="content.subheading" class="subheading">{{
-          content.subheading[$context.locale]
-        }}</span>
-      </h1>
-      <p class="lead" v-if="content.text">
-        {{ content.text[$context.locale] }}
-      </p>
+  <header class="page-header-wrapper">
+    <div class="page-header">
+      <div class="text">
+        <h1 class="heading" v-if="content.heading">
+          {{ content.heading[$context.locale] }}
+          <span v-if="content.subheading" class="subheading">{{
+            content.subheading[$context.locale]
+          }}</span>
+        </h1>
+        <p class="lead" v-if="content.text">
+          {{ content.text[$context.locale] }}
+        </p>
+      </div>
+      <template v-if="content.images">
+        <g-image
+          v-for="(image, index) in content.images"
+          :key="`image-${index}`"
+          :class="content.images.length === 1 ? 'single' : ''"
+          :src="
+            $urlForImage(image, $static.metadata.sanityOptions)
+              .width(1440)
+              .auto('format')
+              .url()
+          "
+          :alt="image.alt[$context.locale] ? image.alt[$context.locale] : ''"
+        />
+      </template>
     </div>
-    <template v-if="content.images">
-      <g-image
-        v-for="(image, index) in content.images"
-        :key="`image-${index}`"
-        :class="content.images.length === 1 ? 'single' : ''"
-        :src="
-          $urlForImage(image, $static.metadata.sanityOptions)
-            .width(1440)
-            .auto('format')
-            .url()
-        "
-        :alt="image.alt[$context.locale] ? image.alt[$context.locale] : ''"
-      />
-    </template>
   </header>
 </template>
 
@@ -52,11 +54,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.page-header {
-  width: 100%;
+.page-header-wrapper {
   background: var(--color-background);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+.page-header {
+  width: 100%;
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
   padding: var(--spacing-sitepadding);
   padding-bottom: 2rem;
   margin-bottom: -1px;

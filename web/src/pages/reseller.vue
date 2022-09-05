@@ -1,37 +1,39 @@
 <template>
   <Layout>
     <PageHeader :content="$page.reseller.pageHeader" />
-    <main class="page-content page-content--grid reseller-content">
-      <template v-if="$context.locale == 'no'">
-        <block-content
-          :blocks="$page.reseller.body._rawNo"
-          v-if="$page.reseller.body && $page.reseller.body._rawNo"
-          class="block-content body"
-        />
-        <PageContent
-          :content="$page.reseller.pageContent.pageContentNo.blocks"
-          v-if="
-            $page.reseller.pageContent &&
-              $page.reseller.pageContent.pageContentNo
-          "
-          class="content-blocks"
-        />
-      </template>
-      <template v-else-if="$context.locale == 'en'">
-        <block-content
-          :blocks="$page.reseller.body._rawEn"
-          v-if="$page.reseller.body && $page.reseller.body._rawEn"
-          class="block-content body"
-        />
-        <PageContent
-          :content="$page.reseller.pageContent.pageContentEn.blocks"
-          v-if="
-            $page.reseller.pageContent &&
-              $page.reseller.pageContent.pageContentEn
-          "
-          class="content-blocks"
-        />
-      </template>
+    <main class="page-content-wrapper">
+      <div class="page-content page-content--grid reseller-content">
+        <template v-if="$context.locale == 'no'">
+          <block-content
+            :blocks="$page.reseller.body._rawNo"
+            v-if="$page.reseller.body && $page.reseller.body._rawNo"
+            class="block-content body"
+          />
+          <PageContent
+            :content="$page.reseller.pageContent.pageContentNo.blocks"
+            v-if="
+              $page.reseller.pageContent &&
+                $page.reseller.pageContent.pageContentNo
+            "
+            class="content-blocks"
+          />
+        </template>
+        <template v-else-if="$context.locale == 'en'">
+          <block-content
+            :blocks="$page.reseller.body._rawEn"
+            v-if="$page.reseller.body && $page.reseller.body._rawEn"
+            class="block-content body"
+          />
+          <PageContent
+            :content="$page.reseller.pageContent.pageContentEn.blocks"
+            v-if="
+              $page.reseller.pageContent &&
+                $page.reseller.pageContent.pageContentEn
+            "
+            class="content-blocks"
+          />
+        </template>
+      </div>
     </main>
   </Layout>
 </template>

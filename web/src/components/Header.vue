@@ -1,38 +1,8 @@
 <template>
-  <header class="site-header">
-    <g-link class="logo" :to="$tp('/')"><Logo /></g-link>
-    <nav class="nav nav-main">
-      <ul>
-        <li>
-          <g-link class="nav__link" :to="$tp('/products/')"
-            ><span>{{ $t("menu.products") }}</span></g-link
-          >
-        </li>
-        <li>
-          <g-link class="nav__link" :to="$tp('/shops/')"
-            ><span>{{ $t("menu.shops") }}</span></g-link
-          >
-        </li>
-        <li>
-          <g-link class="nav__link" :to="$tp('/about/')"
-            ><span>{{ $t("menu.about") }}</span></g-link
-          >
-        </li>
-        <li>
-          <g-link class="nav__link" :to="$tp('/contact/')"
-            ><span>{{ $t("menu.contact") }}</span></g-link
-          >
-        </li>
-        <li>&nbsp;</li>
-        <LocaleSwitcher />
-        <!--<ToggleTheme />-->
-      </ul>
-    </nav>
-    <div class="nav-mobile-wrapper" :class="{ open: showMenu }">
-      <div role="button" @click="toggleMenu" class="menu-toggle">
-        <MenuIcon class="menu-toggle-icon" :open="showMenu" />
-      </div>
-      <nav class="nav-mobile">
+  <header class="site-header-wrapper">
+    <div class="site-header">
+      <g-link class="logo" :to="$tp('/')"><Logo /></g-link>
+      <nav class="nav nav-main">
         <ul>
           <li>
             <g-link class="nav__link" :to="$tp('/products/')"
@@ -59,6 +29,38 @@
           <!--<ToggleTheme />-->
         </ul>
       </nav>
+      <div class="nav-mobile-wrapper" :class="{ open: showMenu }">
+        <div role="button" @click="toggleMenu" class="menu-toggle">
+          <MenuIcon class="menu-toggle-icon" :open="showMenu" />
+        </div>
+        <nav class="nav-mobile">
+          <ul>
+            <li>
+              <g-link class="nav__link" :to="$tp('/products/')"
+                ><span>{{ $t("menu.products") }}</span></g-link
+              >
+            </li>
+            <li>
+              <g-link class="nav__link" :to="$tp('/shops/')"
+                ><span>{{ $t("menu.shops") }}</span></g-link
+              >
+            </li>
+            <li>
+              <g-link class="nav__link" :to="$tp('/about/')"
+                ><span>{{ $t("menu.about") }}</span></g-link
+              >
+            </li>
+            <li>
+              <g-link class="nav__link" :to="$tp('/contact/')"
+                ><span>{{ $t("menu.contact") }}</span></g-link
+              >
+            </li>
+            <li>&nbsp;</li>
+            <LocaleSwitcher />
+            <!--<ToggleTheme />-->
+          </ul>
+        </nav>
+      </div>
     </div>
   </header>
 </template>
@@ -90,8 +92,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.site-header-wrapper {
+  background: var(--color-background);
+}
 .site-header {
+  position: relative;
   width: 100%;
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
   padding: var(--spacing-sitepadding);
   background: var(--color-background);
   display: grid;

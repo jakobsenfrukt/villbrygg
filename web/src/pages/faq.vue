@@ -1,33 +1,37 @@
 <template>
   <Layout>
     <PageHeader :content="$page.faq.pageHeader" />
-    <main class="page-content">
-      <ul class="category-list">
-        <li
-          v-for="(category, index) in $page.categories.edges"
-          :key="`category-${index}`"
-        >
-          <button
-            :class="currentCategory === category.node.title.en ? 'active' : ''"
-            @click="switchCategory(category.node.title.en)"
+    <main class="page-content-wrapper">
+      <div class="page-content">
+        <ul class="category-list">
+          <li
+            v-for="(category, index) in $page.categories.edges"
+            :key="`category-${index}`"
           >
-            {{ category.node.title[$context.locale] }}
-          </button>
-        </li>
-      </ul>
-      <ul class="questions" key="questions">
-        <li
-          v-for="question in sortedCategories()"
-          :key="question.node.id"
-          class="question"
-        >
-          <Question
-            :question="question.node.question[$context.locale]"
-            :answer="question.node.answer"
+            <button
+              :class="
+                currentCategory === category.node.title.en ? 'active' : ''
+              "
+              @click="switchCategory(category.node.title.en)"
+            >
+              {{ category.node.title[$context.locale] }}
+            </button>
+          </li>
+        </ul>
+        <ul class="questions" key="questions">
+          <li
+            v-for="question in sortedCategories()"
             :key="question.node.id"
-          />
-        </li>
-      </ul>
+            class="question"
+          >
+            <Question
+              :question="question.node.question[$context.locale]"
+              :answer="question.node.answer"
+              :key="question.node.id"
+            />
+          </li>
+        </ul>
+      </div>
     </main>
   </Layout>
 </template>

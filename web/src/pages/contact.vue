@@ -1,37 +1,39 @@
 <template>
   <Layout>
     <PageHeader :content="$page.contact.pageHeader" />
-    <main class="page-content contact-content">
-      <template v-if="$context.locale == 'no'">
-        <block-content
-          :blocks="$page.contact.body._rawNo"
-          v-if="$page.contact.body && $page.contact.body._rawNo"
-          class="block-content body"
-        />
-      </template>
-      <template v-else-if="$context.locale == 'en'">
-        <block-content
-          :blocks="$page.contact.body._rawEn"
-          v-if="$page.contact.body && $page.contact.body._rawEn"
-          class="block-content body"
-        />
-      </template>
-      <PersonGrid :content="$page.contact.team" />
-      <div class="general">
-        <p class="general-heading">
-          {{ $page.contact.generalHeading[$context.locale] }}
-        </p>
-        <p class="general-links">
-          <span class="general-label">{{
-            $page.contact.generalLabel[$context.locale]
-          }}</span>
-          <a :href="`mailto:${$page.contact.email}`" target="_blank">{{
-            $page.contact.email
-          }}</a>
-          <a :href="`tel:${$page.contact.phone}`" target="_blank">{{
-            $page.contact.phone
-          }}</a>
-        </p>
+    <main class="page-content-wrapper">
+      <div class="page-content contact-content">
+        <template v-if="$context.locale == 'no'">
+          <block-content
+            :blocks="$page.contact.body._rawNo"
+            v-if="$page.contact.body && $page.contact.body._rawNo"
+            class="block-content body"
+          />
+        </template>
+        <template v-else-if="$context.locale == 'en'">
+          <block-content
+            :blocks="$page.contact.body._rawEn"
+            v-if="$page.contact.body && $page.contact.body._rawEn"
+            class="block-content body"
+          />
+        </template>
+        <PersonGrid :content="$page.contact.team" />
+        <div class="general">
+          <p class="general-heading">
+            {{ $page.contact.generalHeading[$context.locale] }}
+          </p>
+          <p class="general-links">
+            <span class="general-label">{{
+              $page.contact.generalLabel[$context.locale]
+            }}</span>
+            <a :href="`mailto:${$page.contact.email}`" target="_blank">{{
+              $page.contact.email
+            }}</a>
+            <a :href="`tel:${$page.contact.phone}`" target="_blank">{{
+              $page.contact.phone
+            }}</a>
+          </p>
+        </div>
       </div>
     </main>
   </Layout>

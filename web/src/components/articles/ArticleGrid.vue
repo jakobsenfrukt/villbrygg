@@ -1,36 +1,38 @@
 <template>
-  <section class="article-grid">
-    <h2 v-if="heading" class="article-grid__title">
-      <block-content
-        :blocks="heading._rawNo"
-        v-if="heading._rawNo && $context.locale == 'no'"
-        class="block-content body"
-      />
-      <block-content
-        :blocks="heading._rawEn"
-        v-else-if="heading._rawEn && $context.locale == 'en'"
-        class="block-content body"
-      />
-    </h2>
-    <template v-if="items">
-      <ArticleItem
-        v-for="article in items.slice(0, limit)"
-        :key="article.id"
-        :article="article"
-      />
-    </template>
-    <template v-else>
-      <ArticleItem
-        v-for="article in getLocaleArticles().slice(0, limit)"
-        :key="article.id"
-        :article="article.node"
-      />
-    </template>
-    <div class="view-more">
-      <g-link :to="$tp(`/articles`)">{{
-        $t("navigation.showAllArticles")
-      }}</g-link>
-      &rarr;
+  <section class="article-grid-wrapper">
+    <div class="article-grid">
+      <h2 v-if="heading" class="article-grid__title">
+        <block-content
+          :blocks="heading._rawNo"
+          v-if="heading._rawNo && $context.locale == 'no'"
+          class="block-content body"
+        />
+        <block-content
+          :blocks="heading._rawEn"
+          v-else-if="heading._rawEn && $context.locale == 'en'"
+          class="block-content body"
+        />
+      </h2>
+      <template v-if="items">
+        <ArticleItem
+          v-for="article in items.slice(0, limit)"
+          :key="article.id"
+          :article="article"
+        />
+      </template>
+      <template v-else>
+        <ArticleItem
+          v-for="article in getLocaleArticles().slice(0, limit)"
+          :key="article.id"
+          :article="article.node"
+        />
+      </template>
+      <div class="view-more">
+        <g-link :to="$tp(`/articles`)">{{
+          $t("navigation.showAllArticles")
+        }}</g-link>
+        &rarr;
+      </div>
     </div>
   </section>
 </template>
@@ -116,15 +118,19 @@ export default {
 </script>
 
 <style lang="scss">
+.article-grid-wrapper {
+  background: var(--color-background);
+  border-radius: var(--border-radius-l);
+}
 .article-grid {
   width: 100%;
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: var(--spacing-sitepadding);
   padding: var(--spacing-sitepadding) var(--spacing-sitepadding)
     calc(var(--spacing-sitepadding) * 2);
-  background: var(--color-background);
-  border-radius: var(--border-radius-l);
   align-items: flex-start;
   &__title {
     grid-column: 1 / -1;

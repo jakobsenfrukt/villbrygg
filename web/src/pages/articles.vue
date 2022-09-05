@@ -1,42 +1,44 @@
 <template>
   <Layout>
     <PageHeader :content="$page.articlepage.pageHeader" />
-    <main class="page-content">
-      <ul class="category-list">
-        <li>
-          <button :class="{ active: showAll }" @click="resetFilter()">
-            {{ $t("navigation.showall") }}
-          </button>
-        </li>
-        <li
-          v-for="(category, index) in $page.categories.edges"
-          :key="`category-${index}`"
-        >
-          <button
-            @click="changeFilter(category.node.title.en)"
-            class="category-button"
-            :class="activeFilter === category.node.title.en ? 'active' : ''"
+    <main class="page-content-wrapper">
+      <div class="page-content">
+        <ul class="category-list">
+          <li>
+            <button :class="{ active: showAll }" @click="resetFilter()">
+              {{ $t("navigation.showall") }}
+            </button>
+          </li>
+          <li
+            v-for="(category, index) in $page.categories.edges"
+            :key="`category-${index}`"
           >
-            {{ category.node.title[$context.locale] }}
-          </button>
-        </li>
-      </ul>
-      <section class="article-grid">
-        <ArticleItem
-          v-for="article in filteredArticles.slice(0, limit)"
-          :key="article.id"
-          :article="article.node"
-        />
-        <div class="showmore">
-          <button
-            class="button"
-            @click="showMore()"
-            v-if="filteredArticles.length > limit"
-          >
-            {{ $t("navigation.showmore") }}
-          </button>
-        </div>
-      </section>
+            <button
+              @click="changeFilter(category.node.title.en)"
+              class="category-button"
+              :class="activeFilter === category.node.title.en ? 'active' : ''"
+            >
+              {{ category.node.title[$context.locale] }}
+            </button>
+          </li>
+        </ul>
+        <section class="article-grid">
+          <ArticleItem
+            v-for="article in filteredArticles.slice(0, limit)"
+            :key="article.id"
+            :article="article.node"
+          />
+          <div class="showmore">
+            <button
+              class="button"
+              @click="showMore()"
+              v-if="filteredArticles.length > limit"
+            >
+              {{ $t("navigation.showmore") }}
+            </button>
+          </div>
+        </section>
+      </div>
     </main>
   </Layout>
 </template>

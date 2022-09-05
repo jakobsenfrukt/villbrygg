@@ -1,34 +1,36 @@
 <template>
   <Layout>
     <PageHeader :content="$page.about.pageHeader" />
-    <main class="page-content page-content--grid about-content">
-      <template v-if="$context.locale == 'no'">
-        <block-content
-          :blocks="$page.about.body._rawNo"
-          v-if="$page.about.body._rawNo"
-          class="block-content body"
-        />
-        <PageContent
-          :content="$page.about.pageContent.pageContentNo.blocks"
-          v-if="$page.about.pageContent.pageContentNo"
-          class="content-blocks"
-        />
-      </template>
-      <template v-else-if="$context.locale == 'en'">
-        <block-content
-          :blocks="$page.about.body._rawEn"
-          v-if="$page.about.body._rawEn"
-          class="block-content body"
-        />
-        <PageContent
-          :content="$page.about.pageContent.pageContentEn.blocks"
-          v-if="$page.about.pageContent.pageContentEn"
-          class="content-blocks"
-        />
-      </template>
-      <p v-if="$page.about.info" class="background-info">
-        {{ $page.about.info[$context.locale] }}
-      </p>
+    <main class="page-content-wrapper">
+      <div class="page-content page-content--grid about-content">
+        <template v-if="$context.locale == 'no'">
+          <block-content
+            :blocks="$page.about.body._rawNo"
+            v-if="$page.about.body._rawNo"
+            class="block-content body"
+          />
+          <PageContent
+            :content="$page.about.pageContent.pageContentNo.blocks"
+            v-if="$page.about.pageContent.pageContentNo"
+            class="content-blocks"
+          />
+        </template>
+        <template v-else-if="$context.locale == 'en'">
+          <block-content
+            :blocks="$page.about.body._rawEn"
+            v-if="$page.about.body._rawEn"
+            class="block-content body"
+          />
+          <PageContent
+            :content="$page.about.pageContent.pageContentEn.blocks"
+            v-if="$page.about.pageContent.pageContentEn"
+            class="content-blocks"
+          />
+        </template>
+        <p v-if="$page.about.info" class="background-info">
+          {{ $page.about.info[$context.locale] }}
+        </p>
+      </div>
     </main>
   </Layout>
 </template>

@@ -1,13 +1,15 @@
 <template>
   <Layout>
     <PageHeader :content="pageHeader" />
-    <main class="page-content">
-      <p>
-        {{ message[$context.locale] }}
-      </p>
-      <p>
-        &rarr; <a href="/">{{ link[$context.locale] }}</a>
-      </p>
+    <main class="page-content-wrapper">
+      <div class="page-content">
+        <p>
+          {{ message[$context.locale] }}
+        </p>
+        <p>
+          &rarr; <a href="/">{{ link[$context.locale] }}</a>
+        </p>
+      </div>
     </main>
   </Layout>
 </template>

@@ -1,57 +1,61 @@
 <template>
   <Layout>
     <div class="article article-page">
-      <header class="article-header">
-        <div class="text">
-          <h1 class="heading">{{ $page.article.title }}</h1>
+      <header class="article-header-wrapper">
+        <div class="article-header">
+          <div class="text">
+            <h1 class="heading">{{ $page.article.title }}</h1>
+          </div>
+          <template v-if="$page.article.mainImages">
+            <g-image
+              v-for="(image, index) in $page.article.mainImages"
+              :key="`image-${index}`"
+              :class="$page.article.mainImages.length === 1 ? 'single' : ''"
+              :src="
+                $urlForImage(image, $page.metadata.sanityOptions)
+                  .width(1440)
+                  .auto('format')
+                  .url()
+              "
+              :alt="image.alt ? image.alt : ''"
+            />
+          </template>
+          <ul class="categories">
+            <li
+              class="category"
+              v-for="(category, index) in $page.article.categories"
+              :key="`category-${index}`"
+              :style="`background: ${category.color.hex}`"
+            >
+              {{ category.title[$context.locale] }}
+            </li>
+          </ul>
         </div>
-        <template v-if="$page.article.mainImages">
-          <g-image
-            v-for="(image, index) in $page.article.mainImages"
-            :key="`image-${index}`"
-            :class="$page.article.mainImages.length === 1 ? 'single' : ''"
-            :src="
-              $urlForImage(image, $page.metadata.sanityOptions)
-                .width(1440)
-                .auto('format')
-                .url()
-            "
-            :alt="image.alt ? image.alt : ''"
-          />
-        </template>
-        <ul class="categories">
-          <li
-            class="category"
-            v-for="(category, index) in $page.article.categories"
-            :key="`category-${index}`"
-            :style="`background: ${category.color.hex}`"
-          >
-            {{ category.title[$context.locale] }}
-          </li>
-        </ul>
       </header>
 
-      <main class="page-content page-content--grid article-content">
-        <p class="lead">
-          {{ $page.article.lead }}
-        </p>
-        <block-content
-          :blocks="$page.article._rawBody"
-          v-if="$page.article._rawBody"
-          class="block-content body"
-        />
-        <PageContent
-          :content="$page.article.pageContent.blocks"
-          v-if="$page.article.pageContent"
-          class="content-blocks"
-        />
-        <ArticleGrid
-          v-if="$page.article.related.length"
-          :heading="$t('headings.related')"
-          :items="$page.article.related"
-          :limit="3"
-          class="article-grid"
-        />
+      <main class="page-content-wrapper">
+        <div class="page-content page-content--grid article-content">
+          <p class="lead">
+            {{ $page.article.lead }}
+          </p>
+          <block-content
+            :blocks="$page.article._rawBody"
+            v-if="$page.article._rawBody"
+            class="block-content body"
+          />
+          <PageContent
+            :content="$page.article.pageContent.blocks"
+            v-if="$page.article.pageContent"
+            class="content-blocks"
+          />
+          <ArticleGrid
+            v-if="$page.article.related.length"
+            :heading="$t('headings.related')"
+            :items="$page.article.related"
+            :limit="3"
+            class="article-grid"
+          />
+        </div>
       </main>
     </div>
   </Layout>
@@ -238,11 +242,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.article-header {
-  width: 100%;
+.article-header-wrapper {
   background: var(--color-background);
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+.article-header {
+  width: 100%;
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
   padding: var(--spacing-sitepadding);
   padding-bottom: 2rem;
   display: grid;

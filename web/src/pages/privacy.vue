@@ -1,21 +1,23 @@
 <template>
   <Layout>
     <PageHeader :content="$page.privacy.pageHeader" />
-    <main class="page-content page-content--grid privacy-content">
-      <template v-if="$context.locale == 'no'">
-        <block-content
-          :blocks="$page.privacy.body._rawNo"
-          v-if="$page.privacy.body._rawNo"
-          class="block-content body"
-        />
-      </template>
-      <template v-else-if="$context.locale == 'en'">
-        <block-content
-          :blocks="$page.privacy.body._rawEn"
-          v-if="$page.privacy.body._rawEn"
-          class="block-content body"
-        />
-      </template>
+    <main class="page-content-wrapper">
+      <div class="page-content page-content--grid privacy-content">
+        <template v-if="$context.locale == 'no'">
+          <block-content
+            :blocks="$page.privacy.body._rawNo"
+            v-if="$page.privacy.body._rawNo"
+            class="block-content body"
+          />
+        </template>
+        <template v-else-if="$context.locale == 'en'">
+          <block-content
+            :blocks="$page.privacy.body._rawEn"
+            v-if="$page.privacy.body._rawEn"
+            class="block-content body"
+          />
+        </template>
+      </div>
     </main>
   </Layout>
 </template>

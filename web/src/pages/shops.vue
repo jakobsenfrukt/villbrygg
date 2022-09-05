@@ -1,66 +1,68 @@
 <template>
   <Layout>
     <PageHeader :content="$page.shops.pageHeader" />
-    <main class="page-content">
-      <ul class="category-list">
-        <li>
-          <button :class="{ active: showAll }" @click="resetFilter()">
-            {{ $t("navigation.showall") }}
-          </button>
-        </li>
-        <li
-          v-for="(category, index) in sortedCategories[$context.locale]"
-          :key="`category-${index}`"
-        >
-          <button
-            @click="changeFilter(category.node.title.en)"
-            :class="
-              activeFilters.includes(category.node.title.en) ? 'active' : ''
-            "
+    <main class="page-content-wrapper">
+      <div class="page-content">
+        <ul class="category-list">
+          <li>
+            <button :class="{ active: showAll }" @click="resetFilter()">
+              {{ $t("navigation.showall") }}
+            </button>
+          </li>
+          <li
+            v-for="(category, index) in sortedCategories[$context.locale]"
+            :key="`category-${index}`"
           >
-            {{ category.node.title[$context.locale] }}
-          </button>
-        </li>
-      </ul>
-      <div class="search">
-        <label>{{ $t("navigation.shopSearchLabel") }}</label>
-        <input
-          type="text"
-          :placeholder="$t('navigation.shopSearchPlaceholder')"
-          v-model="searchQuery"
-        />
-      </div>
-      <ul class="countries">
-        <li
-          v-for="(country, index) in $page.countries.edges"
-          :key="`country-${index}`"
-          class="country"
-        >
-          <h2 class="list-heading country-name">
-            {{ country.node.name[$context.locale] }}
-          </h2>
-
-          <ul class="country-list">
-            <li
-              v-if="
-                !searchQuery &&
-                  getOnlineShopsByCountry(country).length &&
-                  (showAll || checkActiveFilter('Online'))
+            <button
+              @click="changeFilter(category.node.title.en)"
+              :class="
+                activeFilters.includes(category.node.title.en) ? 'active' : ''
               "
             >
-              <Online :shops="getOnlineShopsByCountry(country)" />
-            </li>
-            <li v-for="(city, index) in visibleCities" :key="`city-${index}`">
-              <City
-                :city="city"
-                :locations="getLocationsByCity(city)"
-                :categories="sortedCategories[$context.locale]"
-                :activeFilters="activeFilters"
-              />
-            </li>
-          </ul>
-        </li>
-      </ul>
+              {{ category.node.title[$context.locale] }}
+            </button>
+          </li>
+        </ul>
+        <div class="search">
+          <label>{{ $t("navigation.shopSearchLabel") }}</label>
+          <input
+            type="text"
+            :placeholder="$t('navigation.shopSearchPlaceholder')"
+            v-model="searchQuery"
+          />
+        </div>
+        <ul class="countries">
+          <li
+            v-for="(country, index) in $page.countries.edges"
+            :key="`country-${index}`"
+            class="country"
+          >
+            <h2 class="list-heading country-name">
+              {{ country.node.name[$context.locale] }}
+            </h2>
+
+            <ul class="country-list">
+              <li
+                v-if="
+                  !searchQuery &&
+                    getOnlineShopsByCountry(country).length &&
+                    (showAll || checkActiveFilter('Online'))
+                "
+              >
+                <Online :shops="getOnlineShopsByCountry(country)" />
+              </li>
+              <li v-for="(city, index) in visibleCities" :key="`city-${index}`">
+                <City
+                  :city="city"
+                  :locations="getLocationsByCity(city)"
+                  :categories="sortedCategories[$context.locale]"
+                  :activeFilters="activeFilters"
+                />
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </main>
   </Layout>
 </template>

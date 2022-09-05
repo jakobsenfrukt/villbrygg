@@ -1,22 +1,24 @@
 <template>
   <Layout>
     <PageHeader :content="$page.productpage.pageHeader" />
-    <main class="page-content product-page">
-      <ProductGrid />
-      <template v-if="$context.locale == 'no'">
-        <ArticleGrid
-          :heading="$page.productpage.articleText"
-          :items="$page.productpage.featuredArticlesNo"
-          :limit="3"
-        />
-      </template>
-      <template v-else>
-        <ArticleGrid
-          :heading="$page.productpage.articleText"
-          :items="$page.productpage.featuredArticlesEn"
-          :limit="9"
-        />
-      </template>
+    <main class="page-content-wrapper">
+      <div class="page-content product-page">
+        <ProductGrid />
+        <template v-if="$context.locale == 'no'">
+          <ArticleGrid
+            :heading="$page.productpage.articleText"
+            :items="$page.productpage.featuredArticlesNo"
+            :limit="3"
+          />
+        </template>
+        <template v-else>
+          <ArticleGrid
+            :heading="$page.productpage.articleText"
+            :items="$page.productpage.featuredArticlesEn"
+            :limit="9"
+          />
+        </template>
+      </div>
     </main>
   </Layout>
 </template>
