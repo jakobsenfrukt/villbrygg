@@ -77,7 +77,7 @@ export default {
   flex-direction: column;
   position: relative;
   &-text {
-    padding: 1rem;
+    padding: 1rem 0 1rem;
     padding-left: 2rem;
     display: flex;
     flex-direction: column;

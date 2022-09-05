@@ -1,31 +1,33 @@
 <template>
-  <section class="product-grid">
-    <h2 v-if="heading" class="product-grid__title">
-      <block-content
-        :blocks="heading._rawNo"
-        v-if="heading._rawNo && $context.locale == 'no'"
-        class="block-content body"
-      />
-      <block-content
-        :blocks="heading._rawEn"
-        v-else-if="heading._rawEn && $context.locale == 'en'"
-        class="block-content body"
-      />
-    </h2>
-    <template v-if="items">
-      <ProductItem
-        v-for="product in items.slice(0, limit)"
-        :key="product.id"
-        :product="product"
-      />
-    </template>
-    <template v-else>
-      <ProductItem
-        v-for="product in $static.products.edges.slice(0, limit)"
-        :key="product.id"
-        :product="product.node"
-      />
-    </template>
+  <section class="product-grid-wrapper">
+    <div class="product-grid">
+      <h2 v-if="heading" class="product-grid__title">
+        <block-content
+          :blocks="heading._rawNo"
+          v-if="heading._rawNo && $context.locale == 'no'"
+          class="block-content body"
+        />
+        <block-content
+          :blocks="heading._rawEn"
+          v-else-if="heading._rawEn && $context.locale == 'en'"
+          class="block-content body"
+        />
+      </h2>
+      <template v-if="items">
+        <ProductItem
+          v-for="product in items.slice(0, limit)"
+          :key="product.id"
+          :product="product"
+        />
+      </template>
+      <template v-else>
+        <ProductItem
+          v-for="product in $static.products.edges.slice(0, limit)"
+          :key="product.id"
+          :product="product.node"
+        />
+      </template>
+    </div>
   </section>
 </template>
 
@@ -114,14 +116,19 @@ export default {
 </script>
 
 <style lang="scss">
+.product-grid-wrapper {
+  background: var(--color-palegreen);
+  border-radius: var(--border-radius-l);
+}
 .product-grid {
+  width: 100%;
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 0.75rem;
   padding: var(--spacing-sitepadding) var(--spacing-sitepadding)
     calc(var(--spacing-sitepadding) * 2);
-  background: var(--color-palegreen);
-  border-radius: var(--border-radius-l);
   &__title {
     grid-column: 1 / -1;
     max-width: 14em;

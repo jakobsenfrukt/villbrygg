@@ -7,7 +7,12 @@
 
 html {
   min-height: 100%;
-  font-size: calc(20px + 6 * (100vw - 320px) / 1600);
+  // font-size: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width])));
+  font-size: calc(16px + 8 * (100vw - 320px) / 1120);
+
+  @media (min-width: 1440px) {
+    font-size: 24px;
+  }
 }
 
 body {

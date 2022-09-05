@@ -66,6 +66,8 @@ export default {
   }
 }
 .answer {
+  max-width: var(--p-max-width);
+  margin-bottom: 2rem;
   display: none;
 }
 .active {

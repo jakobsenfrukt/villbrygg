@@ -114,7 +114,7 @@ export default {
     }
   }
 }
-.index .page-header {
+.index .page-header-wrapper {
   border-bottom-left-radius: var(--border-radius-l);
   border-bottom-right-radius: var(--border-radius-l);
 }

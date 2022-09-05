@@ -98,3 +98,9 @@ input[type="text"] {
   padding-left: 0;
   padding-right: 0;
 }
+
+.product {
+  p {
+    max-width: var(--p-max-width);
+  }
+}
