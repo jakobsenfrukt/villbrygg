@@ -22,15 +22,15 @@
           </template>
           <ul class="categories">
             <li
-              class="category"
               v-for="(category, index) in $page.article.categories"
               :key="`category-${index}`"
-              :style="`background: ${category.color.hex}`"
             >
               <g-link
                 :to="
                   `${$tp($t('slug.articles'))}?category=${category.title.en}`
                 "
+                class="category"
+                :style="`background: ${category.color.hex}`"
                 >{{ category.title[$context.locale] }}</g-link
               >
             </li>
@@ -310,6 +310,16 @@ export default {
 .categories {
   grid-column: span 6;
   margin-top: 0;
+  li {
+    display: inline-block;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+      background-color: var(--color-active) !important;
+    }
+  }
 }
 
 .content-blocks {
