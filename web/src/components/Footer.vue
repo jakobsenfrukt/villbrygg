@@ -5,22 +5,6 @@
         <div class="logo-wrapper">
           <g-link :to="$tp('/')" class="logo"><Logo /></g-link>
         </div>
-        <!--<ul class="contact">
-          <li>
-            <a
-              :href="`https://instagram.com/${$static.general.contact.instagram}`"
-              target="_blank"
-              >Instagram</a
-            >
-          </li>
-          <li>
-            <a
-              :href="`https://facebook.com/${$static.general.contact.facebook}`"
-              target="_blank"
-              >Facebook</a
-            >
-          </li>
-        </ul>-->
         <div class="footer-contact">
           <ul>
             <li>
@@ -62,7 +46,7 @@
           <nav class="footer-nav">
             <ul>
               <li>
-                <g-link class="nav__link" :to="$tp('/faq/')">{{
+                <g-link class="nav__link" :to="$tp($t('slug.faq'))">{{
                   $t("menu.faq")
                 }}</g-link>
               </li>
@@ -76,7 +60,7 @@
                 >
               </li>
               <li>
-                <g-link class="nav__link" :to="$tp('/reseller/')">{{
+                <g-link class="nav__link" :to="$tp($t('slug.reseller'))">{{
                   $t("menu.reseller")
                 }}</g-link>
               </li>
@@ -86,7 +70,7 @@
       </div>
     </div>
     <div class="privacy">
-      <g-link :to="$tp('/privacy/')">{{ $t("menu.privacy") }}</g-link>
+      <g-link :to="$tp($t('slug.privacy'))">{{ $t("menu.privacy") }}</g-link>
     </div>
   </footer>
 </template>

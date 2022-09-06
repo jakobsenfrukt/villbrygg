@@ -39,12 +39,14 @@ module.exports = {
         ],
         fallbackLocale: 'no', // fallback language
         defaultLocale: 'no', // default language
-        enablePathRewrite: true, // rewrite path with locale prefix, default: true
+        enablePathRewrite: false, // rewrite path with locale prefix, default: true
         rewriteDefaultLanguage: true, // rewrite default locale, default: true
         messages: {
           'no': require('./src/locales/no.json'), // Messages files
           'en': require('./src/locales/en.json'),
-        }
+        },
+        enablePathGeneration: false, // disable path generation
+        routes: require('./routes.js') // load path translation declaration from external file
       }
     },
     {

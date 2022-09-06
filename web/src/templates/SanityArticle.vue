@@ -27,7 +27,12 @@
               :key="`category-${index}`"
               :style="`background: ${category.color.hex}`"
             >
-              {{ category.title[$context.locale] }}
+              <g-link
+                :to="
+                  `${$tp($t('slug.articles'))}?category=${category.title.en}`
+                "
+                >{{ category.title[$context.locale] }}</g-link
+              >
             </li>
           </ul>
         </div>

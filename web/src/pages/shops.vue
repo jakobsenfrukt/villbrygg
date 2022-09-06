@@ -227,14 +227,11 @@ export default {
             item.node.name.no.toLowerCase().includes(query)
         );
       }
-      /*if (this.activeFilters.length >= 1) {
+      if (this.activeFilters.length) {
         // check each city if it contains locations matching the current filters
-        cities = cities.filter((city) =>
-          this.activeFilters.forEach((category) =>
-            this.getLocationsByCategory(city, category)
-          )
-        );
-      }*/
+        cities = cities.filter((city) => this.cityHasContent(city));
+        console.log(cities);
+      }
       return cities;
     },
     sortedCategories() {
@@ -268,6 +265,15 @@ export default {
         (item) =>
           item.node.city.name.en === city.node.name.en &&
           item.node.category.title.en === category.node.title.en
+      );
+    },
+    cityHasContent(city) {
+      // check if city contains any category matching current filters
+      const categories = this.getLocationsByCity(city).map(
+        (item) => item.node.category.title.en
+      );
+      return this.activeFilters.some((activeFilter) =>
+        categories.includes(activeFilter)
       );
     },
     resetFilter() {

@@ -1,4 +1,14 @@
 {
+  "slug": {
+    "about": "/om",
+    "articles": "/artikler",
+    "contact": "/kontakt",
+    "faq": "/faq",
+    "privacy": "/personvern",
+    "products": "/produkter",
+    "reseller": "/forhandler",
+    "shops": "/butikker"
+  },
   "menu": {
     "home": "Hjem",
     "products": "Produkter",

@@ -28,7 +28,7 @@
         />
       </template>
       <div class="view-more">
-        <g-link :to="$tp(`/articles`)">{{
+        <g-link :to="$tp($t('slug.articles'))">{{
           $t("navigation.showAllArticles")
         }}</g-link>
         &rarr;

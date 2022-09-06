@@ -5,22 +5,22 @@
       <nav class="nav nav-main">
         <ul>
           <li>
-            <g-link class="nav__link" :to="$tp('/products/')"
+            <g-link class="nav__link" :to="$tp($t('slug.products'))"
               ><span>{{ $t("menu.products") }}</span></g-link
             >
           </li>
           <li>
-            <g-link class="nav__link" :to="$tp('/shops/')"
+            <g-link class="nav__link" :to="$tp($t('slug.shops'))"
               ><span>{{ $t("menu.shops") }}</span></g-link
             >
           </li>
           <li>
-            <g-link class="nav__link" :to="$tp('/about/')"
+            <g-link class="nav__link" :to="$tp($t('slug.about'))"
               ><span>{{ $t("menu.about") }}</span></g-link
             >
           </li>
           <li>
-            <g-link class="nav__link" :to="$tp('/contact/')"
+            <g-link class="nav__link" :to="$tp($t('slug.contact'))"
               ><span>{{ $t("menu.contact") }}</span></g-link
             >
           </li>
@@ -36,22 +36,22 @@
         <nav class="nav-mobile">
           <ul>
             <li>
-              <g-link class="nav__link" :to="$tp('/products/')"
+              <g-link class="nav__link" :to="$tp($t('slug.products'))"
                 ><span>{{ $t("menu.products") }}</span></g-link
               >
             </li>
             <li>
-              <g-link class="nav__link" :to="$tp('/shops/')"
+              <g-link class="nav__link" :to="$tp($t('slug.shops'))"
                 ><span>{{ $t("menu.shops") }}</span></g-link
               >
             </li>
             <li>
-              <g-link class="nav__link" :to="$tp('/about/')"
+              <g-link class="nav__link" :to="$tp($t('slug.about'))"
                 ><span>{{ $t("menu.about") }}</span></g-link
               >
             </li>
             <li>
-              <g-link class="nav__link" :to="$tp('/contact/')"
+              <g-link class="nav__link" :to="$tp($t('slug.contact'))"
                 ><span>{{ $t("menu.contact") }}</span></g-link
               >
             </li>

@@ -2,7 +2,7 @@
   <article class="article">
     <div class="article-image">
       <g-image
-        v-if="article.mainImages"
+        v-if="article.mainImages.length"
         class="article-image"
         :src="
           $urlForImage(article.mainImages[0], $static.metadata.sanityOptions)
@@ -32,7 +32,7 @@
     </div>
     <g-link
       class="article-link"
-      :to="$tp(`/articles/${article.slug.current}`)"
+      :to="`${$tp($t('slug.articles'))}/${article.slug.current}`"
       >{{ $t("navigation.readmore") }}</g-link
     >
   </article>

@@ -14,6 +14,7 @@
     "gridsome-plugin-gtm": "^0.1.1",
     "gridsome-plugin-i18n": "^1.6.0",
     "gridsome-source-sanity": "^1.0.5",
+    "moment": "^2.29.3",
     "sanity-blocks-vue-component": "^0.1.0",
     "sass": "^1.43.4",
     "vue-horizontal": "^0.8.12"

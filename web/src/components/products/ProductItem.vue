@@ -28,7 +28,7 @@
       />
       <g-link
         class="product-link"
-        :to="$tp(`/products#${product.slug.current}`)"
+        :to="`${$tp($t('slug.products'))}#${product.slug.current}`"
       >
         <div class="product-overlay">
           <span class="product-link__intro" v-if="product.intro">{{

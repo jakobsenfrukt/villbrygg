@@ -1,4 +1,14 @@
 {
+  "slug": {
+    "about": "/about",
+    "articles": "/articles",
+    "contact": "/contact",
+    "faq": "/faq",
+    "privacy": "/privacy",
+    "products": "/products",
+    "reseller": "/reseller",
+    "shops": "/shops"
+  },
   "menu": {
     "home": "Home",
     "products": "Products",

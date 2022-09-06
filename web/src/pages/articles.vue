@@ -182,7 +182,6 @@ export default {
           const categories = item.node.categories.map(
             (category) => category.title.en
           );
-          console.log(categories);
           return categories.some((category) => category === activeFilter);
         });
       }
@@ -197,14 +196,24 @@ export default {
     },
     resetFilter() {
       (this.showAll = true), (this.activeFilter = undefined);
+      this.$router.push({ query: { category: undefined } });
     },
     changeFilter(category) {
       this.showAll = false;
       this.activeFilter = category;
+      if (this.$route.query.category !== category) {
+        this.$router.push({ query: { category: category } });
+      }
     },
     showMore() {
       this.limit += this.limit;
     },
+  },
+  mounted() {
+    if (this.$route.query.category) {
+      this.changeFilter(this.$route.query.category);
+    }
+    console.log("category", this.$route.query.category);
   },
   metaInfo() {
     return {

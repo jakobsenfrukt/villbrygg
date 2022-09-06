@@ -32,9 +32,21 @@ export default {
     },*/
     changeLocale(locale) {
       this.currentLocale = locale;
-      this.$router.push({
-        path: this.$tp(this.$route.path, this.currentLocale, true),
-      });
+      const translatedPaths = this.$route.meta?.translatedPaths;
+      if (translatedPaths) {
+        this.$router.push({
+          path: translatedPaths[this.currentLocale],
+        });
+      } else {
+        let path = this.$tp(this.$route.path, this.currentLocale, true);
+        if (this.$route.meta?.pageType === "article") {
+          path = this.$tp(
+            this.$t("slug.articles", this.currentLocale),
+            this.currentLocale
+          );
+        }
+        this.$router.push({ path });
+      }
     },
   },
 };
