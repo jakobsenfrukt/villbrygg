@@ -43,6 +43,11 @@ p {
   margin: 0 0 1.4rem;
 }
 
+strong {
+  font-weight: 400;
+  color: var(--color-black);
+}
+
 section {
   background: var(--color-background);
   border-radius: var(--border-radius-l);

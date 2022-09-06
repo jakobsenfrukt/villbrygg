@@ -117,7 +117,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .article-grid-wrapper {
   background: var(--color-background);
   border-radius: var(--border-radius-l);

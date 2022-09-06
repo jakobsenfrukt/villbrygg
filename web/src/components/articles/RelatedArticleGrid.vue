@@ -3,6 +3,18 @@
     <h2 v-if="heading" class="article-grid__title">
       <strong>{{ heading }}</strong>
     </h2>
+    <h2 v-else-if="headingObject" class="article-grid__title">
+      <block-content
+        :blocks="headingObject._rawNo"
+        v-if="headingObject._rawNo && $context.locale == 'no'"
+        class="block-content body"
+      />
+      <block-content
+        :blocks="headingObject._rawEn"
+        v-else-if="headingObject._rawEn && $context.locale == 'en'"
+        class="block-content body"
+      />
+    </h2>
     <template v-if="items">
       <ArticleItem
         v-for="article in items.slice(0, limit)"
@@ -88,21 +100,23 @@ export default {
       default: 6,
     },
     heading: String,
+    headingObject: Object,
   },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .article-grid {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: var(--spacing-sitepadding);
-  padding: var(--spacing-sitepadding) var(--spacing-sitepadding)
-    calc(var(--spacing-sitepadding) * 2);
+  padding: 0 0 calc(var(--spacing-sitepadding) * 2);
+  margin-top: var(--spacing-sitepadding);
   background: var(--color-background);
-  border-radius: var(--border-radius-l);
   align-items: flex-start;
+  border-top: 1px solid var(--color-text);
+  border-radius: 0;
   &__title {
     grid-column: 1 / -1;
     max-width: 14em;

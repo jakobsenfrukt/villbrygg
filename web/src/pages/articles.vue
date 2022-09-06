@@ -234,7 +234,7 @@ export default {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-sitepadding);
+  column-gap: var(--spacing-sitepadding);
   margin-bottom: 6rem;
   background: var(--color-background);
   border-radius: var(--border-radius-l);

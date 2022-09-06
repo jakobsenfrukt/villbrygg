@@ -6,14 +6,14 @@
         <ProductGrid />
         <template v-if="$context.locale == 'no'">
           <ArticleGrid
-            :heading="$page.productpage.articleText"
+            :headingObject="$page.productpage.articleText"
             :items="$page.productpage.featuredArticlesNo"
             :limit="3"
           />
         </template>
         <template v-else>
           <ArticleGrid
-            :heading="$page.productpage.articleText"
+            :headingObject="$page.productpage.articleText"
             :items="$page.productpage.featuredArticlesEn"
             :limit="9"
           />
@@ -190,7 +190,7 @@ query {
 <script>
 import PageHeader from "~/components/PageHeader";
 import ProductGrid from "~/components/products/ProductGridByCategory";
-import ArticleGrid from "~/components/articles/ArticleGrid";
+import ArticleGrid from "~/components/articles/RelatedArticleGrid";
 
 export default {
   components: {
