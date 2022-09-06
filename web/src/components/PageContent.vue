@@ -32,7 +32,7 @@
             "
             :alt="block.alt ? block.alt : ''"
           />
-          <figcaption v-if="block.caption && block.caption">
+          <figcaption v-if="block.caption && block.caption.length">
             {{ block.caption }}
           </figcaption>
         </figure>
@@ -54,9 +54,9 @@
             "
             :alt="block.image.alt ? block.image.alt : ''"
           />
-          <figcaption v-if="block.image.caption && block.image.caption">
+          <!--<figcaption v-if="block.image.caption && block.image.caption.length">
             {{ block.image.caption }}
-          </figcaption>
+          </figcaption>-->
         </figure>
       </template>
 
@@ -77,7 +77,7 @@
             "
             :alt="image.alt ? image.alt : ''"
           />
-          <figcaption v-if="image.caption && image.caption">
+          <figcaption v-if="image.caption">
             {{ image.caption }}
           </figcaption>
         </figure>
@@ -101,7 +101,7 @@
             "
             :alt="image.alt ? image.alt : ''"
           />
-          <figcaption v-if="image.caption && image.caption">
+          <figcaption v-if="image.caption && image.caption.length">
             {{ image.caption }}
           </figcaption>
         </figure>
