@@ -16,6 +16,7 @@ export default {
         source: 'title',
         maxLength: 96,
       },
+      validation: Rule => Rule.required(),
     },
     {
       title: 'Language',
@@ -27,12 +28,14 @@ export default {
           {title: 'English', value: 'en'}
         ], // <-- predefined values
         layout: 'radio' // <-- defaults to 'dropdown'
-      }
+      },
+      validation: Rule => Rule.required(),
     },
     {
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
+      validation: Rule => Rule.required(),
     },
     {
       name: 'categories',
