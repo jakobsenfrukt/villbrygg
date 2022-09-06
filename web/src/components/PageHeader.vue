@@ -97,7 +97,6 @@ export default {
     grid-column: span 6;
     border-radius: var(--border-radius);
     width: 100%;
-    max-height: 86vh;
     object-fit: cover;
     margin-top: 2rem;
     &.single {
