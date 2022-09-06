@@ -37,7 +37,14 @@
             :key="`country-${index}`"
             class="country"
           >
-            <h2 class="list-heading country-name">
+            <h2
+              class="list-heading country-name"
+              v-if="
+                visibleCitiesByCountry(country).length ||
+                  (getOnlineShopsByCountry(country).length &&
+                    (showAll || checkActiveFilter('Online')))
+              "
+            >
               {{ country.node.name[$context.locale] }}
             </h2>
 
@@ -51,7 +58,10 @@
               >
                 <Online :shops="getOnlineShopsByCountry(country)" />
               </li>
-              <li v-for="(city, index) in visibleCities" :key="`city-${index}`">
+              <li
+                v-for="(city, index) in visibleCitiesByCountry(country)"
+                :key="`city-${index}`"
+              >
                 <City
                   :city="city"
                   :locations="getLocationsByCity(city)"
@@ -171,12 +181,19 @@ query {
           no
           en
         }
+        country {
+          name {
+            no
+            en
+          }
+        }
       }
     }
   }
   categories: allSanityShopsCategory(sortBy: "title.en", order: ASC) {
     edges {
       node {
+        id
         title {
           no
           en
@@ -230,19 +247,35 @@ export default {
       if (this.activeFilters.length) {
         // check each city if it contains locations matching the current filters
         cities = cities.filter((city) => this.cityHasContent(city));
-        console.log(cities);
       }
       return cities;
     },
     sortedCategories() {
       const categories = this.$page.categories.edges;
+
+      const sortedEnCategories = categories
+        .slice()
+        .sort((a, b) => a.node.title.en.localeCompare(b.node.title.en));
+
+      const otherEn = sortedEnCategories.find(
+        (item) => item.node.id === "972cf078-ce7f-49f4-9912-73520054a96c"
+      );
+      const indexEn = sortedEnCategories.indexOf(otherEn);
+      const newOtherEn = sortedEnCategories.splice(indexEn, 1);
+
+      const sortedNoCategories = categories.slice().sort((a, b) => {
+        if (a.node.id === "972cf078-ce7f-49f4-9912-73520054a96c") {
+          return 1;
+        }
+        if (b.node.id === "972cf078-ce7f-49f4-9912-73520054a96c") {
+          return -1;
+        }
+        return a.node.title.no.localeCompare(b.node.title.no);
+      });
+
       const sortedCategories = {
-        en: categories
-          .slice()
-          .sort((a, b) => a.node.title.en.localeCompare(b.node.title.en)),
-        no: categories
-          .slice()
-          .sort((a, b) => a.node.title.no.localeCompare(b.node.title.no)),
+        en: sortedEnCategories,
+        no: sortedNoCategories,
       };
       return sortedCategories;
     },
@@ -253,6 +286,11 @@ export default {
         item.node.countries.some(
           (itemCountry) => itemCountry.name.en === country.node.name.en
         )
+      );
+    },
+    visibleCitiesByCountry(country) {
+      return this.visibleCities.filter(
+        (item) => item.node.country.name.en === country.node.name.en
       );
     },
     getLocationsByCity(city) {
@@ -335,11 +373,12 @@ h3 {
   margin: 0.5rem 0 1.5rem;
 }
 .country {
-  border-top: 1px solid var(--color-text);
   border-radius: 0;
-  padding: var(--spacing-sitepadding) 0;
+  padding: 0 0 var(--spacing-sitepadding) 0;
   margin: var(--spacing-sitepadding) 0;
   &-name {
+    border-top: 1px solid var(--color-text);
+    padding: var(--spacing-sitepadding) 0 0;
     font-size: var(--font-size-m);
     text-transform: uppercase;
     margin: 0 0 var(--spacing-sitepadding) 0;

@@ -35,13 +35,19 @@
                 </h5>
                 <block-content
                   :blocks="location.node.text._rawNo"
-                  v-if="location.node.text._rawNo && $context.locale == 'no'"
+                  v-if="
+                    location.node.text &&
+                      location.node.text._rawNo &&
+                      $context.locale == 'no'
+                  "
                   class="block-content"
                 />
                 <block-content
                   :blocks="location.node.text._rawEn"
                   v-else-if="
-                    location.node.text._rawEn && $context.locale == 'en'
+                    location.node.text &&
+                      location.node.text._rawEn &&
+                      $context.locale == 'en'
                   "
                   class="block-content"
                 />
