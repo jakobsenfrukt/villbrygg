@@ -122,6 +122,8 @@ export default {
   .page-header {
     .text {
       grid-column: 1 / -1;
+      min-height: 0;
+      padding-top: var(--spacing-sitepadding);
     }
   }
 }

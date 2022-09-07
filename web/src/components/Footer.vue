@@ -180,7 +180,7 @@ export default {
   }
 }
 @media (max-width: 900px) {
-  .site-footer-wrapper {
+  .site-footer .main-footer-content {
     grid-template-columns: 1fr;
   }
 }
