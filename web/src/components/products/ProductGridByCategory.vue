@@ -29,7 +29,7 @@
 <static-query>
 query {
   productCategories: allSanityProductCategory(
-    sortBy: "title", order: ASC
+    sortBy: "title", order: DESC
   ) {
     edges {
       node {
