@@ -18,16 +18,20 @@
       font-size: var(--font-size-l);
       padding-right: calc(var(--spacing-sitepadding) * 2);
     }
+
     .body {
       grid-column: 5 / span 6;
       order: 2;
       padding: 0 var(--spacing-sitepadding) var(--spacing-sitepadding) 0;
     }
+
     .content-blocks {
       grid-column: 1 / -1;
       order: 3;
     }
+
     @media (max-width: 800px) {
+
       .lead,
       .body {
         grid-column: 1 / -1;
@@ -42,6 +46,7 @@
   margin: 1rem 0 3rem;
   padding: 0;
 }
+
 .category {
   display: inline-block;
   background: var(--color-background);
@@ -59,6 +64,7 @@
   li {
     display: inline-block;
   }
+
   button {
     border: 1px solid var(--color-lightgray);
     background: transparent;
@@ -68,11 +74,13 @@
     padding: 0.5rem 1rem;
     margin: 0 0.4rem 0.6rem 0;
     cursor: none;
+
     &.active {
       background: var(--color-active);
       border-color: var(--color-active);
       cursor: none;
     }
+
     &:hover {
       background: var(--color-active);
       border-color: var(--color-active);
@@ -87,7 +95,9 @@ input[type="text"] {
   padding: 0.5rem 1rem;
   margin: 0;
   cursor: none;
-  &:hover, &:focus {
+
+  &:hover,
+  &:focus {
     border: 1px solid var(--color-active);
     cursor: none;
   }
