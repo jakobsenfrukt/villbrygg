@@ -95,7 +95,7 @@ export default {
         this.errors["email"] = this.$t("contactform.errorEmailInvalid");
       }
 
-      if (this.errors.length) {
+      if (Object.keys(this.errors).length) {
         return;
       }
 
