@@ -140,6 +140,7 @@ textarea {
   max-width: 100%;
   border: 1px solid var(--color-lightgray);
   border-radius: var(--border-radius-l);
+  font-family: inherit;
   font-size: var(--font-size-s);
   padding: 0.5rem 1rem;
   margin: 0.25rem 0 0;
