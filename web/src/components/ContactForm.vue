@@ -9,10 +9,15 @@
       netlify-honeypot="i-understand"
       novalidate="true"
     >
-      <input type="hidden" name="form-name" value="resellerContact" />
+      <input type="hidden" name="form-name" value="reseller-contact" />
+      <input
+        type="hidden"
+        name="subject"
+        value="Fra Villbrygg.no: Bli en forhandler"
+      />
       <label :class="markError('name')">
         {{ $t("contactform.name") }}*
-        <input type="text" name="name" v-model="name" />
+        <input type="text" name="name" v-model="name" @input="validateForm()" />
         <span v-if="hasError('name')" class="error-message">{{
           this.errors["name"]
         }}</span>
@@ -27,7 +32,12 @@
       </label>
       <label :class="markError('email')">
         {{ $t("contactform.email") }}*
-        <input type="email" name="email" v-model="email" />
+        <input
+          type="email"
+          name="email"
+          v-model="email"
+          @input="validateForm()"
+        />
         <span v-if="hasError('email')" class="error-message">{{
           this.errors["email"]
         }}</span>
@@ -62,6 +72,7 @@
 <script>
 const getInitialState = function() {
   return {
+    hasTriedSubmitting: false,
     submitted: false,
     submitError: "",
     errors: {},
@@ -80,8 +91,10 @@ export default {
     return getInitialState();
   },
   methods: {
-    handleSubmit(e) {
-      e.preventDefault();
+    validateForm(e) {
+      if (!this.hasTriedSubmitting) {
+        return;
+      }
       this.errors = {};
 
       if (!this.name) {
@@ -95,9 +108,16 @@ export default {
       }
 
       if (Object.keys(this.errors).length) {
+        return false;
+      }
+      return true;
+    },
+    handleSubmit(e) {
+      e.preventDefault();
+      this.hasTriedSubmitting = true;
+      if (!this.validateForm()) {
         return;
       }
-
       const formData = new FormData(e.target);
       this.sendForm(formData);
     },
