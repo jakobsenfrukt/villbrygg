@@ -34,10 +34,16 @@
   },
   "contactform": {
     "name": "Navn på bedrift",
-    "contactperson": "Kontaktperson",
+    "contactPerson": "Kontaktperson",
     "phone": "Telefon",
     "email": "E-post",
     "message": "Melding",
-    "submit": "Send"
+    "submit": "Send",
+    "reset": "Nullstill",
+    "greatSuccess": "Vi tar kontakt med deg så fort som mulig!",
+    "humansOnly": "Ikke skriv noe i dette feltet om du er et menneske",
+    "errorRequiredField": "Dette feltet er påkrevd",
+    "errorEmailInvalid": "Ugyldig e-postadresse.",
+    "errorTechincal": "Beklager, noe gikk galt ved innsending av skjemaet. Ta kontakt med oss på e-post."
   }
 }

@@ -34,10 +34,16 @@
   },
   "contactform": {
     "name": "Business name",
-    "contactperson": "Contact person",
+    "contactPerson": "Contact person",
     "phone": "Phone",
     "email": "E-mail",
     "message": "Message",
-    "submit": "Send"
+    "submit": "Send",
+    "reset": "Reset",
+    "greatSuccess": "We'll get in touch with you as soon as possible!",
+    "humansOnly": "Don't fill this out if you're human",
+    "errorRequiredField": "This field is required.",
+    "errorEmailInvalid": "Invalid email address.",
+    "errorTechincal": "Sorry, something went wrong when submitting your message. Please contact us by email."
   }
 }
