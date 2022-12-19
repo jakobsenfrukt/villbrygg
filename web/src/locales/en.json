@@ -39,7 +39,7 @@
     "email": "E-mail",
     "message": "Message",
     "submit": "Send",
-    "reset": "Reset",
+    "reset": "Go back",
     "greatSuccess": "We'll get in touch with you as soon as possible!",
     "humansOnly": "Don't fill this out if you're human",
     "errorRequiredField": "This field is required.",

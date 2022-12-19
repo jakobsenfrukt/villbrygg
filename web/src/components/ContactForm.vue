@@ -60,7 +60,7 @@
 </template>
 
 <script>
-const getInitialState = function () {
+const getInitialState = function() {
   return {
     submitted: false,
     submitError: "",
@@ -73,8 +73,7 @@ const getInitialState = function () {
   };
 };
 
-const isEmail =
-  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const isEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default {
   data() {
@@ -178,6 +177,16 @@ textarea {
   &:hover {
     background: var(--color-active);
     border-color: var(--color-active);
+  }
+}
+.error-message {
+  font-size: 0.8rem;
+  color: red;
+  font-style: italic;
+}
+.has-error {
+  input {
+    border-color: red;
   }
 }
 </style>
