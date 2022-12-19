@@ -31,5 +31,13 @@
   },
   "headings": {
     "related": "Relatert innhold"
+  },
+  "contactform": {
+    "name": "Navn på bedrift",
+    "contactperson": "Kontaktperson",
+    "phone": "Telefon",
+    "email": "E-post",
+    "message": "Melding",
+    "submit": "Send"
   }
 }

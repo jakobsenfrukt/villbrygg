@@ -31,5 +31,13 @@
   },
   "headings": {
     "related": "Related content"
+  },
+  "contactform": {
+    "name": "Business name",
+    "contactperson": "Contact person",
+    "phone": "Phone",
+    "email": "E-mail",
+    "message": "Message",
+    "submit": "Send"
   }
 }

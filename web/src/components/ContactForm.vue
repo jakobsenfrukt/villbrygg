@@ -1,11 +1,26 @@
 <template>
   <form name="reseller-contact" method="POST" data-netlify="true">
-    <label>Navn på bedrift: <input type="text" name="name"/></label>
-    <label>Kontaktperson navn: <input type="text" name="name"/></label>
-    <label>Kontaktperson telefon: <input type="phone" name="phone"/></label>
-    <label>Kontaktperson e-post: <input type="email" name="email"/></label>
-    <label>Melding: <textarea name="message"></textarea></label>
-    <button type="submit" class="button">Send</button>
+    <label>
+      {{ $t("contactform.name") }}*
+      <input type="text" name="name" />
+    </label>
+    <label>
+      {{ $t("contactform.contactperson") }}
+      <input type="text" name="contactperson" />
+    </label>
+    <label>
+      {{ $t("contactform.phone") }}
+      <input type="tel" name="phone" />
+    </label>
+    <label>
+      {{ $t("contactform.email") }}*
+      <input type="email" name="email" />
+    </label>
+    <label>
+      {{ $t("contactform.message") }}
+      <textarea name="message"></textarea>
+    </label>
+    <button type="submit" class="button">{{ $t("contactform.submit") }}</button>
   </form>
 </template>
 
@@ -39,9 +54,12 @@ textarea {
     cursor: none;
   }
 }
+input[type="tel"] {
+  width: 13rem;
+}
 textarea {
   width: 30rem;
-  height: 5rem;
+  height: 7rem;
   border-radius: 1rem;
 }
 .button {
