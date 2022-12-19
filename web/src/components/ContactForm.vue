@@ -13,7 +13,7 @@
       <input
         type="hidden"
         name="subject"
-        value="Fra Villbrygg.no: Bli en forhandler"
+        value="Villbrygg.com: New form submission (Reseller)"
       />
       <label :class="markError('name')">
         {{ $t("contactform.name") }}*
