@@ -194,6 +194,8 @@ textarea {
   max-width: 100%;
   background: var(--cursor-color);
   border-color: var(--cursor-color);
+  font-family: inherit;
+  font-weight: inherit;
 
   &:hover {
     background: var(--color-active);
