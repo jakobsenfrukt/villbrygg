@@ -33,6 +33,7 @@
             class="content-blocks"
           />
         </template>
+        <section class="contactform"><ContactForm /></section>
       </div>
     </main>
   </Layout>
@@ -188,11 +189,13 @@ query {
 <script>
 import PageHeader from "~/components/PageHeader";
 import BlockContent from "~/components/tools/BlockContent";
+import ContactForm from "~/components/ContactForm";
 
 export default {
   components: {
     PageHeader,
     BlockContent,
+    ContactForm,
   },
   metaInfo() {
     return {
@@ -230,16 +233,22 @@ export default {
     font-size: var(--font-size-l);
     padding-right: calc(var(--spacing-sitepadding) * 2);
   }
-  .body {
+  .body,
+  .contactform {
     grid-column: 5 / span 6;
     padding: 0 var(--spacing-sitepadding) var(--spacing-sitepadding) 0;
+  }
+
+  .contactform {
+    order: 3;
   }
 }
 
 @media (max-width: 800px) {
   .reseller-content {
     .lead,
-    .body {
+    .body,
+    .contactform {
       grid-column: 1 / -1;
       padding-right: 0;
     }

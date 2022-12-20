@@ -1,5 +1,8 @@
 <template>
-  <div class="layout">
+  <div
+    class="layout"
+    :style="`--cursor-color: ${$static.general.cursorColor.hex}`"
+  >
     <Header />
 
     <transition name="fade" appear>
