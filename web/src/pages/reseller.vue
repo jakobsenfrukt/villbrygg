@@ -9,6 +9,16 @@
             v-if="$page.reseller.body && $page.reseller.body._rawNo"
             class="block-content body"
           />
+        </template>
+        <template v-else-if="$context.locale == 'en'">
+          <block-content
+            :blocks="$page.reseller.body._rawEn"
+            v-if="$page.reseller.body && $page.reseller.body._rawEn"
+            class="block-content body"
+          />
+        </template>
+        <section class="contactform"><ContactForm /></section>
+        <template v-if="$context.locale == 'no'">
           <PageContent
             :content="$page.reseller.pageContent.pageContentNo.blocks"
             v-if="
@@ -19,11 +29,6 @@
           />
         </template>
         <template v-else-if="$context.locale == 'en'">
-          <block-content
-            :blocks="$page.reseller.body._rawEn"
-            v-if="$page.reseller.body && $page.reseller.body._rawEn"
-            class="block-content body"
-          />
           <PageContent
             :content="$page.reseller.pageContent.pageContentEn.blocks"
             v-if="
@@ -33,7 +38,6 @@
             class="content-blocks"
           />
         </template>
-        <section class="contactform"><ContactForm /></section>
       </div>
     </main>
   </Layout>
