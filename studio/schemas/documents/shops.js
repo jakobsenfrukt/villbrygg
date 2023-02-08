@@ -7,6 +7,11 @@ export default {
     {
       name: 'pageHeader',
       type: 'pageHeader'
+    },
+    {
+      name: 'body',
+      type: 'localeBody', 
+      title: 'Main text'
     }
   ]
 }

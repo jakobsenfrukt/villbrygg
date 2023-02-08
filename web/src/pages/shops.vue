@@ -1,6 +1,48 @@
 <template>
   <Layout>
-    <PageHeader :content="$page.shops.pageHeader" />
+    <header class="page-header-wrapper">
+      <div class="page-header">
+        <div class="text">
+          <h1 class="heading" v-if="$page.shops.pageHeader.heading">
+            {{ $page.shops.pageHeader.heading[$context.locale] }}
+            <span v-if="$page.shops.pageHeader.subheading" class="subheading">{{
+              $page.shops.pageHeader.subheading[$context.locale]
+            }}</span>
+          </h1>
+          <p class="lead" v-if="$page.shops.pageHeader.text">
+            {{ $page.shops.pageHeader.text[$context.locale] }}
+          </p>
+          <template v-if="$context.locale == 'no' && $page.shops.body">
+            <block-content
+              :blocks="$page.shops.body._rawNo"
+              v-if="$page.shops.body._rawNo"
+              class="block-content body"
+            />
+          </template>
+          <template v-else-if="$context.locale == 'en' && $page.shops.body">
+            <block-content
+              :blocks="$page.shops.body._rawEn"
+              v-if="$page.shops.body._rawEn"
+              class="block-content body"
+            />
+          </template>
+        </div>
+        <template v-if="$page.shops.pageHeader.images">
+          <g-image
+            v-for="(image, index) in $page.shops.pageHeader.images"
+            :key="`image-${index}`"
+            :class="$page.shops.pageHeader.images.length === 1 ? 'single' : ''"
+            :src="
+              $urlForImage(image, $static.metadata.sanityOptions)
+                .width(1440)
+                .auto('format')
+                .url()
+            "
+            :alt="image.alt[$context.locale] ? image.alt[$context.locale] : ''"
+          />
+        </template>
+      </div>
+    </header>
     <main class="page-content-wrapper">
       <div class="page-content">
         <ul class="category-list">
@@ -425,6 +467,90 @@ h3 {
   input {
     width: 20rem;
     max-width: 100%;
+  }
+}
+
+.page-header-wrapper {
+  background: var(--color-background);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.page-header {
+  width: 100%;
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+  padding: var(--spacing-sitepadding);
+  padding-bottom: 2rem;
+  margin-bottom: -1px;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: calc(var(--spacing-sitepadding) / 2);
+
+  .text {
+    min-height: 13rem;
+    grid-column: 5 / span 6;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+  .heading {
+    width: 100%;
+    font-weight: inherit;
+    font-size: var(--font-size-xl);
+    line-height: 1.2;
+    max-width: 14em;
+  }
+  .subheading {
+    display: block;
+    color: var(--color-lightgray);
+  }
+  .lead {
+    font-size: var(--font-size-l);
+    line-height: 1.2;
+    max-width: 20em;
+  }
+  img {
+    grid-column: span 6;
+    border-radius: var(--border-radius);
+    width: 100%;
+    object-fit: cover;
+    margin-top: 2rem;
+    &.single {
+      grid-column: span 10;
+    }
+  }
+  img:nth-of-type(even) {
+    grid-column: span 4;
+  }
+  &.noimage {
+    //padding-bottom: 0;
+    .lead {
+      margin-bottom: 0;
+    }
+  }
+}
+.index .page-header-wrapper {
+  border-bottom-left-radius: var(--border-radius-l);
+  border-bottom-right-radius: var(--border-radius-l);
+}
+
+@media (max-width: 1110px) {
+  .page-header {
+    .text {
+      grid-column: 1 / -1;
+      min-height: 0;
+      padding-top: var(--spacing-sitepadding);
+    }
+  }
+}
+@media (max-width: 800px) {
+  .page-header {
+    img {
+      grid-column: 1 / -1;
+    }
+    img:nth-of-type(even) {
+      display: none;
+    }
   }
 }
 </style>
