@@ -158,6 +158,10 @@ query {
         }
       }
     }
+    body {
+      _rawNo
+      _rawEn
+    }
   }
   locations: allSanityLocation(sortBy: "name", order: ASC) {
     edges {
@@ -258,12 +262,14 @@ query {
 
 <script>
 import PageHeader from "~/components/PageHeader";
+import BlockContent from "~/components/tools/BlockContent";
 import City from "~/components/shops/City";
 import Online from "~/components/shops/Online";
 
 export default {
   components: {
     PageHeader,
+    BlockContent,
     City,
     Online,
   },
