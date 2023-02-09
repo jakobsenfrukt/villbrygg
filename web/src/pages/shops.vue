@@ -547,6 +547,9 @@ h3 {
       min-height: 0;
       padding-top: var(--spacing-sitepadding);
     }
+    p {
+      width: 100%;
+    }
   }
 }
 @media (max-width: 800px) {
