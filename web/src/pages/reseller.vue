@@ -210,8 +210,8 @@ export default {
       meta: [
         {
           name: "description",
-          content: this.$page.reseller.pageHeader.text
-            ? this.$page.reseller.pageHeader.text[this.$context.locale]
+          content: this.$page.reseller.pageHeader.heading
+            ? this.$page.reseller.pageHeader.heading[this.$context.locale]
             : this.$page.general.seo.description[this.$context.locale],
         },
         {

@@ -223,8 +223,8 @@ export default {
       meta: [
         {
           name: "description",
-          content: this.$page.frontpage.pageHeader.text
-            ? this.$page.frontpage.pageHeader.text[this.$context.locale]
+          content: this.$page.frontpage.pageHeader.heading
+            ? this.$page.frontpage.pageHeader.heading[this.$context.locale]
             : this.$page.general.seo.description[this.$context.locale],
         },
         {
