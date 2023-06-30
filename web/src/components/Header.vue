@@ -5,6 +5,11 @@
       <nav class="nav nav-main">
         <ul>
           <li>
+            <a class="nav__link" href="https://villbrygg.dyrket.no/store"
+              ><span>{{ $t("menu.webshop") }}</span></a
+            >
+          </li>
+          <li>
             <g-link class="nav__link" :to="$tp($t('slug.products'))"
               ><span>{{ $t("menu.products") }}</span></g-link
             >
@@ -35,6 +40,11 @@
         </div>
         <nav class="nav-mobile">
           <ul>
+            <li>
+              <a class="nav__link" href="https://villbrygg.dyrket.no/store"
+                ><span>{{ $t("menu.webshop") }}</span></a
+              >
+            </li>
             <li>
               <g-link class="nav__link" :to="$tp($t('slug.products'))"
                 ><span>{{ $t("menu.products") }}</span></g-link
@@ -102,8 +112,8 @@ export default {
   margin: 0 auto;
   padding: var(--spacing-sitepadding);
   background: var(--color-background);
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: -1px;
 
@@ -113,16 +123,12 @@ export default {
     text-transform: uppercase;
   }
 }
-.logo {
-  grid-column: 1 / span 4;
-}
 .nav-main {
-  grid-column: 5 / span 6;
   ul {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 2rem;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -151,8 +157,8 @@ export default {
       content: " ";
       position: absolute;
       top: -0.25rem;
-      left: -1rem;
-      width: calc(100% + 2rem);
+      left: -.75rem;
+      width: calc(100% + 1.5rem);
       height: calc(100% + 0.5rem);
       background: var(--color-active);
       border-radius: 5rem;
@@ -200,6 +206,7 @@ export default {
   }
 
   &-wrapper {
+    display: none;
     &.open {
       height: 100vh;
     }
@@ -224,7 +231,7 @@ export default {
   }
 }
 
-@media (max-width: 1110px) {
+@media (max-width: 1200px) {
   .nav {
     &-main {
       display: none;
@@ -236,6 +243,9 @@ export default {
       display: flex;
       opacity: 0;
       transform: translateY(-100%);
+      &-wrapper {
+        display: block;
+      }
     }
   }
   .open {

@@ -11,8 +11,9 @@
   },
   "menu": {
     "home": "Home",
+    "webshop": "Shop",
     "products": "Products",
-    "shops": "Buy here",
+    "shops": "Resellers",
     "about": "About",
     "contact": "Contact",
     "faq": "FAQ",
