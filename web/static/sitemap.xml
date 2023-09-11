@@ -24,6 +24,43 @@
                hreflang="en"
                href="https://villbrygg.com/en/"/>
 </url>
+
+<url>
+  <loc>https://villbrygg.com/no</loc>
+    <xhtml:link
+               rel="alternate"
+               hreflang="no"
+               href="https://villbrygg.com/no"/>
+    <xhtml:link
+               rel="alternate"
+               hreflang="en"
+               href="https://villbrygg.com/en"/>
+</url>
+    
+<url>
+  <loc>https://villbrygg.com/en</loc>
+    <xhtml:link
+               rel="alternate"
+               hreflang="no"
+               href="https://villbrygg.com/no"/>
+    <xhtml:link
+               rel="alternate"
+               hreflang="en"
+               href="https://villbrygg.com/en"/>
+</url>
+    
+<url>
+  <loc>https://www.villbrygg.com/</loc>
+</url>
+<url>
+  <loc>http://villbrygg.com/</loc>
+</url>
+<url>
+  <loc>https://www.villbrygg.com/products</loc>
+</url>
+<url>
+  <loc>https://villbrygg.com/products</loc>
+</url>
     
 <url>
   <loc>https://villbrygg.com/no/produkter/</loc>
@@ -47,6 +84,30 @@
                rel="alternate"
                hreflang="en"
                href="https://villbrygg.com/en/products/"/>
+</url>
+
+<url>
+  <loc>https://villbrygg.com/no/produkter</loc>
+    <xhtml:link
+               rel="alternate"
+               hreflang="no"
+               href="https://villbrygg.com/no/produkter"/>
+    <xhtml:link
+               rel="alternate"
+               hreflang="en"
+               href="https://villbrygg.com/en/products"/>
+</url>
+    
+<url>
+  <loc>https://villbrygg.com/en/products</loc>
+    <xhtml:link
+               rel="alternate"
+               hreflang="no"
+               href="https://villbrygg.com/no/produkter"/>
+    <xhtml:link
+               rel="alternate"
+               hreflang="en"
+               href="https://villbrygg.com/en/products"/>
 </url>
     
 <url>
@@ -72,6 +133,30 @@
                hreflang="en"
                href="https://villbrygg.com/en/shops/"/>
 </url>
+
+<url>
+  <loc>https://villbrygg.com/no/butikker</loc>
+    <xhtml:link
+               rel="alternate"
+               hreflang="no"
+               href="https://villbrygg.com/no/butikker"/>
+    <xhtml:link
+               rel="alternate"
+               hreflang="en"
+               href="https://villbrygg.com/en/shops"/>
+</url>
+ 
+<url>
+  <loc>https://villbrygg.com/en/shops</loc>
+    <xhtml:link
+               rel="alternate"
+               hreflang="no"
+               href="https://villbrygg.com/no/butikker"/>
+    <xhtml:link
+               rel="alternate"
+               hreflang="en"
+               href="https://villbrygg.com/en/shops"/>
+</url>    
     
 <url>
   <loc>https://villbrygg.com/no/om/</loc>
@@ -96,6 +181,30 @@
                hreflang="en"
                href="https://villbrygg.com/en/about/"/>
 </url>
+
+<url>
+  <loc>https://villbrygg.com/no/om</loc>
+    <xhtml:link
+               rel="alternate"
+               hreflang="no"
+               href="https://villbrygg.com/no/om"/>
+    <xhtml:link
+               rel="alternate"
+               hreflang="en"
+               href="https://villbrygg.com/en/about"/>
+</url>
+
+<url>
+  <loc>https://villbrygg.com/en/about</loc>
+    <xhtml:link
+               rel="alternate"
+               hreflang="no"
+               href="https://villbrygg.com/no/om"/>
+    <xhtml:link
+               rel="alternate"
+               hreflang="en"
+               href="https://villbrygg.com/en/about"/>
+</url>    
     
 <url>
   <loc>https://villbrygg.com/no/kontakt/</loc>
@@ -119,20 +228,7 @@
                rel="alternate"
                hreflang="en"
                href="https://villbrygg.com/en/contact/"/>
-</url>
-    
-<url>
-  <loc>https://villbrygg.com/no/artikler/fra-ide-til-flaske-hvordan-villbrygg-drikkene-blir-til/</loc>
-</url>
-    
-<url>
-  <loc>https://villbrygg.com/no/artikler/hvorfor-okologisk/</loc>
-</url>
-    
-<url>
-  <loc>https://villbrygg.com/no/artikler/vi-skaper-lokale-matnettverk/</loc>
-</url>
-    
+</url>    
 <url>
   <loc>https://villbrygg.com/no/artikler/</loc>
     <xhtml:link
@@ -180,6 +276,30 @@
                hreflang="en"
                href="https://villbrygg.com/en/faq/"/>
 </url>
+
+<url>
+  <loc>https://villbrygg.com/no/faq</loc>
+    <xhtml:link
+               rel="alternate"
+               hreflang="no"
+               href="https://villbrygg.com/no/faq"/>
+    <xhtml:link
+               rel="alternate"
+               hreflang="en"
+               href="https://villbrygg.com/en/faq"/>
+</url>
+
+<url>
+  <loc>https://villbrygg.com/en/faq</loc>
+    <xhtml:link
+               rel="alternate"
+               hreflang="no"
+               href="https://villbrygg.com/no/faq"/>
+    <xhtml:link
+               rel="alternate"
+               hreflang="en"
+               href="https://villbrygg.com/en/faq"/>
+</url>
     
 <url>
   <loc>https://villbrygg.com/no/forhandler/</loc>
@@ -203,6 +323,30 @@
                rel="alternate"
                hreflang="en"
                href="https://villbrygg.com/en/reseller/"/>
+</url>
+
+<url>
+  <loc>https://villbrygg.com/no/forhandler</loc>
+<xhtml:link
+               rel="alternate"
+               hreflang="no"
+               href="https://villbrygg.com/no/forhandler"/>
+    <xhtml:link
+               rel="alternate"
+               hreflang="en"
+               href="https://villbrygg.com/en/reseller"/>
+</url>
+
+<url>
+  <loc>https://villbrygg.com/en/reseller/</loc>
+    <xhtml:link
+               rel="alternate"
+               hreflang="no"
+               href="https://villbrygg.com/no/forhandler"/>
+    <xhtml:link
+               rel="alternate"
+               hreflang="en"
+               href="https://villbrygg.com/en/reseller"/>
 </url>
     
 <url>
@@ -228,9 +372,36 @@
                hreflang="en"
                href="https://villbrygg.com/en/privacy/"/>
 </url>
+
+<url>
+  <loc>https://villbrygg.com/no/personvern</loc>
+<xhtml:link
+               rel="alternate"
+               hreflang="no"
+               href="https://villbrygg.com/no/personvern"/>
+    <xhtml:link
+               rel="alternate"
+               hreflang="en"
+               href="https://villbrygg.com/en/privacy"/>
+</url>
+
+<url>
+  <loc>https://villbrygg.com/en/privacy</loc>
+    <xhtml:link
+               rel="alternate"
+               hreflang="no"
+               href="https://villbrygg.com/no/personvern"/>
+    <xhtml:link
+               rel="alternate"
+               hreflang="en"
+               href="https://villbrygg.com/en/privacy"/>
+</url>
     
 <url>
   <loc>https://villbrygg.com/no/artikler/de-ukjente-ville-vekstene-nordic-tropics/</loc>
+</url>
+<url>
+  <loc>https://villbrygg.com/no/artikler/de-ukjente-ville-vekstene-nordic-tropics</loc>
 </url>
     
 <url>
@@ -239,6 +410,9 @@
     
 <url>
   <loc>https://villbrygg.com/no/artikler/?category=nature</loc>
+</url>
+<url>
+  <loc>https://villbrygg.com/no/artikler?category=nature/</loc>
 </url>
     
 <url>
@@ -252,8 +426,20 @@
 <url>
   <loc>https://villbrygg.com/no/artikler/vill-news-oktober/</loc>
 </url>
-    
+<url>
+  <loc>https://villbrygg.com/no/artikler/vill-news-oktober</loc>
+</url>   
 <url>
   <loc>https://villbrygg.com/no/artikler/?category=newsletter</loc>
+</url>
+<url>
+  <loc>https://villbrygg.com/no/artikler/fra-ide-til-flaske-hvordan-villbrygg-drikkene-blir-til</loc>
+</url>
+
+<url>
+  <loc>https://villbrygg.com/no/artikler/hvorfor-okologisk</loc>
+</url>  
+<url>
+  <loc>https://villbrygg.com/no/artikler/vi-skaper-lokale-matnettverk</loc>
 </url>
 </urlset>
