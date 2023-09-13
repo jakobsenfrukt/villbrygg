@@ -11,6 +11,7 @@
         <p class="lead" v-if="content.text">
           {{ content.text[$context.locale] }}
         </p>
+        <InvestCta v-if="$context.locale === 'no' && showInvest" />
       </div>
       <template v-if="content.images">
         <g-image
@@ -42,12 +43,22 @@
 </static-query>
 
 <script>
+import InvestCta from "@/components/InvestCta";
+
 export default {
+  components: {
+    InvestCta,
+  },
   props: {
     content: {
       type: Object,
       require: false,
       default: () => ({}),
+    },
+    showInvest: {
+      type: Boolean,
+      require: false,
+      default: false,
     },
   },
 };
