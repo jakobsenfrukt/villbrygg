@@ -1,6 +1,6 @@
 <template>
   <Layout class="index">
-    <PageHeader :content="$page.frontpage.pageHeader" showInvest />
+    <PageHeader :content="$page.frontpage.pageHeader" />
     <ProductGrid
       :heading="$page.frontpage.productText"
       :items="$page.frontpage.featuredProducts"
