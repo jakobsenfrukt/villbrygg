@@ -7,7 +7,16 @@ export default {
       name: 'title',
       type: 'localeString',
       title: 'Category title'
-    }
+    },
+    {
+      name: 'slug',
+      type: 'slug',
+      options: {
+        source: 'title.en',
+        maxLength: 96,
+      },
+      validation: Rule => Rule.required(),
+    },
   ],
   orderings: [
     {
