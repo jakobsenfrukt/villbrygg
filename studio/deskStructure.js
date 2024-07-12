@@ -105,10 +105,20 @@ export default () =>
                       .params({id})
                       .defaultOrdering([{field: 'name', direction: 'asc'}])
                       .menuItems(S.documentTypeList('onlineShop').getMenuItems())
-                    ) 
+                    )
                 ),
                 S.listItem()
-                .title('Locations')
+                .title('All locations')
+                .icon(MdLocationPin)
+                .child(
+                  S.documentList()
+                    .title('All locations')
+                    .id('shopsCities')
+                    .filter('_type == "location"')
+                    .defaultOrdering([{field: 'name.en', direction: 'asc'}])
+                ),
+                S.listItem()
+                .title('Locations by city')
                 .icon(MdLocationPin)
                 .child(
                   S.documentList()
@@ -125,7 +135,7 @@ export default () =>
                       .params({id})
                       .defaultOrdering([{field: 'name', direction: 'asc'}])
                       .menuItems(S.documentTypeList('location').getMenuItems())
-                    ) 
+                    )
                 ),
                 S.listItem()
                 .title('Cities')
@@ -145,7 +155,7 @@ export default () =>
                       .params({id})
                       .defaultOrdering([{field: 'name.en', direction: 'asc'}])
                       .menuItems(S.documentTypeList('shopsCity').getMenuItems())
-                    ) 
+                    )
                 ),
                 S.listItem()
                 .title('Countries')

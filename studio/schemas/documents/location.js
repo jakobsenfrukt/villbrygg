@@ -30,6 +30,12 @@ export default {
       type: 'localeSimpleBody',
       title: 'Text'
     },
+    {
+      name: 'rawData',
+      type: 'string',
+      title: 'Raw data from sheet integration',
+      hidden: true
+    },
   ],
   orderings: [
     {
