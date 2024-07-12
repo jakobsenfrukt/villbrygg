@@ -356,6 +356,9 @@ export default {
       if (!cityHasLocations) {
         return false
       }
+      if (!this.activeFilters.length) {
+        return true
+      }
       // check if city contains any category matching current filters
       const categories = this.getLocationsByCity(city).map(
         (item) => item.node.category.title.en
