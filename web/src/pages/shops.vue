@@ -292,10 +292,8 @@ export default {
             item.node.name.no.toLowerCase().includes(query)
         );
       }
-      if (this.activeFilters.length) {
-        // check each city if it contains locations matching the current filters
-        cities = cities.filter((city) => this.cityHasContent(city));
-      }
+      // check each city if it contains locations matching the current filters
+      cities = cities.filter((city) => this.cityHasContent(city));
       return cities;
     },
     sortedCategories() {
@@ -354,6 +352,10 @@ export default {
       );
     },
     cityHasContent(city) {
+      const cityHasLocations = this.getLocationsByCity(city).length
+      if (!cityHasLocations) {
+        return false
+      }
       // check if city contains any category matching current filters
       const categories = this.getLocationsByCity(city).map(
         (item) => item.node.category.title.en
