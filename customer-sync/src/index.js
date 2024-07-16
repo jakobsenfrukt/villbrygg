@@ -494,10 +494,10 @@ async function syncLocations(sanityData, sheetData) {
   );
   for (const deletedId of deleted) {
     const doc = sanityLocations.find((x) => x._id === deletedId);
-    if (!doc._id.startsWith("shops-location-")) {
+    console.log("deleting", doc);
+    if (doc._type != "location") {
       throw new Error("wanted to delete a non-location document");
     }
-    console.log("would delete", doc);
     deleteSanityDocument(doc._id);
   }
   for (const locationId of [...somethingNew, ...changed]) {
@@ -508,11 +508,10 @@ async function syncLocations(sanityData, sheetData) {
       sanityData.categories,
       location
     );
-    console.log("doc", doc);
-    if (!doc._id.startsWith("shops-location-")) {
+    console.log("creating or updating", doc);
+    if (doc._type != "location") {
       throw new Error("wanted to change a non-location document");
     }
-    console.log("would create or update with", doc);
     createOrReplaceSanityDocument(doc);
   }
 }
@@ -580,7 +579,7 @@ if (syncedCities.new !== 0) {
 // console.dir(someRows, { depth: null });
 
 // await syncLocations(sanityData, testRows);
-// await syncLocations(sanityData, sheetData);
+await syncLocations(sanityData, sheetData);
 
 // console.dir(makeLinkElement("https://example.com"), { depth: null });
 
