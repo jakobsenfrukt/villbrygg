@@ -134,6 +134,15 @@ function rowsToObjects(rows) {
       }
       transformedRow[attribute] = cleanValue;
     }
+    if (categories.length === 1 && categories[0] === "online") {
+      console.log(
+        "skipping online only store",
+        row.get("Customer Name"),
+        "on row",
+        row._rowNumber
+      );
+      continue;
+    }
     transformedRow["categories"] = categories;
     transformedRow["rawData"] = JSON.stringify(
       objectWithoutRow(transformedRow)
@@ -490,9 +499,14 @@ async function syncLocations(sanityData, sheetData, updateAll) {
   const somethingNew = [...sheetState.keys()].filter(
     (x) => !sanityState.has(x)
   );
-  const forced = !updateAll ? [] : [...sheetState.keys()].filter(
-    (x) => !deleted.includes(x) && !changed.includes(x) && !somethingNew.includes(x)
-  );
+  const forced = !updateAll
+    ? []
+    : [...sheetState.keys()].filter(
+        (x) =>
+          !deleted.includes(x) &&
+          !changed.includes(x) &&
+          !somethingNew.includes(x)
+      );
   console.log(
     `sanityTotal=${sanityLocations.length} sheetTotal=${sheetData.length} new=${somethingNew} changed=${changed} deleted=${deleted}`
   );
