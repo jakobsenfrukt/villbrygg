@@ -419,13 +419,13 @@ async function toSanityLocation(allCities, allCountries, allCategories, item) {
   let noBlocks = [];
   let enBlocks = [];
 
-  let linkSpan = {};
-  if (typeof item.url === "string") {
-    linkSpan = makeLinkElement(item.url);
-    const block = makeBlock(linkSpan);
-    noBlocks.push(block);
-    enBlocks.push(block);
-  }
+  // let linkSpan = {};
+  // if (typeof item.url === "string") {
+  //   linkSpan = makeLinkElement(item.url);
+  //   const block = makeBlock(linkSpan);
+  //   noBlocks.push(block);
+  //   enBlocks.push(block);
+  // }
 
   const noAddress = makeAddress(item, false);
   noBlocks.push(makeBlock(makeTextElement(noAddress)));
@@ -473,12 +473,13 @@ async function toSanityLocation(allCities, allCountries, allCategories, item) {
     category: categoryReference,
     city: cityReference,
     text: text,
+    url: item.url,
     rawData: item.rawData,
   };
   return doc;
 }
 
-async function syncLocations(sanityData, sheetData) {
+async function syncLocations(sanityData, sheetData, updateAll) {
   const { locations: sanityLocations } = sanityData;
   const sanityState = new Map(sanityLocations.map((x) => [x._id, x.rawData]));
   const sheetState = new Map(sheetData.map((x) => [x._sanityDocId, x.rawData]));
@@ -488,6 +489,9 @@ async function syncLocations(sanityData, sheetData) {
   );
   const somethingNew = [...sheetState.keys()].filter(
     (x) => !sanityState.has(x)
+  );
+  const forced = !updateAll ? [] : [...sheetState.keys()].filter(
+    (x) => !deleted.includes(x) && !changed.includes(x) && !somethingNew.includes(x)
   );
   console.log(
     `sanityTotal=${sanityLocations.length} sheetTotal=${sheetData.length} new=${somethingNew} changed=${changed} deleted=${deleted}`
@@ -500,7 +504,7 @@ async function syncLocations(sanityData, sheetData) {
     }
     deleteSanityDocument(doc._id);
   }
-  for (const locationId of [...somethingNew, ...changed]) {
+  for (const locationId of [...somethingNew, ...changed, ...forced]) {
     const location = sheetData.find((x) => x._sanityDocId === locationId);
     const doc = await toSanityLocation(
       sanityData.cities,
