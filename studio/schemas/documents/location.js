@@ -31,6 +31,12 @@ export default {
       title: 'Text'
     },
     {
+      name: 'url',
+      type: 'string',
+      title: 'URL',
+      description: 'Hele URL-en til kunden, inkludert https://',
+    },
+    {
       name: 'rawData',
       type: 'string',
       title: 'Raw data from sheet integration',
