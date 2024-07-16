@@ -183,6 +183,7 @@ query {
           _rawNo
           _rawEn
         }
+        url
       }
     }
   }

@@ -31,7 +31,13 @@
                 class="location"
               >
                 <h5 class="location-name">
-                  {{ location.node.name }}
+                  <a
+                    v-if="location.node.url"
+                    :href="location.node.url"
+                    target="_blank"
+                    >{{ location.node.name }}</a
+                  >
+                  <span v-if="!location.node.url">{{ location.node.name }}</span>
                 </h5>
                 <block-content
                   :blocks="location.node.text._rawNo"
@@ -51,9 +57,6 @@
                   "
                   class="block-content"
                 />
-                <a v-if="location.node.website" :href="location.node.website">{{
-                  location.node.website
-                }}</a>
               </li>
             </ul>
           </div>
