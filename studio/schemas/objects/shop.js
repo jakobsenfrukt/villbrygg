@@ -19,7 +19,13 @@ export default {
       name: 'text',
       type: 'localeSimpleBody',
       title: 'Text'
-    }
+    },
+    {
+      name: 'url',
+      type: 'string',
+      title: 'URL',
+      description: 'Hele URL-en til kunden, inkludert https://',
+    },
   ],
   preview: {
     select: {
