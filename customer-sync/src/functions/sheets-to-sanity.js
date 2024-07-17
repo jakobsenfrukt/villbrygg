@@ -12,8 +12,6 @@ export default async (req, context) => {
 
   let status = null;
 
-  console.log("env", process.env);
-
   await fetch(webhookUrl, {
     method: "post",
   })
