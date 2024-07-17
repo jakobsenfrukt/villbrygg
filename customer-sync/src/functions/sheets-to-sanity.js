@@ -7,14 +7,14 @@ export default async (req, context) => {
     "Access-Control-Allow-Headers": "Content-Type",
     "Content-Type": "application/json",
   };
-  const webhook = `${process.env.URL}/.netlify/functions/sheets-to-sanity-background`;
-  console.log("calling sheets-to-sanity-background at", webhook);
+  const webhookUrl = `${process.env.URL}/.netlify/functions/sheets-to-sanity-background`;
+  console.log("calling sheets-to-sanity-background at", webhookUrl);
 
   let status = null;
 
   console.log("env", process.env);
 
-  await fetch(url, {
+  await fetch(webhookUrl, {
     method: "post",
   })
     .then((res) => {
