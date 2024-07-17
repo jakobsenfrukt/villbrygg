@@ -556,7 +556,7 @@ async function getSheetData() {
   return visible;
 }
 
-async function syncAll() {
+export async function syncAll() {
   console.log("syncing everything");
   let sanityData = await getSanityData();
   const sheetData = await getSheetData();
