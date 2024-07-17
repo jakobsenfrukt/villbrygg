@@ -11,6 +11,8 @@ export default async (req, context) => {
 
   let status = null;
 
+  console.log("env", process.env);
+
   await fetch(
     `https://${process.env.URL}/.netlify/functions/sheets-to-sanity-background`,
     {
@@ -26,9 +28,9 @@ export default async (req, context) => {
       console.log(error);
     });
 
-  return {
+  const body = { status: status };
+  return Response.json(body, {
     statusCode: status === "queued" ? 200 : 500,
     headers,
-    body: JSON.stringify({ status: status }),
-  };
+  });
 };
