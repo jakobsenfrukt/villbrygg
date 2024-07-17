@@ -6,12 +6,13 @@
   "type": "module",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node src/index.js main",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@netlify/functions": "^2.8.1",
     "@sanity/client": "^6.20.1",
     "dotenv": "^16.4.5",
     "google-auth-library": "^9.11.0",

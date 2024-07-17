@@ -349,6 +349,7 @@ async function findCountry(allCountries, countryName) {
 }
 
 async function syncCountries(allCountries, allLocations) {
+  console.log("syncing countries");
   let newCountries = [];
   for (const location of allLocations) {
     const found = await findCountry(allCountries, location.country);
@@ -368,6 +369,7 @@ async function syncCountries(allCountries, allLocations) {
 }
 
 async function syncCities(allCities, allCountries, allLocations) {
+  console.log("syncing cities");
   let newCities = [];
   let created = [];
   for (const location of allLocations) {
@@ -489,6 +491,7 @@ async function toSanityLocation(allCities, allCountries, allCategories, item) {
 }
 
 async function syncLocations(sanityData, sheetData, updateAll) {
+  console.log("syncing locations");
   const { locations: sanityLocations } = sanityData;
   const sanityState = new Map(sanityLocations.map((x) => [x._id, x.rawData]));
   const sheetState = new Map(sheetData.map((x) => [x._sanityDocId, x.rawData]));
@@ -510,15 +513,15 @@ async function syncLocations(sanityData, sheetData, updateAll) {
   console.log(
     `sanityTotal=${sanityLocations.length} sheetTotal=${sheetData.length} new=${somethingNew} changed=${changed} deleted=${deleted}`
   );
-  for (const deletedId of deleted) {
+  for await (const deletedId of deleted) {
     const doc = sanityLocations.find((x) => x._id === deletedId);
     console.log("deleting", doc);
     if (doc._type != "location") {
       throw new Error("wanted to delete a non-location document");
     }
-    deleteSanityDocument(doc._id);
+    await deleteSanityDocument(doc._id);
   }
-  for (const locationId of [...somethingNew, ...changed, ...forced]) {
+  for await (const locationId of [...somethingNew, ...changed, ...forced]) {
     const location = sheetData.find((x) => x._sanityDocId === locationId);
     const doc = await toSanityLocation(
       sanityData.cities,
@@ -530,8 +533,10 @@ async function syncLocations(sanityData, sheetData, updateAll) {
     if (doc._type != "location") {
       throw new Error("wanted to change a non-location document");
     }
-    createOrReplaceSanityDocument(doc);
+    await createOrReplaceSanityDocument(doc);
   }
+
+  return { existing: sanityLocations.length, new: somethingNew.length, changed: changed.length, deleted: deleted.length };
 }
 
 function isHidden(item) {
@@ -551,60 +556,61 @@ async function getSheetData() {
   return visible;
 }
 
-const testPol = {
-  row: 303,
-  customerName: "Vinmonopolet AS - Askvoll",
-  url: "https://vinmonopolet.no",
-  address: "Kystgården",
-  postcode: "6980",
-  city: "Askvoll",
-  country: "Norway",
-  municipality: "ASKVOLL",
-  region: "Vestland",
-  idNumber: "18550",
-  distributor: "Vinmonopolet",
-  hide: undefined,
-  categories: ["shop"],
-  rawData:
-    '{"customerName":"Vinmonopolet AS - Askvoll","url":"https://vinmonopolet.no","address":"Kystgården","postcode":"6980","city":"Askvoll","country":"Norway","municipality":"ASKVOLL","region":"Vestland","idNumber":"18550","distributor":"Vinmonopolet","categories":["store"]}',
-};
+async function syncAll() {
+  console.log("syncing everything");
+  let sanityData = await getSanityData();
+  const sheetData = await getSheetData();
 
-const testRows = [testPol];
+  const syncedCountries = await syncCountries(sanityData.countries, sheetData);
+  console.log("done syncing countries", syncedCountries);
 
-let sanityData = await getSanityData();
-const sheetData = await getSheetData();
+  if (syncedCountries.new !== 0) {
+    sanityData = await getSanityData();
+  }
 
-const syncedCountries = await syncCountries(sanityData.countries, sheetData);
-console.log("syncedCountries", syncedCountries);
+  const syncedCities = await syncCities(
+    sanityData.cities,
+    sanityData.countries,
+    sheetData
+  );
+  console.log("done syncing cities", syncedCities);
 
-if (syncedCountries.new !== 0) {
-  sanityData = await getSanityData();
+  if (syncedCities.new !== 0) {
+    sanityData = await getSanityData();
+  }
+
+  const syncedLocations = await syncLocations(sanityData, sheetData);
+  console.log("done syncing locations", syncedLocations);
+  console.log("done");
 }
 
-const syncedCities = await syncCities(
-  sanityData.cities,
-  sanityData.countries,
-  sheetData
-);
-console.log("syncedCities", syncedCities);
-
-if (syncedCities.new !== 0) {
-  sanityData = await getSanityData();
+if (process.argv.includes('main')) {
+  await syncAll();
 }
 
-// const someRows = sheetData.slice(0, 5);
+// const testPol = {
+//   row: 303,
+//   customerName: "Vinmonopolet AS - Askvoll",
+//   url: "https://vinmonopolet.no",
+//   address: "Kystgården",
+//   postcode: "6980",
+//   city: "Askvoll",
+//   country: "Norway",
+//   municipality: "ASKVOLL",
+//   region: "Vestland",
+//   idNumber: "18550",
+//   distributor: "Vinmonopolet",
+//   hide: undefined,
+//   categories: ["shop"],
+//   rawData:
+//     '{"customerName":"Vinmonopolet AS - Askvoll","url":"https://vinmonopolet.no","address":"Kystgården","postcode":"6980","city":"Askvoll","country":"Norway","municipality":"ASKVOLL","region":"Vestland","idNumber":"18550","distributor":"Vinmonopolet","categories":["store"]}',
+// };
 
-// console.dir(someRows, { depth: null });
-
+// const testRows = [testPol];
 // await syncLocations(sanityData, testRows);
-await syncLocations(sanityData, sheetData);
-
-// console.dir(makeLinkElement("https://example.com"), { depth: null });
-
 // const testDocument = await toSanityLocation(
 //   sanityData.cities,
 //   sanityData.countries,
 //   sanityData.categories,
 //   testRows[0]
 // );
-// console.dir(testDocument, {depth:null})
