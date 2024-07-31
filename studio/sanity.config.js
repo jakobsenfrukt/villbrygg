@@ -3,6 +3,7 @@ import { structureTool } from "sanity/structure";
 import { colorInput } from "@sanity/color-input";
 import { visionTool } from "@sanity/vision";
 import { media } from "sanity-plugin-media";
+import { webhooksTrigger } from "sanity-plugin-webhooks-trigger";
 import { Logo } from "./plugins/villbrygg-studio-logo/Logo";
 import schemas from "./schemas/schema";
 import deskStructure from "./deskStructure";
@@ -31,6 +32,7 @@ export default defineConfig({
     }),
     colorInput(),
     media(),
+    webhooksTrigger({ title: "Deploy", text: " " }),
   ],
   tools: (prev) => {
     if (import.meta.env.DEV) {
