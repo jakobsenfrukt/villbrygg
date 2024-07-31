@@ -35,7 +35,7 @@ export default defineConfig({
     webhooksTrigger({ title: "Deploy", text: " " }),
   ],
   tools: (prev) => {
-    if (import.meta.env.DEV) {
+    if (import.meta.env && import.meta.env.DEV) {
       return prev;
     }
     return prev.filter((tool) => tool.name !== "vision");
