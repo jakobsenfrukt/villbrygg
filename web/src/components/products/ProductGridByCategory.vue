@@ -94,7 +94,7 @@ query {
             right
           }
         }
-        detailImage {
+        detailImages {
           asset {
             _id
             url

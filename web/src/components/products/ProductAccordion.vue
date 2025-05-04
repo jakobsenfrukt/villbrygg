@@ -36,7 +36,7 @@
           v-if="product.mainImage"
           :src="
             $urlForImage(product.mainImage, $static.metadata.sanityOptions)
-              .height(800)
+              .height(1000)
               .width(800)
               .auto('format')
               .url()
@@ -48,16 +48,19 @@
           "
         />
         <g-image
-          v-if="product.detailImage"
+          v-if="product.detailImages"
+          v-for="(image, index) in product.detailImages"
+          :key="index"
           :src="
-            $urlForImage(product.detailImage, $static.metadata.sanityOptions)
+            $urlForImage(image, $static.metadata.sanityOptions)
+              .height(1000)
               .width(800)
               .auto('format')
               .url()
           "
           :alt="
-            product.detailImage.alt[$context.locale]
-              ? product.detailImage.alt[$context.locale]
+            image.alt[$context.locale]
+              ? image.alt[$context.locale]
               : ''
           "
         />
@@ -212,16 +215,10 @@ export default {
   }
   &-info-images {
     display: grid;
-    grid-template-columns: repeat(20, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;
     img {
       border-radius: var(--border-radius);
-    }
-    img:first-of-type {
-      grid-column: 1 / span 9;
-    }
-    img:nth-of-type(2) {
-      grid-column: 10 / span 11;
     }
   }
   &-info-tabs {

@@ -45,6 +45,18 @@ export default {
       type: 'localeFigure'
     },
     {
+      name: 'detailImages',
+      title: 'Detail images',
+      type: 'array',
+      of: [
+        {
+          name: 'localeFigure',
+          title: 'Image',
+          type: 'localeFigure'
+        },
+      ]
+    },
+    {
       name: 'lead',
       type: 'localeText',
       title: 'Lead',
