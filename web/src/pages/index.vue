@@ -4,7 +4,7 @@
     <ProductGrid
       :heading="$page.frontpage.productText"
       :items="$page.frontpage.featuredProducts"
-      :limit="4"
+      :limit="5"
     />
     <template v-if="$context.locale == 'no'">
       <ArticleGrid

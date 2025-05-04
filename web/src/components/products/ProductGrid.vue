@@ -125,7 +125,7 @@ export default {
   max-width: var(--layout-max-width);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-gap: 0.75rem;
   padding: var(--spacing-sitepadding) var(--spacing-sitepadding)
     calc(var(--spacing-sitepadding) * 2);
@@ -152,7 +152,7 @@ export default {
 }*/
 @media (max-width: 1000px) {
   .product-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 @media (max-width: 500px) {

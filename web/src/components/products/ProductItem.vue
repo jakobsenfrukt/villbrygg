@@ -83,7 +83,7 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     order: 2;
-    font-size: var(--font-size-m);
+    font-size: var(--font-size-s);
     position: relative;
 
     &:before {
@@ -130,7 +130,7 @@ export default {
     height: 100%;
     top: 0;
     left: 0;
-    padding: 1.25rem;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -153,7 +153,7 @@ export default {
     }
 
     &__intro {
-      font-size: var(--font-size-m);
+      font-size: var(--font-size-s);
       line-height: 1;
     }
     &__readmore {
