@@ -79,6 +79,24 @@ query {
             right
           }
         }
+        textureImage {
+          asset {
+            _id
+            url
+          }
+          hotspot {
+            x
+            y
+            height
+            width
+          }
+          crop {
+            top
+            bottom
+            left
+            right
+          }
+        }
       }
     }
   }
@@ -150,7 +168,7 @@ export default {
     grid-template-columns: repeat(4, 1fr);
   }
 }*/
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
   .product-grid {
     grid-template-columns: repeat(3, 1fr);
   }

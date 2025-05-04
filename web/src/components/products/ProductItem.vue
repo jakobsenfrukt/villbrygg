@@ -31,12 +31,25 @@
         :to="`${$tp($t('slug.products'))}#${product.slug.current}`"
       >
         <div class="product-overlay">
-          <span class="product-link__intro" v-if="product.intro">{{
-            product.intro[$context.locale]
-          }}</span>
-          <span class="product-link__readmore"
-            >{{ $t("navigation.readmore") }} &rarr;</span
-          >
+          <g-image
+            v-if="product.textureImage"
+            class="product-image"
+            :src="
+              $urlForImage(product.textureImage, $static.metadata.sanityOptions)
+                .height(600)
+                .width(420)
+                .auto('format')
+                .url()
+            "
+          />
+          <div class="product-link__text">
+            <span class="product-link__intro" v-if="product.intro">{{
+              product.intro[$context.locale]
+            }}</span>
+            <span class="product-link__readmore"
+              >{{ $t("navigation.readmore") }} &rarr;</span
+            >
+          </div>
         </div>
       </g-link>
     </div>
@@ -77,8 +90,8 @@ export default {
   flex-direction: column;
   position: relative;
   &-text {
-    padding: 1rem 0 1rem;
-    padding-left: 2rem;
+    padding: .75rem 0 1rem;
+    padding-left: 1.75rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -94,8 +107,8 @@ export default {
       height: 1.2rem;
       border-radius: 1.2rem;
       position: absolute;
-      left: 0.25rem;
-      top: 1.25rem;
+      left: 0;
+      top: .8rem;
     }
 
     &.hideCategory {
@@ -130,10 +143,6 @@ export default {
     height: 100%;
     top: 0;
     left: 0;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
   }
   &-link {
     position: absolute;
@@ -152,10 +161,34 @@ export default {
       opacity: 1;
     }
 
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    &__text {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      padding: 1rem;
+      background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.8), transparent);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
     &__intro {
       font-size: var(--font-size-s);
       line-height: 1;
     }
+
     &__readmore {
       margin: auto 0 0 0;
     }

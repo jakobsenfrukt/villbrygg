@@ -115,6 +115,24 @@ query {
           right
         }
       }
+      textureImage {
+        asset {
+          _id
+          url
+        }
+        hotspot {
+          x
+          y
+          height
+          width
+        }
+        crop {
+          top
+          bottom
+          left
+          right
+        }
+      }
     }
     featuredArticlesEn {
       id
