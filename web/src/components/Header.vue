@@ -29,7 +29,11 @@
               ><span>{{ $t("menu.contact") }}</span></g-link
             >
           </li>
-          <li>&nbsp;</li>
+          <li>
+            <g-link class="nav__link nav__link--invest" :to="$tp($t('slug.contact'))">
+              <span>Bli medeier</span>
+            </g-link>
+          </li>
           <LocaleSwitcher />
           <!--<ToggleTheme />-->
         </ul>
@@ -65,7 +69,11 @@
                 ><span>{{ $t("menu.contact") }}</span></g-link
               >
             </li>
-            <li>&nbsp;</li>
+            <li>
+              <g-link class="nav__link nav__link--invest" :to="$tp($t('slug.contact'))">
+                <span>Bli medeier</span>
+              </g-link>
+            </li>
             <LocaleSwitcher />
             <!--<ToggleTheme />-->
           </ul>
@@ -116,12 +124,6 @@ export default {
   grid-template-columns: repeat(10, 1fr);
   align-items: center;
   margin-bottom: -1px;
-
-  a {
-    color: inherit;
-    text-decoration: none;
-    text-transform: uppercase;
-  }
 }
 .logo {
   grid-column: 1 / span 4;
@@ -148,6 +150,7 @@ export default {
   text-decoration: none;
   text-transform: uppercase;
   position: relative;
+  color: inherit;
   cursor: none;
 
   span {
@@ -157,6 +160,7 @@ export default {
 
   &.active--exact,
   &:hover {
+    color: var(--color-black);
     &:before {
       content: " ";
       position: absolute;
@@ -167,6 +171,71 @@ export default {
       background: var(--color-active);
       border-radius: 5rem;
     }
+  }
+
+  &:last-of-type {
+    margin-right: .75rem;
+  }
+
+  &--invest {
+    color: #fff;
+    margin-left: .5rem;
+    display: inline-flex;
+    align-items: center;
+    span {
+      order: 2;
+    }
+    &:before {
+      content: " ";
+      position: absolute;
+      top: -0.25rem;
+      left: -0.5rem;
+      width: calc(100% + 1rem);
+      height: calc(100% + 0.5rem);
+      background: var(--color-darkgreen);
+      border-radius: 5rem;
+    }
+    &:after {
+      content: " ";
+      display: inline-block;
+      background: rgb(0, 255, 65);
+      width: 1rem;
+      height: 1rem;
+      margin-right: .5rem;
+      border-radius: 1.2rem;
+      animation: pulse 2s ease-in-out infinite;
+      order: 1;
+    }
+    &:hover {
+      color: rgb(0, 255, 65);
+      &:before {
+        content: " ";
+        position: absolute;
+        top: -0.25rem;
+        left: -0.5rem;
+        width: calc(100% + 1rem);
+        height: calc(100% + 0.5rem);
+        background: var(--color-darkgreen);
+        border-radius: 5rem;
+      }
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 255, 65, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 255, 65, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 255, 65, 0);
   }
 }
 

@@ -1,6 +1,7 @@
 <template>
   <Layout class="index">
     <PageHeader :content="$page.frontpage.pageHeader" />
+    <FeatureSection />
     <ProductGrid
       :heading="$page.frontpage.productText"
       :items="$page.frontpage.featuredProducts"
@@ -228,10 +229,12 @@ query {
 import PageHeader from "~/components/PageHeader";
 import ProductGrid from "~/components/products/ProductGrid";
 import ArticleGrid from "~/components/articles/ArticleGrid";
+import FeatureSection from "../components/FeatureSection.vue";
 
 export default {
   components: {
     PageHeader,
+    FeatureSection,
     ProductGrid,
     ArticleGrid,
   },
