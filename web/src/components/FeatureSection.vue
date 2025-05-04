@@ -63,7 +63,7 @@ export default {
     font-size: var(--font-size-l);
     line-height: 1.2;
     font-weight: 400;
-    color: rgb(0, 255, 65);
+    color: var(--color-lime);
     strong {
       font-weight: 400;
       color: var(--color-white);

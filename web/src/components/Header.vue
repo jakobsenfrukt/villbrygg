@@ -262,7 +262,6 @@ export default {
 
   .nav__link {
     position: relative;
-    display: block;
     margin-bottom: calc(var(--spacing-sitepadding) * 1.2);
     font-size: var(--font-size-l);
     text-transform: uppercase;
@@ -274,6 +273,14 @@ export default {
       color: var(--color-hover-light);
       &:before {
         display: none;
+      }
+    }
+
+    &--invest {
+      margin-left: 0;
+
+      &:after {
+        margin-right: 1rem;
       }
     }
   }
