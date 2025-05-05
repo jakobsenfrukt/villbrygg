@@ -40,6 +40,7 @@ import pageContent from "./objects/pageContent";
 import textBlock from "./objects/textBlock";
 import bodyBlock from "./objects/bodyBlock";
 import productInfo from "./objects/productInfo";
+import customFeatureSection from "./objects/customFeatureSection";
 
 // localized objects
 import localeString from "./objects/localeString";
@@ -92,6 +93,7 @@ export default [
   textBlock,
   bodyBlock,
   productInfo,
+  customFeatureSection,
   // localized objects
   localeString,
   localeText,

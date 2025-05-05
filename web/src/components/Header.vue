@@ -4,11 +4,6 @@
       <g-link class="logo" :to="$tp('/')"><Logo /></g-link>
       <nav class="nav nav-main">
         <ul>
-          <!--<li>
-            <a class="nav__link" href="https://villbrygg.dyrket.no/store"
-              ><span>{{ $t("menu.webshop") }}</span></a
-            >
-          </li>-->
           <li>
             <g-link class="nav__link" :to="$tp($t('slug.products'))"
               ><span>{{ $t("menu.products") }}</span></g-link
@@ -29,13 +24,12 @@
               ><span>{{ $t("menu.contact") }}</span></g-link
             >
           </li>
-          <li>
-            <g-link class="nav__link nav__link--invest" :to="$tp($t('slug.contact'))">
+          <!--<li v-if="$context.locale === 'no' && $static.general.investUrl">
+            <g-link class="nav__link nav__link--invest" :to="$static.general.investUrl">
               <span>Bli medeier</span>
             </g-link>
-          </li>
+          </li>-->
           <LocaleSwitcher />
-          <!--<ToggleTheme />-->
         </ul>
       </nav>
       <div class="nav-mobile-wrapper" :class="{ open: showMenu }">
@@ -44,11 +38,6 @@
         </div>
         <nav class="nav-mobile">
           <ul>
-            <!--<li>
-              <a class="nav__link" href="https://villbrygg.dyrket.no/store"
-                ><span>{{ $t("menu.webshop") }}</span></a
-              >
-            </li>-->
             <li>
               <g-link class="nav__link" :to="$tp($t('slug.products'))"
                 ><span>{{ $t("menu.products") }}</span></g-link
@@ -69,19 +58,27 @@
                 ><span>{{ $t("menu.contact") }}</span></g-link
               >
             </li>
-            <li>
-              <g-link class="nav__link nav__link--invest" :to="$tp($t('slug.contact'))">
+            <!--<li v-if="$context.locale === 'no' && $static.general.investUrl">
+              <g-link class="nav__link nav__link--invest" :to="$static.general.investUrl">
                 <span>Bli medeier</span>
               </g-link>
-            </li>
+            </li>-->
             <LocaleSwitcher />
-            <!--<ToggleTheme />-->
           </ul>
         </nav>
       </div>
     </div>
   </header>
 </template>
+
+
+<static-query>
+  query {
+    general: sanityGeneral (id: "general") {
+      investUrl
+    }
+  }
+</static-query>
 
 <script>
 import Logo from "@/components/Logo";

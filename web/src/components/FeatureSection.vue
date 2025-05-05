@@ -1,13 +1,20 @@
 <template>
-  <section class="feature-section-wrapper">
+  <section v-if="$context.locale === 'no'" class="feature-section-wrapper">
     <div class="feature-section">
-      <h2 class="feature-section__title">
-        <p>
-          Villbrygg er i sterk vekst, <strong>dette er din mulighet til å bli med som medeier!</strong>
-        </p>
+      <h2 v-if="content.heading" class="feature-section__title">
+        <block-content
+          :blocks="content.heading._rawNo"
+          v-if="content.heading._rawNo && $context.locale == 'no'"
+          class="block-content body"
+        />
+        <block-content
+          :blocks="heading._rawEn"
+          v-else-if="heading._rawEn && $context.locale == 'en'"
+          class="block-content body"
+        />
       </h2>
-      <p>Invester i en fremtid der kvalitet, bærekraft og innovasjon går hånd i hånd.</p>
-      <a><span>Bli medeier</span></a>
+      <p>{{ content.text[$context.locale] }}</p>
+      <a :href="content.linkUrl[$context.locale]"><span>{{ content.linkText[$context.locale] }}</span></a>
     </div>
   </section>
 </template>
@@ -22,23 +29,8 @@ export default {
     BlockContent,
   },
   props: {
-    items: {
-      type: Array,
-      default: undefined,
-    },
-    limit: {
-      type: Number,
-      default: 12,
-    },
-    heading: Object,
-  },
-  methods: {
-    shuffle(array) {
-      return array
-        .filter((item) => item.node.id != this.current)
-        .sort(() => Math.random() - Math.random());
-    },
-  },
+    content: Object,
+  }
 };
 </script>
 
@@ -63,7 +55,7 @@ export default {
     font-size: var(--font-size-l);
     line-height: 1.2;
     font-weight: 400;
-    color: var(--color-lime);
+    color: rgb(0, 255, 65);
     strong {
       font-weight: 400;
       color: var(--color-white);
@@ -77,6 +69,7 @@ export default {
     max-width: 20em;
   }
   a {
+    text-decoration: none;
     span {
       text-decoration: underline;
       text-underline-offset: .15em;
