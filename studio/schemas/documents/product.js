@@ -40,9 +40,26 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
+      name: 'textureImage',
+      title: 'Texture image',
+      type: 'image'
+    },
+    {
       name: 'detailImage',
       title: 'Detail image',
       type: 'localeFigure'
+    },
+    {
+      name: 'detailImages',
+      title: 'Detail images',
+      type: 'array',
+      of: [
+        {
+          name: 'localeFigure',
+          title: 'Image',
+          type: 'localeFigure'
+        },
+      ]
     },
     {
       name: 'lead',

@@ -1,10 +1,11 @@
 <template>
   <Layout class="index">
     <PageHeader :content="$page.frontpage.pageHeader" />
+    <!--<FeatureSection :v-if="$context.locale == 'no' && $page.frontpage.customFeature" :content="$page.frontpage.customFeature" />-->
     <ProductGrid
       :heading="$page.frontpage.productText"
       :items="$page.frontpage.featuredProducts"
-      :limit="4"
+      :limit="5"
     />
     <template v-if="$context.locale == 'no'">
       <ArticleGrid
@@ -62,6 +63,24 @@ query {
         }
       }
     }
+    customFeature {
+      heading {
+        _rawNo
+        _rawEn
+      }
+      text {
+        no
+        en
+      }
+      linkUrl {
+        no
+        en
+      }
+      linkText {
+        no
+        en
+      }
+    }
     productText {
       _rawNo
       _rawEn
@@ -101,6 +120,24 @@ query {
         alt {
           no
           en
+        }
+        hotspot {
+          x
+          y
+          height
+          width
+        }
+        crop {
+          top
+          bottom
+          left
+          right
+        }
+      }
+      textureImage {
+        asset {
+          _id
+          url
         }
         hotspot {
           x
@@ -210,10 +247,12 @@ query {
 import PageHeader from "~/components/PageHeader";
 import ProductGrid from "~/components/products/ProductGrid";
 import ArticleGrid from "~/components/articles/ArticleGrid";
+import FeatureSection from "../components/FeatureSection.vue";
 
 export default {
   components: {
     PageHeader,
+    FeatureSection,
     ProductGrid,
     ArticleGrid,
   },

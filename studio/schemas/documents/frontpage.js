@@ -9,6 +9,11 @@ export default {
       type: 'pageHeader'
     },
     {
+      name: 'customFeature',
+      type: 'customFeatureSection',
+      title: 'Custom feature section'
+    },
+    {
       title: 'Products heading',
       name: 'productText',
       type: 'localeSimpleBody'

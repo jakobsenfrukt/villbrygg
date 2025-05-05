@@ -79,6 +79,24 @@ query {
             right
           }
         }
+        textureImage {
+          asset {
+            _id
+            url
+          }
+          hotspot {
+            x
+            y
+            height
+            width
+          }
+          crop {
+            top
+            bottom
+            left
+            right
+          }
+        }
       }
     }
   }
@@ -125,7 +143,7 @@ export default {
   max-width: var(--layout-max-width);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-gap: 0.75rem;
   padding: var(--spacing-sitepadding) var(--spacing-sitepadding)
     calc(var(--spacing-sitepadding) * 2);
@@ -150,9 +168,9 @@ export default {
     grid-template-columns: repeat(4, 1fr);
   }
 }*/
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
   .product-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 @media (max-width: 500px) {
