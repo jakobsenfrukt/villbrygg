@@ -98,7 +98,14 @@ export default {
   preview: {
     select: {
       title: 'title',
-      media: 'mainImages[0]'
+      mediaArray: 'mainImages'
+    },
+    prepare(selection) {
+      const { title, mediaArray } = selection;
+      return {
+        title,
+        media: mediaArray && mediaArray[0]
+      };
     }
   }
 }
