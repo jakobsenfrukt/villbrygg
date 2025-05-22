@@ -1,7 +1,7 @@
 <template>
   <Layout class="index">
     <PageHeader :content="$page.frontpage.pageHeader" />
-    <!--<FeatureSection :v-if="$context.locale == 'no' && $page.frontpage.customFeature" :content="$page.frontpage.customFeature" />-->
+    <FeatureSection v-if="$context.locale == 'no' && $page.frontpage.customFeature.show" :content="$page.frontpage.customFeature" />
     <ProductGrid
       :heading="$page.frontpage.productText"
       :items="$page.frontpage.featuredProducts"
@@ -64,6 +64,7 @@ query {
       }
     }
     customFeature {
+      show
       heading {
         _rawNo
         _rawEn

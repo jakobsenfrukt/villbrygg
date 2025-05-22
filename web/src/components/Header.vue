@@ -24,11 +24,11 @@
               ><span>{{ $t("menu.contact") }}</span></g-link
             >
           </li>
-          <!--<li v-if="$context.locale === 'no' && $static.general.investUrl">
+          <li v-if="$context.locale === 'no' && $static.general.investUrl">
             <g-link class="nav__link nav__link--invest" :to="$static.general.investUrl">
               <span>Bli medeier</span>
             </g-link>
-          </li>-->
+          </li>
           <LocaleSwitcher />
         </ul>
       </nav>
@@ -58,11 +58,11 @@
                 ><span>{{ $t("menu.contact") }}</span></g-link
               >
             </li>
-            <!--<li v-if="$context.locale === 'no' && $static.general.investUrl">
+            <li v-if="$context.locale === 'no' && $static.general.investUrl">
               <g-link class="nav__link nav__link--invest" :to="$static.general.investUrl">
                 <span>Bli medeier</span>
               </g-link>
-            </li>-->
+            </li>
             <LocaleSwitcher />
           </ul>
         </nav>
