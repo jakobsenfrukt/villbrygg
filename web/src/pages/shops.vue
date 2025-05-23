@@ -33,7 +33,7 @@
             :key="`image-${index}`"
             :class="$page.shops.pageHeader.images.length === 1 ? 'single' : ''"
             :src="
-              $urlForImage(image, $static.metadata.sanityOptions)
+              $urlForImage(image, $page.metadata.sanityOptions)
                 .width(1440)
                 .auto('format')
                 .url()
@@ -121,6 +121,12 @@
 
 <page-query>
 query {
+  metadata {
+    sanityOptions {
+      projectId
+      dataset
+    }
+  }
   shops: sanityShops (id: "shops") {
     pageHeader {
       heading {
